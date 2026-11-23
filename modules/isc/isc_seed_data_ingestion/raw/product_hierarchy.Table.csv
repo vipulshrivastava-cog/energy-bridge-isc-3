@@ -1,0 +1,11 @@
+key,name,description,hierarchyCode,hierarchyLevel,hierarchyDepth,productHierarchyCode,productFamilyCode,productGroupCode,productSubGroupCode,isActive,parent_externalId,sourceId,sourceContext,sourceCreatedTime,sourceUpdatedTime
+ph_root,Product Portfolio,Top-level product classification,PH-ROOT,Sector,0,PH-ROOT,,,,true,,PH-ROOT,BTP_DOGFOOD_SEED,2026-07-06T08:00:00Z,2026-07-06T08:00:00Z
+ph_family_packaging,Consumer Packaging,Consumer and retail packaging,PF-PKG,ProductFamily,1,PH-ROOT/PF-PKG,PF-PKG,,,true,ph_root,PF-PKG,BTP_DOGFOOD_SEED,2026-07-06T08:00:00Z,2026-07-06T08:00:00Z
+ph_family_industrial,Industrial Packaging,Industrial and transport packaging,PF-IND,ProductFamily,1,PH-ROOT/PF-IND,PF-IND,,,true,ph_root,PF-IND,BTP_DOGFOOD_SEED,2026-07-06T08:00:00Z,2026-07-06T08:00:00Z
+ph_family_raw,Raw Materials,Pulp board and coating inputs,PF-RAW,ProductFamily,1,PH-ROOT/PF-RAW,PF-RAW,,,true,ph_root,PF-RAW,BTP_DOGFOOD_SEED,2026-07-06T08:00:00Z,2026-07-06T08:00:00Z
+ph_group_cartons,Cartons,Carton product group,PG-CTN,ProductGroup,2,PH-ROOT/PF-PKG/PG-CTN,PF-PKG,PG-CTN,,true,ph_family_packaging,PG-CTN,BTP_DOGFOOD_SEED,2026-07-06T08:00:00Z,2026-07-06T08:00:00Z
+ph_group_labels,Labels,Self-adhesive labels,PG-LBL,ProductGroup,2,PH-ROOT/PF-PKG/PG-LBL,PF-PKG,PG-LBL,,true,ph_family_packaging,PG-LBL,BTP_DOGFOOD_SEED,2026-07-06T08:00:00Z,2026-07-06T08:00:00Z
+ph_subgroup_folding,Folding Cartons,Folding carton finished goods,PSG-FLD,ProductSubGroup,3,PH-ROOT/PF-PKG/PG-CTN/PSG-FLD,PF-PKG,PG-CTN,PSG-FLD,true,ph_group_cartons,PSG-FLD,BTP_DOGFOOD_SEED,2026-07-06T08:00:00Z,2026-07-06T08:00:00Z
+ph_subgroup_corrugated,Corrugated Boxes,Corrugated finished goods,PSG-CRG,ProductSubGroup,3,PH-ROOT/PF-PKG/PG-CTN/PSG-CRG,PF-PKG,PG-CTN,PSG-CRG,true,ph_group_cartons,PSG-CRG,BTP_DOGFOOD_SEED,2026-07-06T08:00:00Z,2026-07-06T08:00:00Z
+ph_group_pallets,Pallets,Industrial pallets and dunnage,PG-PLT,ProductGroup,2,PH-ROOT/PF-IND/PG-PLT,PF-IND,PG-PLT,,true,ph_family_industrial,PG-PLT,BTP_DOGFOOD_SEED,2026-07-06T08:00:00Z,2026-07-06T08:00:00Z
+ph_group_pulp,Pulp Board,Uncoated and coated board,PG-PULP,ProductGroup,2,PH-ROOT/PF-RAW/PG-PULP,PF-RAW,PG-PULP,,true,ph_family_raw,PG-PULP,BTP_DOGFOOD_SEED,2026-07-06T08:00:00Z,2026-07-06T08:00:00Z
