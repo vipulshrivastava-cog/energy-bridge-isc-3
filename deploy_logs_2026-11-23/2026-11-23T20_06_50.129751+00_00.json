@@ -1,0 +1,31 @@
+{
+  "url": "https://bluefield.cognitedata.com/api/v1/projects/vipul-test/models/instances",
+  "method": "POST",
+  "requestBody": {
+    "items": [
+      {
+        "instanceType": "node",
+        "space": "sp_isc_platform",
+        "externalId": "fn_btp_hierarchy",
+        "sources": [
+          {
+            "source": {
+              "type": "view",
+              "space": "cdf_cdm",
+              "externalId": "CogniteFile",
+              "version": "v1"
+            },
+            "properties": {
+              "name": "ISC Hierarchy Sync",
+              "sourceContext": "cognite-toolkit-hash: zipfil-hash-not-supported",
+              "mimeType": "application/zip"
+            }
+          }
+        ]
+      }
+    ],
+    "replace": false
+  },
+  "errorMessage": "Request failed with status code 400: One or more spaces do not exist: 'sp_isc_platform'. | X-Request-ID: 1e5fb777-7074-96e9-8394-ef7e2d412ce0",
+  "statusCode": 400
+}

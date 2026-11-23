@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_forecast
+name: BTP Energy Bridge - Forecast
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_PlanForecastSchemaSpace }}
+    externalId: PlanForecast
+    version: '{{dmVersion}}'
+    destinationType: Forecast
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

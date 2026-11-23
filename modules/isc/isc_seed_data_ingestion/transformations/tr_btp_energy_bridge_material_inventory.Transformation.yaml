@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_material_inventory
+name: BTP Energy Bridge - Material Inventory
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_MaterialManagementSchemaSpace }}
+    externalId: MaterialManagement
+    version: '{{dmVersion}}'
+    destinationType: MaterialInventory
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

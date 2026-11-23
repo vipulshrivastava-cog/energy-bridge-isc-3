@@ -1,0 +1,289 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+externalId: InventoryQualityResult
+name: Inventory Quality Result
+description: Inventory quality inspection result and stock disposition record for a material inventory lot.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  inventoryQualityResultId:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: inventoryQualityResultId
+    name: Inventory Quality Result ID
+    description: Unique identifier for the inventory quality result or inspection record.
+  materialInventoryLot:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: materialInventoryLot
+    name: Material Inventory
+    description: Direct relation to the MaterialInventory node representing the aggregate stock position being inspected.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      version: '{{viewVersion}}'
+      type: view
+  material:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: material
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material under quality inspection.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  plant:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: plant
+    name: Plant
+    description: Direct relation to the FunctionalAsset node for the plant where the inspected stock is held or received.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  storageLocation:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: storageLocation
+    name: Storage Location
+    description: Direct relation to the FunctionalAsset node for the storage location or bin associated with the inspected stock.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  scheduledReceipt:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: scheduledReceipt
+    name: Scheduled Receipt
+    description: Optional direct relation to the ScheduledReceipt that triggered the inspection at goods receipt.
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      version: '{{viewVersion}}'
+      type: view
+  scheduledTransfer:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: scheduledTransfer
+    name: Scheduled Transfer
+    description: Optional direct relation to the ScheduledTransfer that triggered the inspection during an internal transfer.
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      version: '{{viewVersion}}'
+      type: view
+  supplier:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: supplier
+    name: Supplier
+    description: Optional direct relation to the Supplier associated with the inspected stock for vendor-quality traceability.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      version: '{{viewVersion}}'
+      type: view
+  inspectionOrigin:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: inspectionOrigin
+    name: Inspection Origin
+    description: Business trigger for the inspection record, for example goods receipt, stock transfer, return, periodic inspection, or complaint follow-up.
+  inspectionType:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: inspectionType
+    name: Inspection Type
+    description: Classification of the inspection according to ERP or quality-management rules.
+  inspectionStatus:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: inspectionStatus
+    name: Inspection Status
+    description: Current lifecycle status of the inventory quality record.
+  usageDecision:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: usageDecision
+    name: Usage Decision
+    description: Final disposition decision for the inspected stock.
+  inspectionDate:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: inspectionDate
+    name: Inspection Date
+    description: Date on which the inspection was executed or recorded.
+  decisionDate:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: decisionDate
+    name: Decision Date
+    description: Date on which the usage decision or stock release decision was finalized.
+  inspectedQuantity:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: inspectedQuantity
+    name: Inspected Quantity
+    description: Quantity of stock that was subject to inspection.
+  acceptedQuantity:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: acceptedQuantity
+    name: Accepted Quantity
+    description: Quantity released for accepted use after inspection.
+  rejectedQuantity:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: rejectedQuantity
+    name: Rejected Quantity
+    description: Quantity rejected, blocked, or otherwise withheld from normal use after inspection.
+  sampleSize:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: sampleSize
+    name: Sample Size
+    description: Quantity or sample amount inspected to determine the quality outcome.
+  quantityUnit:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: quantityUnit
+    name: Quantity Unit
+    description: Unit of measure for inspectedQuantity, acceptedQuantity, rejectedQuantity, and sampleSize.
+  qualityHoldReason:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: qualityHoldReason
+    name: Quality Hold Reason
+    description: Reason the stock is being held, blocked, or routed to quality inspection.
+  releaseToStockStatus:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: releaseToStockStatus
+    name: Release To Stock Status
+    description: Resulting stock status after inspection, such as unrestricted, restricted, blocked, or returned to vendor.
+  inspectorName:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: inspectorName
+    name: Inspector Name
+    description: Name or identifier of the inspector or quality engineer who performed or reviewed the inspection.
+  resultSummary:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: InventoryQualityResult
+      type: container
+    containerPropertyIdentifier: resultSummary
+    name: Result Summary
+    description: Short narrative summary of the inspection outcome, findings, or notable deviations.

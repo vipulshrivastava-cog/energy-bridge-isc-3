@@ -1,0 +1,224 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: PurchaseOrderConfirmation
+name: Purchase Order Confirmation
+description: Tracks individual supplier order confirmations for a PO line item.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  purchaseOrderId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: purchaseOrderId
+    name: Purchase Order ID
+    description: Purchase order number from the source ERP system. Part of the composite primary key.
+  purchaseOrderItemId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: purchaseOrderItemId
+    name: Purchase Order Item ID
+    description: Line item number within the Purchase Order this confirmation relates to. Part of the composite primary key.
+  sequentialConfirmationNumber:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: sequentialConfirmationNumber
+    name: Sequential Confirmation Number
+    description: Sequential number of the supplier confirmation within a PO item.
+  poLineItem:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: poLineItem
+    name: PO Line Item
+    description: Direct relation to the PurchaseOrderLineItem node this confirmation belongs to.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderLineItem
+      version: '{{viewVersion}}'
+      type: view
+  supplier:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: supplier
+    name: Supplier
+    description: Direct relation to the Supplier node that issued this confirmation.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      version: '{{viewVersion}}'
+      type: view
+  confirmationStatus:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: confirmationStatus
+    name: Confirmation Status
+    description: Status of the suppliers order confirmation for example Confirmed, Pending, Rejected.
+  requestedDeliveryDate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: requestedDeliveryDate
+    name: Requested Delivery Date
+    description: Delivery date originally requested in the purchase order.
+  confirmedDeliveryDate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: confirmedDeliveryDate
+    name: Confirmed Delivery Date
+    description: Delivery date confirmed by the supplier for this PO item in this specific confirmation revision.
+  confirmedQuantity:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: confirmedQuantity
+    name: Confirmed Quantity
+    description: Quantity confirmed by the supplier for delivery in this confirmation.
+  unitOfMeasure:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: unitOfMeasure
+    name: Unit of Measure
+    description: Unit of measure for the confirmedQuantity field for example EA, KG, M.
+  supplierMaterialNumber:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: supplierMaterialNumber
+    name: Supplier Material Number
+    description: Material number as used in the suppliers own catalogue system.
+  requestedShipDate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: requestedShipDate
+    name: Requested Ship Date
+    description: Ship date originally requested in the purchase order.
+  confirmedShipDate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: confirmedShipDate
+    name: Confirmed Ship Date
+    description: Ship date confirmed by the supplier for this confirmation revision.
+  requestedQuantity:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: requestedQuantity
+    name: Requested Quantity
+    description: Quantity originally requested in the purchase order for this line item. Baseline for measuring partial confirmations.
+  sendDate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: sendDate
+    name: Send Date
+    description: Date on which the order confirmation request was sent to the supplier.
+  sendStatus:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: sendStatus
+    name: Send Status
+    description: Status of the confirmation request transmission for example Sent, Not Sent, Error.
+  confirmationDateVariance:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: confirmationDateVariance
+    name: Confirmation Date Variance
+    description: Days between the requested delivery date and the confirmed delivery date.
+  confirmationQtyVariance:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      type: container
+    containerPropertyIdentifier: confirmationQtyVariance
+    name: Confirmation Quantity Variance
+    description: Difference between the requested quantity and the confirmed quantity. A positive value means the supplier confirmed less than requested. Tracks supplier quantity confirmation accuracy.

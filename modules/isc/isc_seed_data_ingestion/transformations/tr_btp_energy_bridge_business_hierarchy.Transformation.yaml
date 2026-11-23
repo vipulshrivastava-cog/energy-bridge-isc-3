@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_business_hierarchy
+name: BTP Energy Bridge - Business Hierarchy
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_OrganizationalFoundationSchemaSpace }}
+    externalId: OrganizationalFoundation
+    version: '{{dmVersion}}'
+    destinationType: BusinessUnits
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

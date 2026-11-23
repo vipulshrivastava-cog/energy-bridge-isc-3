@@ -1,0 +1,42 @@
+environment:
+  name: test
+  project: ${CDF_PROJECT}
+  validation-type: dev
+  selected:
+    - modules/isc/isc_core
+    - modules/isc/isc_edges
+    - modules/isc/isc_seed_data_ingestion
+    - modules/isc/isc_atlas_agents
+    - modules/isc/isc_connect_maintenance
+
+
+variables:
+  dmVersion: v1.0.0
+  cdf_project: ${CDF_PROJECT}
+  cdf_cluster: ${CDF_CLUSTER}
+  idp_tenant_id: ${IDP_TENANT_ID}
+
+  # Domain schema spaces for isc_core data models (containers/views/data models
+  # registration — not instance data). Values match the existing literal spaces
+  # used across isc_core and isc_edges.
+  isc_OrganizationalFoundationSchemaSpace: sp_isc_organizational_foundation
+  isc_AssetMaintenanceSchemaSpace: sp_isc_asset_maintenance
+  isc_SourcingProcurementSchemaSpace: sp_isc_sourcing_procurement
+  isc_ShipmentDeliverySchemaSpace: sp_isc_shipment_delivery
+  isc_MaterialManagementSchemaSpace: sp_isc_material_management
+  isc_PlanForecastSchemaSpace: sp_isc_plan_forecast
+  isc_IscPlatformSchemaSpace: sp_isc_platform
+  isc_TypedModelSchemaSpace: sp_isc_solution
+
+  # Instance space — where actual data instances live (separate from the
+  # schema spaces above, which hold containers/views/data models).
+  isc_InstanceSpace: sp_isc_supply_chain_instances
+
+  # Workflow trigger OAuth client (secret in IDP_WF_HIERARCHY_PATH_TRIGGER_SECRET).
+  hierarchy_path_trigger_clientId: ${HIERARCHY_PATH_TRIGGER_CLIENT_ID}
+  # fn_btp_hierarchy envVars fallback auth (used only when no client is injected).
+  viewVersion: v1.0.0
+  # RAW database holding the BTP seed data (used by isc_seed_data_ingestion
+  # raw tables and transformations instead of hardcoding the name everywhere).
+  btpSeedDbName: btp_energy_bridge_lng_demo
+  

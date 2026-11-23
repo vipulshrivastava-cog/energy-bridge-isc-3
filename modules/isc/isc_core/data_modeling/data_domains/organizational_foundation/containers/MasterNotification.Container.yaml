@@ -1,0 +1,217 @@
+space: {{ isc_OrganizationalFoundationSchemaSpace }}
+externalId: MasterNotification
+name: MasterNotification
+description: Event log for critical supply chain state changes such as delays, shortages, and schedule exceptions. Linked work orders and schedules are reached through notification edges.
+properties:
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this notification.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the notification was created in the source system.
+  notificationId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Notification ID
+    description: Unique identifier for this notification in the source system or Command Centre pipeline.
+  eventType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Event Type
+    description: Event classification for example StockBelowReorderPoint, ShipmentDelayed, WorkOrderReleased.
+  eventTimestamp:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Event Timestamp
+    description: Date and time the state change event occurred.
+  eventPriority:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Event Priority
+    description: Urgency level, Critical, High, Medium, Low.
+  notificationCategory:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Notification Category
+    description: Domain routing category - Procurement, Logistics, Maintenance, Inventory, Production, or Quality.
+  changeDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Change Description
+    description: Primary message text for the Command Centre notification feed.
+  previousState:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Previous State
+    description: State of the triggering entity before the change.
+  currentState:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Current State
+    description: State of the triggering entity when the notification was raised.
+  resolutionStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Resolution Status
+    description: Lifecycle state - Open, Acknowledged, In Progress, Resolved, or Suppressed.
+  resolutionDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Resolution Date
+    description: Date on which this notification was marked as resolved.
+  resolutionNote:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Resolution Note
+    description: Action taken to resolve this notification.
+  assignedTo:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Assigned To
+    description: User ID assigned to action this notification.
+  acknowledgedBy:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Acknowledged By
+    description: User ID who acknowledged this notification.
+  acknowledgedDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Acknowledged Date
+    description: Date and time this notification was acknowledged.
+  estimatedImpactValue:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Estimated Impact Value
+    description: Optional financial estimate of supply chain impact if not actioned.
+  impactCurrency:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Impact Currency
+    description: Currency for estimatedImpactValue for example NOK, USD, EUR.
+indexes:
+  notificationId:
+    properties:
+    - notificationId
+    cursorable: true
+    indexType: btree
+  eventType:
+    properties:
+    - eventType
+    cursorable: true
+    indexType: btree
+  eventTimestamp:
+    properties:
+    - eventTimestamp
+    cursorable: true
+    indexType: btree
+  resolutionStatus:
+    properties:
+    - resolutionStatus
+    cursorable: true
+    indexType: btree
+  notificationCategory:
+    properties:
+    - notificationCategory
+    cursorable: true
+    indexType: btree
+usedFor: node

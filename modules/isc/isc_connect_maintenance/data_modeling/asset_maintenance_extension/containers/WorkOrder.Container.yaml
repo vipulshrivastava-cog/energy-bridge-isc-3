@@ -1,0 +1,567 @@
+space: {{ isc_AssetMaintenanceSchemaSpace }}
+externalId: WorkOrder
+name: WorkOrder
+description: Central maintenance execution record for a specific repair or inspection task, its priority, and the targeted asset. The WorkOrder view extends CogniteActivity for schedulable times and links to assets, equipment, files, and time series. Priority, status text, and activity type description are stored on this container.
+constraints:
+  schedulablePresent:
+    constraintType: requires
+    require:
+      space: cdf_cdm
+      externalId: CogniteSchedulable
+      type: container
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  workOrderId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Work Order ID
+    description: Internal system identifier for the work order node. Distinct from workOrderNumber which is the order number.
+  workOrderNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Work Order Number
+    description: Work Order number. The primary business identifier used by maintenance planners and technicians.
+  workOrderStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Work Order Status
+    description: Plant-specific custom lifecycle status code assigned by the execution plant team. Examples include WAIT, HOLD, and APPR.
+  workOrderStatusDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Work Order Status Description
+    description: Standard system-level lifecycle phase code for the work order from creation through release, confirmation, and closure. Complements workOrderStatus which captures plant-specific custom states.
+  longDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Long Description
+    description: long text for the work order - detailed description of the work to be performed including technical notes and instructions.
+  reschedulingCounter:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Rescheduling Counter
+    description: Counter tracking how many times this work order has been rescheduled. High values indicate chronic scheduling problems.
+  equipmentNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Equipment Number
+    description: Denormalized equipment identifier stored as a text key for fast filtering without graph traversal.
+  equipmentDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Equipment Description
+    description: Denormalized equipment description for display without graph traversal. Sourced from the equipment master at ingest time.
+  aboutFunctionalLocation:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: About Functional Location
+    description: Direct relation to the FunctionalAsset node for the functional location this work order is associated with.
+  functionalLocationDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Functional Location Description
+    description: Description of the functional location. Denormalised for display without graph traversal.
+  maintenancePlanningPlant:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Maintenance Planning Plant
+    description: Denormalized planning plant code. For the typed relation, use planningPlant.
+  planningPlant:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Planning Plant
+    description: Functional asset for the plant responsible for planning this work order.
+  executionPlant:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Execution Plant
+    description: Functional asset for the plant where this work order is executed.
+  maintenancePlant:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Maintenance Plant
+    description: Denormalized execution plant code. For the typed relation, use executionPlant.
+  plannerGroup:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Planner Group
+    description: Planner Group code responsible for planning and scheduling this work order.
+  plannerGroupDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Planner Group Description
+    description: Human-readable description of the planner group.
+  workCenter:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Work Center
+    description: Work Center code responsible for executing operations on this work order. Used for capacity planning and scheduling.
+  workCenterDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Work Center Description
+    description: Human-readable description of the work center.
+  personResponsible:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Person Responsible
+    description: User ID or name of the person responsible for executing and closing this work order.
+  priority:
+    type:
+      list: false
+      type: int64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Priority
+    description: Numeric maintenance priority from the source system. Convention is source-specific. often lower values mean higher urgency.
+  priorityDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Priority Description
+    description: Human-readable label or text for the work order priority.
+  revisionDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Revision Description
+    description: Human-readable description of the revision or campaign.
+  superiorOrderNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Superior Order Number
+    description: number of the parent work order in a hierarchical order structure. Enables sub-order grouping under a parent maintenance scope.
+  releaseDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Release Date
+    description: Date on which this work order was formally released for execution. Marks the transition from planning to execution phase.
+  basicStartDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Basic Start Date
+    description: Planning start date for the work order. Distinct from the capacity-scheduled start time on the activity facet, scheduledStartTime.
+  basicFinishDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Basic Finish Date
+    description: Initial planner-entered target finish date corresponding to basicStartDate. Represents the original planned scope duration.
+  previousBasicFinishDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Previous Basic Finish Date
+    description: Prior basicFinishDate before acceleration or rescheduling. Mirrors previousRequestedDeliveryDate pattern.
+  earliestAllowedStartDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Earliest Allowed Start Date
+    description: The earliest date execution is permitted to start on this work order. May be constrained by permits, parts availability, or asset availability windows.
+  latestAllowedFinishDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Latest Allowed Finish Date
+    description: The deadline by which this work order must be completed. Used for compliance tracking and SLA enforcement.
+  wbsElement:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: WBS Element
+    description: Work Breakdown Structure element for project cost assignment. When set, work order costs are booked to the project rather than a cost center.
+  statusCode:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Status Code
+    description: Aggregated status profile code providing a language-independent, cross-plant status indicator. Use this field for status-based filtering across multiple plants where custom workOrderStatus codes may differ per site.
+  costCenter:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Cost Center
+    description: Cost center code for cost allocation when this work order is not pegged to a WBS element.
+  costCenterDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Cost Center Description
+    description: Human-readable description of the cost center.
+  refCostCenter:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Cost Center (Relation)
+    description: Direct relation to the BusinessUnits node for the cost center associated with this work order.
+  plannedTotalCost:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Planned Total Cost
+    description: Planned total cost for this work order including materials, labour, and external services.
+  actualTotalCost:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Actual Total Cost
+    description: Actual total cost incurred for this work order. Compared against plannedTotalCost for budget variance analysis.
+  objectList:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Object List
+    description: object list ID grouping multiple equipment or functional locations under one work order. Used for multi-asset maintenance scopes.
+  maintenancePlan:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Maintenance Plan
+    description: Reference to the maintenance plan that generated this work order, pending OperationsPlan container.
+  maintenanceItem:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Maintenance Item
+    description: Maintenance plan item that triggered this work order, pending OperationsPlan container.
+  sapDocuments:
+    type:
+      list: true
+      type: direct
+      maxListSize: 300
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: SAP Documents
+    description: List of direct relations to CogniteFile nodes for documents attached to this work order in SAP, technical drawings, permits, inspection reports. Capped at 300 to support btree indexing.
+  currency:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Currency
+    description: ISO currency code for all cost fields on this work order for example USD, EUR, NOK. Ensures correct financial reporting when work orders span multiple plants or currencies.
+  workOrderMaterialStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Work Order Material Status
+    description: Material readiness status rolled up from this work order's components for example NotReady, PartiallyReady, Ready.
+  overallMaterialStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Overall Material Status
+    description: Overall material status for the work order header, distinct from the plant-specific workOrderStatus lifecycle code.
+  isSafetyCritical:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Is Safety Critical
+    description: True when this work order addresses a safety-critical device or system, for example a shutdown valve safety check.
+  previousScheduledStartTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Previous Scheduled Start Time
+    description: Scheduled start time before the most recent reschedule. Compare against the CogniteSchedulable scheduledStartTime to detect and quantify reschedules.
+indexes:
+  workOrderNumber:
+    properties:
+    - workOrderNumber
+    cursorable: true
+    indexType: btree
+  aboutFunctionalLocation:
+    properties:
+    - aboutFunctionalLocation
+    cursorable: false
+    indexType: btree
+  planningPlant:
+    properties:
+    - planningPlant
+    cursorable: false
+    indexType: btree
+  executionPlant:
+    properties:
+    - executionPlant
+    cursorable: false
+    indexType: btree
+  releaseDate:
+    properties:
+    - releaseDate
+    cursorable: true
+    indexType: btree
+  basicStartDate:
+    properties:
+    - basicStartDate
+    cursorable: true
+    indexType: btree
+  refCostCenter:
+    properties:
+    - refCostCenter
+    cursorable: false
+    indexType: btree
+  sapDocuments:
+    properties:
+    - sapDocuments
+    cursorable: false
+    indexType: btree
+usedFor: node

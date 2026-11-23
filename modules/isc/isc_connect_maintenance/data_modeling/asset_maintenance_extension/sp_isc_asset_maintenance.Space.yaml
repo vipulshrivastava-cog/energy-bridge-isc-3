@@ -1,0 +1,2 @@
+space: {{ isc_AssetMaintenanceSchemaSpace }}
+name: ISC Asset Maintenance

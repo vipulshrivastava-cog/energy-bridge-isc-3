@@ -1,0 +1,202 @@
+space: {{ isc_PlanForecastSchemaSpace }}
+externalId: Plan
+name: Plan
+description: Time-phased supply proposal created by MRP planning to satisfy demand.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  planId:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: planId
+    name: Plan ID
+    description: Unique identifier for the planning proposal. Primary key - immutable once created by MRP run.
+  planType:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: planType
+    name: Plan Type
+    description: Discriminator indicating which planning domain generated this planned order - Production, Maintenance, or Project.
+  material:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: material
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material to be produced or procured.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  plant:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: plant
+    name: Plant
+    description: Direct relation to the FunctionalAsset node for the plant responsible for executing this planned order.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  plannedQuantity:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: plannedQuantity
+    name: Planned Quantity
+    description: Proposed quantity to be produced or procured by this planning proposal.
+  plannedStartDate:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: plannedStartDate
+    name: Planned Start Date
+    description: Basic start date for executing the supply.
+  plannedFinishDate:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: plannedFinishDate
+    name: Planned Finish Date
+    description: Basic finish date - the date by which supply is expected to be available.
+  ownerId:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: ownerId
+    name: MRP Controller
+    description: Code identifying the planner or planning group responsible for this material and planning proposal.
+  workCenterId:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: workCenterId
+    name: Work Center
+    description: Primary work centre code responsible for executing the production operations for this planned order.
+  maintenanceOrder:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: maintenanceOrder
+    name: Maintenance Order
+    description: Direct relation to the WorkOrder node that generated the spare part demand driving this planned order.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      version: '{{viewVersion}}'
+      type: view
+  actualQuantity:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: actualQuantity
+    name: Actual Quantity
+    description: Actual quantity produced or procured against this plan.
+  actualStartDate:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: actualStartDate
+    name: Actual Start Date
+    description: Date production or procurement execution actually began. Compared with plannedStartDate to measure planning accuracy.
+  actualFinishDate:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: actualFinishDate
+    name: Actual Finish Date
+    description: Date production or procurement execution was completed.
+  quantityUOM:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Plan
+      type: container
+    containerPropertyIdentifier: quantityUOM
+    name: Quantity UOM
+    description: Direct relation to the CogniteUnit node for the base unit of measure of the planned quantity.
+    source:
+      space: cdf_cdm
+      externalId: CogniteUnit
+      version: 'v1'
+      type: view

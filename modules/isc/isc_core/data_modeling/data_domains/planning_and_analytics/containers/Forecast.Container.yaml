@@ -1,0 +1,379 @@
+space: {{ isc_PlanForecastSchemaSpace }}
+externalId: Forecast
+name: Forecast
+description: Time-phased planning record capturing expected demand, consumption, production, or supply quantities for a specific material at a specific location. Supports multiple scenario versions for what-if analysis and separates system-generated quantities from planner adjustments.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  forecastId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Forecast ID
+    description: Unique identifier for this forecast record. For ERP-based forecasts this typically comes from the originating planning object. For ML or external planning tool forecasts this is a system-generated ID.
+  forecastType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Forecast Type
+    description: "Classification of what is being forecast. Accepted values are case-sensitive: Demand, expected customer or market demand, Consumption, expected material usage, Production, expected manufacturing output, Supply, expected inbound supply, Inventory, projected stock level."
+  forecastSource:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Forecast Source
+    description: Origin of the forecast - Statistical for time-series model output, MachineLearning for ML model output, Manual for planner-entered, MRP for MRP and MPS system-generated, CustomerDriven for derived from confirmed customer orders, ConsumptionBased for derived from historical usage. Determines how much the forecast should be trusted vs adjusted.
+  forecastVersion:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Forecast Version
+    description: Scenario or version label for this forecast record. Multiple versions can coexist for the same material-location-period combination for example Baseline, Optimistic, Pessimistic. Enables what-if analysis and scenario comparison in the Command Centre.
+  forecastStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Forecast Status
+    description: Lifecycle state of the forecast record - Draft for under preparation, Approved for validated and released for planning, Active for currently used in planning runs, Superseded for replaced by a newer version, Locked for frozen for reporting period.
+  material:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material being forecast.
+  materialGroup:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material Group
+    description: Material group code for group-level forecasts where individual material-level detail is not available or necessary for example category-level demand forecasting.
+  plant:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Plant
+    description: Direct relation to the FunctionalAsset node for the plant or site for which this forecast is generated. Required for supply and production forecasts.
+  storageLocation:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Storage Location
+    description: Direct relation to the FunctionalAsset node for the specific storage location, when the forecast is disaggregated to warehouse level. Null for plant-level forecasts.
+  timeBucket:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Time Bucket
+    description: Granularity of the forecast period - Day, Week, Month, Quarter, Year. Defines how forecastPeriodStart and forecastPeriodEnd should be interpreted and how forecasts aggregate across the planning horizon.
+  forecastPeriodStart:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Forecast Period Start
+    description: Start date of the forecast bucket to which this quantity applies. Combined with forecastPeriodEnd defines the planning window for this record.
+  forecastPeriodEnd:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Forecast Period End
+    description: End date of the forecast bucket to which this quantity applies.
+  forecastHorizonEnd:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Forecast Horizon End
+    description: The furthest-out date covered by the overall forecast series of which this record is a part. Used to understand the planning horizon length and identify records approaching the forecast boundary.
+  forecastQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Forecast Quantity
+    description: System-generated or statistically computed forecast quantity for this material-location-period combination. This is the raw model output before planner adjustment.
+  adjustedQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Adjusted Quantity
+    description: Planner-adjusted forecast quantity. When null, the forecastQuantity is used for planning. When populated, this overrides the system forecast and reflects human judgment. Storing both enables forecast bias analysis.
+  unitOfMeasure:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Unit of Measure
+    description: Base unit of measure for forecastQuantity and adjustedQuantity for example EA, KG, M, Litres.
+  confidence:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Confidence
+    description: Forecast confidence level expressed as a percentage , 0-100. Reflects the statistical reliability of the forecast - low confidence values signal higher uncertainty and may trigger wider safety stock buffers.
+  forecastAccuracy:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Forecast Accuracy
+    description: Mean Absolute Percentage Error or equivalent accuracy metric from the most recent forecast evaluation cycle. Used to assess model performance and prioritise improvement efforts. Populated retrospectively once actuals are available.
+  approvedBy:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Approved By
+    description: User ID of the planner or manager who approved this forecast version for use in planning runs.
+  approvedDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Approved Date
+    description: Date on which this forecast version was formally approved and released for planning consumption.
+  customerOrderLineItem:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Customer Order Line Item
+    description: Direct relation to the CustomerOrderItem node when this demand forecast is pegged to a specific confirmed customer order. Used in make-to-order scenarios where the forecast is replaced by or supplemented with firm demand.
+  workOrder:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Work Order
+    description: Direct relation to the WorkOrder node when this consumption forecast is linked to a specific planned maintenance or production work order. Drives spare parts demand forecasting and material readiness planning.
+  productionRequest:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Production Request
+    description: Direct relation to the ProductionRequest node when this production forecast is linked to a specific planned production request. Enables alignment between forecast and the resulting production request.
+  peggedProductionRequest:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Pegged Production Request
+    description: Direct relation to the production request pegged from this forecast line.
+  plannedOrder:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Planned Order
+    description: Direct relation to the PlanOrder node when this forecast has been converted into an MRP planning proposal. Traces the path from forecast demand signal to supply planning action.
+  priceIndexName:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Price Index Name
+    description: Name of the external price index this forecast row represents, for example an LNG spot price index (JKM), for non-stock index materials used in deferment cost calculations.
+indexes:
+  forecastId:
+    properties:
+    - forecastId
+    cursorable: true
+    indexType: btree
+  forecastType:
+    properties:
+    - forecastType
+    cursorable: true
+    indexType: btree
+  forecastStatus:
+    properties:
+    - forecastStatus
+    cursorable: true
+    indexType: btree
+  material:
+    properties:
+    - material
+    cursorable: false
+    indexType: btree
+  plant:
+    properties:
+    - plant
+    cursorable: false
+    indexType: btree
+  storageLocation:
+    properties:
+    - storageLocation
+    cursorable: false
+    indexType: btree
+  workOrder:
+    properties:
+    - workOrder
+    cursorable: false
+    indexType: btree
+  customerOrderLineItem:
+    properties:
+    - customerOrderLineItem
+    cursorable: false
+    indexType: btree
+  productionRequest:
+    properties:
+    - productionRequest
+    cursorable: false
+    indexType: btree
+  plannedOrder:
+    properties:
+    - plannedOrder
+    cursorable: false
+    indexType: btree
+usedFor: node

@@ -1,0 +1,221 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: SupplierSuppliesMaterial
+name: Supplier Supplies Material
+description: Edge container linking suppliers to material masters with unit cost, currency, priority, and contract reference on the commercial supply relationship.
+usedFor: edge
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  relationType:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Relation Type
+    description: Semantic role of the link, reservation, assignment, pegging, execution, impact.
+  relationStatus:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Relation Status
+    description: Lifecycle status of the link, planned, active, fulfilled, cancelled.
+  validFrom:
+    type:
+      list: False
+      type: timestamp
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Valid From
+    description: Business start date when this link becomes effective.
+  validTo:
+    type:
+      list: False
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Valid To
+    description: Business end date when this link ceases to be effective. Null means open-ended.
+  unitCost:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Unit Cost
+    description: Commercial unit cost on the relationship.
+  currency:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Currency
+    description: Currency code for commercial properties.
+  priorityRank:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Priority Rank
+    description: Priority rank for lane scope or commercial preference.
+  contractRef:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Contract Reference
+    description: Contract or agreement reference for the link.
+  minQuantity:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Min Quantity
+    description: Minimum order quantity for this supplier-material supply relationship.
+  maxQuantity:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Max Quantity
+    description: Maximum order quantity for this supplier-material supply relationship.
+  otifScore:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: OTIF Score
+    description: On-time-in-full performance score for this supplier-material link, 0-1 or percent.
+  otifScorePeriodStart:
+    type:
+      list: False
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: OTIF Score Period Start
+    description: Start of the measurement window for otifScore.
+  otifScorePeriodEnd:
+    type:
+      list: False
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: OTIF Score Period End
+    description: End of the measurement window for otifScore.
+indexes:
+  validFrom:
+    properties:
+    - validFrom
+    cursorable: true
+    indexType: btree
+  validTo:
+    properties:
+    - validTo
+    cursorable: true
+    indexType: btree
+  relationStatus:
+    properties:
+    - relationStatus
+    cursorable: true
+    indexType: btree

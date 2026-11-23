@@ -1,0 +1,4 @@
+[module]
+title = "ISC Edges - Core Edges"
+description = "Edge containers and views wiring the isc_core data domains together: LaneTransportsMaterial, LotStoredInBin, ShipmentExecutesReceipt, ShipmentExecutesTransfer, SupplierSuppliesMaterial. Both endpoints of every edge here stay within isc_core."
+tags = ["isc", "edges", "core"]

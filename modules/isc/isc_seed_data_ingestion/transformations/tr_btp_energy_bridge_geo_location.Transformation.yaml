@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_geo_location
+name: BTP Energy Bridge - Geo Location
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_OrganizationalFoundationSchemaSpace }}
+    externalId: OrganizationalFoundation
+    version: '{{dmVersion}}'
+    destinationType: GeoLocations
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

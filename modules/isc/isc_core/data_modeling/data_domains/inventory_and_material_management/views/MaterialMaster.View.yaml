@@ -1,0 +1,356 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+externalId: MaterialMaster
+name: Material Master
+description: The central repository of material definitions containing global attributes, technical specifications, and planning parameters for every part.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  supplierItemRecords:
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_SourcingProcurementSchemaSpace }}
+        externalId: SupplierItemRecord
+        version: '{{viewVersion}}'
+        type: view
+      identifier: materialId
+    name: Supplier Item Records
+    description: All approved supplier sourcing records, Purchasing Info Records, for this material.
+    connectionType: multi_reverse_direct_relation
+  activePurchaseOrders:
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderLineItem
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_SourcingProcurementSchemaSpace }}
+        externalId: PurchaseOrderLineItem
+        version: '{{viewVersion}}'
+        type: view
+      identifier: material
+    name: Active Purchase Orders
+    description: All active purchase order line items for this material.
+    connectionType: multi_reverse_direct_relation
+  materialId:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: materialId
+    name: Material ID
+    description: Unique identifier for the material in the source system. Primary key - immutable once created.
+  materialType:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: materialType
+    name: Material Type
+    description: material type code from the source ERP system controlling field selection and procurement behaviour for example ROH for Raw Material, FERT for Finished Good, ERSA for Spare Part, DIEN for Service.
+  materialClass:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: materialClass
+    name: Material Class
+    description: Engineering classification of the material for example rotating equipment, piping, electrical, instrumentation.
+  materialGroup:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: materialGroup
+    name: Material Group
+    description: Procurement-oriented grouping code used for sourcing strategy, spend analysis, and reporting.
+  baseUnitOfMeasure:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: baseUnitOfMeasure
+    name: Base Unit of Measure
+    description: The primary unit of measure in which the material is managed. All quantities in other units are converted to this base unit.
+  unitOfMeasureRef:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: unitOfMeasureRef
+    name: Unit of Measure (Relation)
+    description: Typed direct relation to the CogniteUnit node for the base unit of measure. Enables unit-aware graph traversal alongside the baseUnitOfMeasure text field.
+    source:
+      space: cdf_cdm
+      externalId: CogniteUnit
+      version: 'v1'
+      type: view
+  isObsolete:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: isObsolete
+    name: Is Obsolete
+    description: Flag indicating the material is no longer approved for use in new orders or designs.
+  procurementType:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: procurementType
+    name: Procurement Type
+    description: Defines how the material is sourced globally - E for External procurement only, F for In-house production only, X for Both allowed.
+  goodsReceiptProcessingDays:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: goodsReceiptProcessingDays
+    name: Goods Receipt Processing Days
+    description: Number of working days required to inspect and process a goods receipt for this material before it becomes available for use.
+  contractAvailabilityFlag:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: contractAvailabilityFlag
+    name: Contract Availability Flag
+    description: Indicates whether an active supply contract exists for this material.
+  isCriticalSpare:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: isCriticalSpare
+    name: Is Critical Spare
+    description: Flag indicating this is a critical spare part requiring special stocking rules to prevent stockouts.
+  criticalityRating:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: criticalityRating
+    name: Criticality Rating
+    description: Criticality classification based on operational impact of unavailability for example A for Mission Critical, B for Important, C for Standard.
+  abcIndicator:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: abcIndicator
+    name: ABC Indicator
+    description: ABC analysis classification based on consumption value - A for High value and high usage, B for Medium, C for Low.
+  isHazardous:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: isHazardous
+    name: Is Hazardous
+    description: Boolean flag indicating this material is classified as hazardous.
+  isBatchManaged:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: isBatchManaged
+    name: Is Batch Managed
+    description: Indicates whether this material requires batch and lot tracking throughout its lifecycle.
+  totalShelfLifeDays:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: totalShelfLifeDays
+    name: Total Shelf Life Days
+    description: Total shelf life of the material in days from the date of production or goods receipt.
+  qualityManagementActive:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: qualityManagementActive
+    name: Quality Management Active
+    description: Flag indicating quality inspection is active for this material.
+  isSerialNumberManaged:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: isSerialNumberManaged
+    name: Is Serial Number Managed
+    description: Flag indicating this material requires individual serial number tracking for high-value or safety-critical components.
+  priceControlIndicator:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: priceControlIndicator
+    name: Price Control Indicator
+    description: Determines the stock valuation method - S for Standard Price, fixed, typical for finished and semi-finished goods, V for Moving Average Price, typical for raw materials and trading goods.
+  stdCost:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: stdCost
+    name: Standard Cost
+    description: Standard cost of the material in the valuation currency.
+  originalEquipmentManufacturer:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: originalEquipmentManufacturer
+    name: Original Equipment Manufacturer
+    description: Direct relation to the Supplier node representing the OEM or manufacturer of this material.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      version: '{{viewVersion}}'
+      type: view
+  alternativeMaterialAvailable:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      type: container
+    containerPropertyIdentifier: alternativeMaterialAvailable
+    name: Alternative Material Available
+    description: Boolean flag indicating at least one active alternative exists in the MaterialAlternative container.
+  materialAlternatives:
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_MaterialManagementSchemaSpace }}
+        externalId: MaterialAlternative
+        version: '{{viewVersion}}'
+        type: view
+      identifier: originalMaterial
+    name: Material Alternatives
+    description: All active alternative material records where this material is the original. Ranked by priority.
+    connectionType: multi_reverse_direct_relation
+  materialLots:
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_MaterialManagementSchemaSpace }}
+        externalId: MaterialLot
+        version: '{{viewVersion}}'
+        type: view
+      identifier: material
+    name: Material Lots
+    description: Material lots for this material master for traceability and quality control.
+    connectionType: multi_reverse_direct_relation
+  transportedOnLanes:
+    connectionType: multi_edge_connection
+    direction: inwards
+    name: transportedOnLanes
+    description: Transportation lanes that can carry this material, with scope and cost on the edge.
+    type:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane.transportsMaterial
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      version: '{{viewVersion}}'
+      type: view
+  suppliedBySuppliers:
+    connectionType: multi_edge_connection
+    direction: inwards
+    name: suppliedBySuppliers
+    description: Suppliers that supply this material master. Query SupplierSuppliesMaterial edges with this material as end node.
+    type:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier.suppliesMaterial
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      version: '{{viewVersion}}'
+      type: view

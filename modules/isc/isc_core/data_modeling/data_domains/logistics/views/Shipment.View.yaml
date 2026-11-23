@@ -1,0 +1,356 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: Shipment
+name: Shipment
+description: Provides end-to-end visibility of goods in transit, including real-time tracking, company origin and destination sites, optional geographic endpoints, mode of transport, and carrier status.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  shipmentId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: shipmentId
+    name: Shipment ID
+    description: Unique identifier for the shipment for example shipment number from the source ERP system.
+  modeOfTransport:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: modeOfTransport
+    name: Mode of Transport
+    description: Transport mode for this shipment for example Air, Sea, Road, Rail.
+  originSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: originSite
+    name: Origin Site
+    description: Direct relation to the FunctionalAsset for the company origin storage or ship-from location.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  destinationSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: destinationSite
+    name: Destination Site
+    description: Direct relation to the FunctionalAsset for the company destination storage or ship-to location.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  originWarehouse:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: originWarehouse
+    name: Origin Warehouse
+    description: Direct relation to the Warehouse for the ship-from storage location, WMS warehouse hierarchy.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Warehouse
+      version: '{{viewVersion}}'
+      type: view
+  destinationWarehouse:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: destinationWarehouse
+    name: Destination Warehouse
+    description: Direct relation to the Warehouse for the ship-to storage location, WMS warehouse hierarchy.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Warehouse
+      version: '{{viewVersion}}'
+      type: view
+  originSupplierSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: originSupplierSite
+    name: Origin Supplier Site
+    description: Direct relation to a GeoLocations for the physical or supplier-side origin when it differs from the company origin site.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  destinationSupplierSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: destinationSupplierSite
+    name: Destination Supplier Site
+    description: Direct relation to a GeoLocations for the physical or customer-side destination when it differs from the company destination site.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  departureDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: departureDate
+    name: Departure Date
+    description: Actual date the shipment left the origin site.
+  estimatedArrivalDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: estimatedArrivalDate
+    name: Estimated Arrival Date
+    description: Planned arrival date at the destination site.
+  previousEstimatedArrivalDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: previousEstimatedArrivalDate
+    name: Previous Estimated Arrival Date
+    description: Prior ETA before the last shipment plan update.
+  estimatedArrivalDateChangeDays:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: estimatedArrivalDateChangeDays
+    name: Estimated Arrival Date Change Days
+    description: Signed day delta between previousEstimatedArrivalDate and estimatedArrivalDate. Positive indicates slip. Negative indicates pull-in.
+  actualArrivalDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: actualArrivalDate
+    name: Actual Arrival Date
+    description: Realized arrival date at the destination site.
+  trackingNumber:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: trackingNumber
+    name: Tracking Number
+    description: Carrier tracking ID for real-time shipment monitoring.
+  shipmentStatus:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: shipmentStatus
+    name: Shipment Status
+    description: Current stage of the shipment for example Planned, In Transit, Delivered, Delayed.
+  lastUpdatedTimestamp:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: lastUpdatedTimestamp
+    name: Last Updated Timestamp
+    description: Last time the shipment status was updated.
+  carrier:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: carrier
+    name: Carrier
+    description: Logistics provider or carrier responsible for this shipment.
+  shippingDocumentNumber:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: shippingDocumentNumber
+    name: Shipping Document Number
+    description: Bill of lading, airway bill, or other primary shipping document reference number.
+  plannedDepartureDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: plannedDepartureDate
+    name: Planned Departure Date
+    description: Scheduled departure date from the origin site. Used for departure schedule adherence measurement.
+  grossWeight:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: grossWeight
+    name: Gross Weight
+    description: Total gross weight of the shipment including packaging.
+  weightUnit:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: weightUnit
+    name: Weight Unit
+    description: Unit of measure for the grossWeight field for example KG, LB, T.
+  originalEstimatedArrivalDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: originalEstimatedArrivalDate
+    name: Original Estimated Arrival Date
+    description: Original planned arrival date before any revision. Compare against estimatedArrivalDate to compute delay days.
+  originSupplierFacility:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: originSupplierFacility
+    name: Origin Supplier Facility
+    description: Direct relation to the SupplierFacility for the physical supplier site this shipment originates from.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      version: '{{viewVersion}}'
+      type: view
+  supplier:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      type: container
+    containerPropertyIdentifier: supplier
+    name: Supplier
+    description: Direct relation to the Supplier fulfilling this shipment.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      version: '{{viewVersion}}'
+      type: view
+  usesTransportationLane:
+    connectionType: multi_edge_connection
+    direction: outwards
+    name: usesTransportationLane
+    description: Transportation lanes used by this shipment. Query UsesTransportationLane edges from this shipment. Planned and actual transit days, cost, delay, and leg sequence are on the edge.
+    type:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment.usesTransportationLane
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      version: '{{viewVersion}}'
+      type: view
+  executesReceipt:
+    connectionType: multi_edge_connection
+    direction: outwards
+    name: executesReceipt
+    description: Scheduled inbound receipts executed by this shipment. Query ShipmentExecutesReceipt edges.
+    type:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment.executesReceipt
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesReceipt
+      version: '{{viewVersion}}'
+      type: view
+  executesTransfer:
+    connectionType: multi_edge_connection
+    direction: outwards
+    name: executesTransfer
+    description: Scheduled stock transfers executed by this shipment. Query ShipmentExecutesTransfer edges.
+    type:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment.executesTransfer
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      version: '{{viewVersion}}'
+      type: view

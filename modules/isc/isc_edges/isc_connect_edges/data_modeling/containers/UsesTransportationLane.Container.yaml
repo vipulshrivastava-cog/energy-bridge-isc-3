@@ -1,0 +1,218 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: UsesTransportationLane
+name: Uses Transportation Lane
+description: Edge container linking shipments or production schedules to transportation lanes, with multi-hop leg sequence and role, planned and actual transit duration, cost, and customs clearance on the edge.
+usedFor: edge
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  relationType:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Relation Type
+    description: Semantic role of the link, reservation, assignment, pegging, execution, impact.
+  relationStatus:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Relation Status
+    description: Lifecycle status of the link, planned, active, fulfilled, cancelled.
+  validFrom:
+    type:
+      list: False
+      type: timestamp
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Valid From
+    description: Business start date when this link becomes effective.
+  validTo:
+    type:
+      list: False
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Valid To
+    description: Business end date when this link ceases to be effective. Null means open-ended.
+  plannedTransitDays:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Planned Transit Days
+    description: Planned transit duration in days.
+  actualTransitDays:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Actual Transit Days
+    description: Actual transit duration in days.
+  delayReason:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Delay Reason
+    description: Reason code when actual transit exceeds plan.
+  actualCost:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Actual Cost
+    description: Actual transport cost for this lane usage.
+  costCurrency:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Cost Currency
+    description: Currency for lane cost properties.
+  customsClearanceRequired:
+    type:
+      list: False
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Customs Clearance Required
+    description: Whether customs clearance is required for this lane usage.
+  legSequence:
+    type:
+      list: false
+      type: int32
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Leg Sequence
+    description: Order of this lane leg within the shipment or schedule route, 1 for first leg.
+  legRole:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Leg Role
+    description: Semantic role of this leg in multi-hop routing, origin haul, main leg, last mile.
+indexes:
+  validFrom:
+    properties:
+    - validFrom
+    cursorable: true
+    indexType: btree
+  validTo:
+    properties:
+    - validTo
+    cursorable: true
+    indexType: btree
+  relationStatus:
+    properties:
+    - relationStatus
+    cursorable: true
+    indexType: btree
+  legSequence:
+    properties:
+    - legSequence
+    cursorable: true
+    indexType: btree

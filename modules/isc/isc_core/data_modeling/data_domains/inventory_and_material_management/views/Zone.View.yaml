@@ -1,0 +1,82 @@
+space: {{ isc_TypedModelSchemaSpace }}
+externalId: Zone
+name: Zone
+description: Intermediate zone or section within a warehouse hierarchy.
+implements:
+- space: {{ isc_MaterialManagementSchemaSpace }}
+  externalId: StorageLocations
+  version: '{{viewVersion}}'
+  type: view
+version: '{{viewVersion}}'
+filter:
+  and:
+  - hasData:
+    - type: container
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: StorageLocations
+  - equals:
+      property:
+      - {{ isc_MaterialManagementSchemaSpace }}
+      - StorageLocations
+      - declaredType
+      value:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: Zone
+properties:
+  declaredType:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: StorageLocations
+      type: container
+    containerPropertyIdentifier: declaredType
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      version: '{{viewVersion}}'
+      type: view
+    name: Declared Type
+    description: Concrete view type for this instance.
+  warehouse:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: StorageLocations
+      type: container
+    containerPropertyIdentifier: parent
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Warehouse
+      version: '{{viewVersion}}'
+      type: view
+    name: Warehouse
+    description: Parent warehouse for this zone.
+  children:
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: StorageLocations
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_MaterialManagementSchemaSpace }}
+        externalId: StorageLocations
+        version: '{{viewVersion}}'
+        type: view
+      identifier: parent
+    name: Children
+    description: Storage hierarchy nodes with this node as their parent.
+    connectionType: multi_reverse_direct_relation
+  storage_bins:
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: StorageBin
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_MaterialManagementSchemaSpace }}
+        externalId: StorageLocations
+        type: container
+      identifier: parent
+    name: Storage Bins
+    description: Storage bins in this zone.
+    connectionType: multi_reverse_direct_relation

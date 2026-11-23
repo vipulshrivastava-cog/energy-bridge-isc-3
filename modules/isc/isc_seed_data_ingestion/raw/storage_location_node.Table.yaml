@@ -1,0 +1,2 @@
+dbName: {{ btpSeedDbName }}
+tableName: storage_location_node

@@ -1,0 +1,15 @@
+# Hierarchy path sync for integrated supply chain views.
+externalId: fn_btp_hierarchy
+name: ISC Hierarchy Sync
+description: "Hierarchy sync modes: raw ingest from RAW tables, path sync from DMS parent chains, and deploy-time sync lock initialization."
+runtime: py313
+owner: isc-platform
+space: {{ isc_IscPlatformSchemaSpace }}
+functionPath: handler.py
+envVars:
+  CDF_PROJECT: '{{ cdf_project }}'
+  CDF_CLUSTER: '{{ cdf_cluster }}'
+  IDP_TENANT_ID: '{{ idp_tenant_id }}'
+  CDF_CLIENT_ID: '{{ hierarchy_path_trigger_clientId }}'
+secrets:
+  btp-hier-secret: ${IDP_WF_HIERARCHY_PATH_TRIGGER_SECRET}

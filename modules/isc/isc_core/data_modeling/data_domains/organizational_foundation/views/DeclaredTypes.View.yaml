@@ -1,0 +1,30 @@
+space: {{ isc_OrganizationalFoundationSchemaSpace }}
+externalId: DeclaredTypes
+name: Declared Types
+description: Vocabulary of hierarchy level tokens for DeclaredTypes catalog instances.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable level name.
+  description:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: What this level represents in the deployment profile.
+  used_by_container:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      type: container
+    containerPropertyIdentifier: used_by_container
+    name: Used By Container
+    description: Shared hierarchy container externalId this level belongs to.

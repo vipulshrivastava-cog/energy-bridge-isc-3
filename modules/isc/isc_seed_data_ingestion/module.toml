@@ -1,0 +1,4 @@
+[module]
+title = "ISC Seed Data Ingestion"
+description = "RAW seed data (CSV tables), Spark SQL transformations, and the orchestrating workflow that populate the isc_core and isc_connect_* data models with demo/seed instance data for the Energy Bridge LNG supply chain."
+tags = ["isc", "seed-data", "ingestion"]

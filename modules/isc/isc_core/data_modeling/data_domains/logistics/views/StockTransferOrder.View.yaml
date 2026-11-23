@@ -1,0 +1,233 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: StockTransferOrder
+name: Stock Transfer Order
+description: Planning and commitment document for moving material resources between internal sites, plants, or offshore assets for example transferring a spare part from an onshore warehouse to a specific rig.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  scheduledTransfers:
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_ShipmentDeliverySchemaSpace }}
+        externalId: ScheduledTransfer
+        version: '{{viewVersion}}'
+        type: view
+      identifier: stockTransferOrder
+    name: Scheduled Transfers
+    description: Scheduled transfer commitments created from this stock transfer order.
+    connectionType: multi_reverse_direct_relation
+  stockTransportId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: stockTransportId
+    name: Stock Transport ID
+    description: Unique identifier for the Stock Transport Order in the source system. Primary identifier - not nullable.
+  stoStatus:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: stoStatus
+    name: STO Status
+    description: Current processing status of the Stock Transport Order for example Open, In Transit, Goods Received, Closed.
+  stockTransportType:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: stockTransportType
+    name: Stock Transport Type
+    description: Type classification of the stock transport for example UB for Stock Transfer Order, planned stock transfer, cross-plant replenishment.
+  materialId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: materialId
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material being transferred.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  unitOfMeasure:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: unitOfMeasure
+    name: Unit of Measure
+    description: Base unit of measure for the requested quantity on this stock transport order for example EA, KG, M.
+  supplyingPlant:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: supplyingPlant
+    name: Supplying Plant
+    description: Direct relation to the FunctionalAsset node representing the plant issuing the goods.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  originSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: originSite
+    name: Origin Site
+    description: Direct relation to the FunctionalAsset for the supplying storage location from which goods are issued.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  originWarehouse:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: originWarehouse
+    name: Origin Warehouse
+    description: Direct relation to the Warehouse from which goods are issued, WMS warehouse hierarchy.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Warehouse
+      version: '{{viewVersion}}'
+      type: view
+  receivingPlant:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: receivingPlant
+    name: Receiving Plant
+    description: Direct relation to the FunctionalAsset node representing the plant receiving the goods.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  destinationSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: destinationSite
+    name: Destination Site
+    description: Direct relation to the FunctionalAsset for the receiving storage location where goods will be stored upon receipt.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  destinationWarehouse:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: destinationWarehouse
+    name: Destination Warehouse
+    description: Direct relation to the Warehouse where goods will be stored upon receipt, WMS warehouse hierarchy.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Warehouse
+      version: '{{viewVersion}}'
+      type: view
+  quantityRequested:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: quantityRequested
+    name: Quantity Requested
+    description: Total quantity of material requested for transfer.
+  createdOn:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: createdOn
+    name: Created On
+    description: Date on which this Stock Transport Order was created. Used for ageing analysis and lead time measurement.
+  expectedArrivalDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      type: container
+    containerPropertyIdentifier: expectedArrivalDate
+    name: Expected Arrival Date
+    description: Planned date on which goods are expected to arrive at the receiving location as requested on the order.

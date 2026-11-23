@@ -1,0 +1,6 @@
+space: {{ isc_InstanceSpace }}
+name: ISC Supply Chain Instances
+description: >-
+  Shared instance space holding node/edge instance data for the isc_core
+  domain data models (OrganizationalFoundation, AssetMaintenance,
+  SourcingProcurement, ShipmentDelivery, MaterialManagement, PlanForecast).

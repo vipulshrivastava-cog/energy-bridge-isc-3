@@ -1,0 +1,419 @@
+workflowExternalId: wf_btp_energy_bridge_data
+version: '1'
+workflowDefinition:
+  description: Runs 32 transformations in dependency order to populate the isc_core domain data models
+    from {{ btpSeedDbName }} RAW tables (nodes first, then edges).
+  tasks:
+  - externalId: task_functional_asset_visualizable
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_functional_asset_visualizable
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+  - externalId: task_functional_asset_sourceable
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_functional_asset_sourceable
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+  - externalId: task_declared_types
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_declared_types
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+  - externalId: task_geo_location
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_geo_location
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_declared_types
+  - externalId: task_business_hierarchy
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_business_hierarchy
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_declared_types
+  - externalId: task_functional_asset
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_functional_asset
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_functional_asset_visualizable
+    - externalId: task_functional_asset_sourceable
+    - externalId: task_geo_location
+    - externalId: task_business_hierarchy
+  - externalId: task_functional_asset_parent
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_functional_asset_parent
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_functional_asset
+  - externalId: task_storage_warehouse
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_storage_warehouse
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_functional_asset_parent
+    - externalId: task_geo_location
+    - externalId: task_declared_types
+  - externalId: task_storage_zone
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_storage_zone
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_storage_warehouse
+  - externalId: task_storage_bin
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_storage_bin
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_storage_zone
+  - externalId: task_supplier
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_supplier
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+  - externalId: task_supplier_facility
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_supplier_facility
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_supplier
+    - externalId: task_geo_location
+  - externalId: task_material_master
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_material_master
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_supplier
+  - externalId: task_material_lot
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_material_lot
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_material_master
+  - externalId: task_material_inventory
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_material_inventory
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_material_master
+    - externalId: task_storage_warehouse
+  - externalId: task_work_order
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_work_order
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_functional_asset_parent
+    - externalId: task_business_hierarchy
+  - externalId: task_work_order_component
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_work_order_component
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_work_order
+    - externalId: task_material_master
+    - externalId: task_functional_asset_parent
+    - externalId: task_material_inventory
+  - externalId: task_master_notification
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_master_notification
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+  - externalId: task_forecast
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_forecast
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_material_master
+    - externalId: task_functional_asset_parent
+    - externalId: task_work_order
+  - externalId: task_transportation_lane
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_transportation_lane
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_storage_warehouse
+    - externalId: task_functional_asset_parent
+    - externalId: task_supplier_facility
+  - externalId: task_shipment
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_shipment
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_storage_warehouse
+    - externalId: task_functional_asset_parent
+    - externalId: task_supplier
+    - externalId: task_supplier_facility
+  - externalId: task_purchase_requisition
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_purchase_requisition
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_material_master
+    - externalId: task_supplier
+    - externalId: task_work_order
+    - externalId: task_functional_asset_parent
+  - externalId: task_purchase_order_confirmation
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_purchase_order_confirmation
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_purchase_order_line_item
+    - externalId: task_supplier
+  - externalId: task_scheduled_receipt
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_scheduled_receipt
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_purchase_order_line_item
+    - externalId: task_purchase_order_confirmation
+    - externalId: task_transportation_lane
+    - externalId: task_supplier_facility
+    - externalId: task_storage_warehouse
+    - externalId: task_geo_location
+    - externalId: task_functional_asset_parent
+    - externalId: task_material_master
+  - externalId: task_purchase_order_line_item
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_purchase_order_line_item
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_material_master
+    - externalId: task_supplier
+    - externalId: task_functional_asset_parent
+  - externalId: task_notification_links_entity
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_notification_links_entity
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_master_notification
+    - externalId: task_work_order
+  - externalId: task_material_reservation
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_material_reservation
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_material_inventory
+    - externalId: task_work_order_component
+  - externalId: task_lot_stored_in_bin
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_lot_stored_in_bin
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_material_lot
+    - externalId: task_storage_bin
+  - externalId: task_supplier_supplies_material
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_supplier_supplies_material
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_supplier
+    - externalId: task_material_master
+  - externalId: task_lane_transports_material
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_lane_transports_material
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_transportation_lane
+    - externalId: task_material_master
+  - externalId: task_uses_transportation_lane
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_uses_transportation_lane
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_shipment
+    - externalId: task_transportation_lane
+  - externalId: task_shipment_executes_receipt
+    type: transformation
+    parameters:
+      transformation:
+        externalId: tr_btp_energy_bridge_shipment_executes_receipt
+        concurrencyPolicy: fail
+        useTransformationCredentials: false
+    retries: 3
+    timeout: 3600
+    onFailure: abortWorkflow
+    dependsOn:
+    - externalId: task_shipment
+    - externalId: task_scheduled_receipt
+    - externalId: task_material_master

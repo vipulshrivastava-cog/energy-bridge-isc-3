@@ -1,0 +1,11 @@
+externalId: tr_btp_energy_bridge_lot_stored_in_bin
+name: BTP Energy Bridge - Lot Stored In Bin
+destination:
+  type: edges
+  view:
+    space: {{ isc_MaterialManagementSchemaSpace }}
+    externalId: LotStoredInBin
+    version: '{{dmVersion}}'
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

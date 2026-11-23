@@ -1,0 +1,174 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+externalId: StorageLocations
+name: StorageLocations
+description: Warehouse hierarchy node shared by warehouse, zone, and storage bin views.
+  Supports parent-child navigation with materialized root and path for subtree queries
+  and geographic or site roll-up.
+properties:
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Name
+    description: Display name for search and UI.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: true
+    name: Source ID
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: true
+    name: Source context
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    nullable: true
+    name: Source created time
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    nullable: true
+    name: Source updated time
+  parent:
+    type:
+      list: false
+      type: direct
+    nullable: true
+    name: Parent
+    description: Parent node in the warehouse hierarchy. Null for warehouse roots.
+  root:
+    type:
+      list: false
+      type: direct
+    nullable: true
+    name: Root
+    description: Top-level warehouse node. Maintained by path pass.
+  path:
+    type:
+      list: true
+      maxListSize: 100
+      type: direct
+    nullable: true
+    name: Path
+    description: Ancestor chain root, through , self. Maintained by path pass.
+  pathLastUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    nullable: true
+    name: Path last updated time
+  declaredType:
+    type:
+      list: false
+      type: direct
+    nullable: true
+    name: Declared Type
+    description: Direct relation to DeclaredTypes catalog instance for this node's level.
+  belongtoCity:
+    type:
+      list: false
+      type: direct
+    nullable: true
+    name: Belong To City
+    description: Geographic roll-up to GeoLocations, same property name as belongtoCity
+      on FunctionalAsset.
+  suppliesToSite:
+    type:
+      list: false
+      type: direct
+    nullable: true
+    name: Supplies To Site
+    description: Optional bridge to the ISA site and plant, FunctionalAsset, this
+      warehouse serves.
+  locationType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: true
+    name: Location Type
+    description: 'Bin role classification, not a hierarchy level. Expected on StorageBin
+      nodes: dock, staging, putaway, pick, slotting, etc.'
+  hierarchyCode:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Hierarchy Code
+    description: Short unique code identifying this node in the source system for example WH-DARWIN, ZONE-DARWIN-01, BIN-DARWIN-01. Mirrors BusinessUnits.hierarchyCode and GeoLocations.locationCode for the warehouse hierarchy.
+indexes:
+  parent:
+    properties:
+    - parent
+    cursorable: false
+    indexType: btree
+  root:
+    properties:
+    - root
+    cursorable: false
+    indexType: btree
+  path:
+    properties:
+    - path
+    cursorable: false
+    indexType: btree
+  name:
+    properties:
+    - name
+    cursorable: false
+    indexType: btree
+  sourceId:
+    properties:
+    - sourceId
+    cursorable: true
+    indexType: btree
+  declaredType:
+    properties:
+    - declaredType
+    cursorable: true
+    indexType: btree
+usedFor: node

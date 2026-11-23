@@ -1,0 +1,274 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: SupplierItemRecord
+name: Supplier Item Record
+description: Source-of-truth for every approved supplier-material-site sourcing relationship.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  pricingRecordId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: pricingRecordId
+    name: Pricing Record ID
+    description: Unique identifier for this procurement source record. Primary identifier - not nullable.
+  supplierId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: supplierId
+    name: Supplier
+    description: Direct relation to the Supplier node for the vendor supplying this material.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      version: '{{viewVersion}}'
+      type: view
+  materialId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: materialId
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material being sourced.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  siteId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: siteId
+    name: Site (Destination)
+    description: Direct relation to the FunctionalAsset node representing the destination plant or site where this sourcing arrangement is valid.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  procurementType:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: procurementType
+    name: Procurement Type
+    description: Classification of the procurement arrangement, Standard, Subcontracting, Consignment, Pipeline.
+  supplierMaterialNumber:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: supplierMaterialNumber
+    name: Supplier Material Number
+    description: The suppliers own catalogue or part number for this material.
+  unitCost:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: unitCost
+    name: Unit Cost
+    description: Net price of the material per one unit of the pricing unit.
+  priceUnit:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: priceUnit
+    name: Price Unit Quantity
+    description: The quantity basis for the unit cost.
+  currency:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: currency
+    name: Currency
+    description: ISO 4217 currency code for the unitCost and pricing conditions.
+  orderUnit:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: orderUnit
+    name: Order Unit
+    description: Unit of measure used when creating purchase orders for this supplier-material combination.
+  incoterms:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: incoterms
+    name: Incoterms
+    description: Standard trade delivery term code for example EXW, FOB, CIF, DAP.
+  incotermsLocation:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: incotermsLocation
+    name: Incoterms Location
+    description: Named place or port associated with the incoterms.
+  minimumOrderQuantity:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: minimumOrderQuantity
+    name: Minimum Order Quantity
+    description: Minimum quantity that must be ordered in a single purchase order.
+  standardOrderQuantity:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: standardOrderQuantity
+    name: Standard Order Quantity
+    description: Default recommended order quantity for this supplier-material combination.
+  overDeliveryTolerance:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: overDeliveryTolerance
+    name: Over-delivery Tolerance (%)
+    description: Maximum percentage by which the supplier may deliver more than ordered without triggering a rejection.
+  underDeliveryTolerance:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: underDeliveryTolerance
+    name: Under-delivery Tolerance (%)
+    description: Maximum percentage by which the supplier may deliver less than ordered and still have the delivery considered complete.
+  validFromDate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: validFromDate
+    name: Valid From Date
+    description: Date from which this sourcing record and its pricing conditions become effective.
+  validToDate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: validToDate
+    name: Valid To Date
+    description: Date after which this sourcing record expires. Triggers renewal alerts.
+  createdOn:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: createdOn
+    name: Created On
+    description: Date on which this procurement source record was initially created.
+  contractAvailabilityFlag:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: contractAvailabilityFlag
+    name: Contract Availability Flag
+    description: Indicates whether this sourcing record is backed by a formal supply contract.
+  supplierAvailableInventory:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: supplierAvailableInventory
+    name: Supplier Available Inventory
+    description: Quantity of this material currently available at the suppliers facility as reported by the supplier.
+  supplierAvailableInventoryUOM:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: supplierAvailableInventoryUOM
+    name: Supplier Available Inventory UOM
+    description: Unit of measure for the supplierAvailableInventory quantity.
+  supplierContract:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      type: container
+    containerPropertyIdentifier: supplierContract
+    name: Supplier Contract
+    description: Direct relation to the SupplierContract node governing the long-term terms under which this sourcing record operates.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      version: '{{viewVersion}}'
+      type: view

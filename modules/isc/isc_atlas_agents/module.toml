@@ -1,0 +1,4 @@
+[module]
+title = "ISC Atlas Agents"
+description = "Atlas agents for the Integrated Supply Chain: the main agent with its sandbox-only and query-only variants, and the skills (isc-model, isc-query, isc-sandbox) they load. Requires isc_core to be deployed first so the data models exist."
+tags = ["isc", "agents", "atlas"]

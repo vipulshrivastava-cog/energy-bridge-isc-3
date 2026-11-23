@@ -1,0 +1,286 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: PurchaseOrderConfirmation
+name: PurchaseOrderConfirmation
+description: Tracks individual supplier order confirmations for a PO line item. A single PO item can have multiple sequential confirmations as suppliers revise delivery and ship dates. Essential for supply chain de-risking and confirmation pattern analysis.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  purchaseOrderId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Purchase Order ID
+    description: Purchase order number from the source ERP system. Part of the composite primary key, purchaseOrderId and purchaseOrderItemId and sequentialConfirmationNumber.
+  purchaseOrderItemId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Purchase Order Item ID
+    description: Line item number within the Purchase Order this confirmation relates to. Part of the composite primary key.
+  sequentialConfirmationNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Sequential Confirmation Number
+    description: Sequential number of the supplier confirmation within a PO item. Enables tracking of confirmation revisions - each time the supplier revises a date or quantity, a new sequential record is created. Part of the composite primary key.
+  poLineItem:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: PO Line Item
+    description: Direct relation to the PurchaseOrderLineItem node this confirmation belongs to. Enables graph traversal from confirmation back to the full procurement context.
+  supplier:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier
+    description: Direct relation to the Supplier node that issued this confirmation. Denormalised from the PO for direct supplier-level confirmation performance queries without traversing through poLineItem.
+  confirmationStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Confirmation Status
+    description: Status of the suppliers order confirmation for example Confirmed, Pending, Rejected. The latest value across all sequential confirmations for a PO item is denormalised onto currentConfirmationStatus on PurchaseOrderLineItem for fast dashboard queries.
+  requestedDeliveryDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Requested Delivery Date
+    description: Delivery date originally requested in the purchase order. Baseline for measuring supplier confirmation date variance.
+  confirmedDeliveryDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Confirmed Delivery Date
+    description: Delivery date confirmed by the supplier for this PO item in this specific confirmation revision.
+  requestedShipDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Requested Ship Date
+    description: Ship date originally requested in the purchase order. Used for EXW and FOB incoterm scenarios where risk transfers at the suppliers shipping point.
+  confirmedShipDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Confirmed Ship Date
+    description: Ship date confirmed by the supplier for this confirmation revision. Compared against requestedShipDate to measure supplier ship-date adherence.
+  requestedQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Requested Quantity
+    description: Quantity originally requested in the purchase order for this line item. Baseline for measuring partial confirmations where confirmedQuantity is less than requested.
+  confirmedQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Confirmed Quantity
+    description: Quantity confirmed by the supplier for delivery in this confirmation. May be less than requestedQuantity when supplier cannot fulfil in full.
+  unitOfMeasure:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Unit of Measure
+    description: Unit of measure for requestedQuantity and confirmedQuantity fields for example EA, KG, M.
+  supplierMaterialNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier Material Number
+    description: Material number as used in the suppliers own catalogue system. Denormalised for document-level matching when supplier references differ from internal material numbers.
+  sendDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Send Date
+    description: Date on which the order confirmation request was sent to the supplier. Used to measure supplier confirmation response time.
+  sendStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Send Status
+    description: Status of the confirmation request transmission for example Sent, Not Sent, Error. Identifies communication failures that may explain missing confirmations.
+  confirmationDateVariance:
+    type:
+      list: false
+      type: int32
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Confirmation Date Variance
+    description: Days between the requested delivery date and the confirmed delivery date. A positive value means the supplier moved the delivery date out beyond the original request. Measures whether the supplier confirmed delivery on the originally requested date.
+  confirmationQtyVariance:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Confirmation Quantity Variance
+    description: Difference between the requested quantity and the confirmed quantity. A positive value means the supplier confirmed less than the requested amount. Measures whether the supplier confirmed the full requested quantity.
+indexes:
+  confirmationKey:
+    properties:
+    - purchaseOrderId
+    - purchaseOrderItemId
+    - sequentialConfirmationNumber
+    cursorable: true
+    indexType: btree
+  poLineItem:
+    properties:
+    - poLineItem
+    cursorable: false
+    indexType: btree
+  supplier:
+    properties:
+    - supplier
+    cursorable: false
+    indexType: btree
+  confirmationStatus:
+    properties:
+    - confirmationStatus
+    cursorable: true
+    indexType: btree
+  confirmedDeliveryDate:
+    properties:
+    - confirmedDeliveryDate
+    cursorable: true
+    indexType: btree
+  confirmedShipDate:
+    properties:
+    - confirmedShipDate
+    cursorable: true
+    indexType: btree
+usedFor: node

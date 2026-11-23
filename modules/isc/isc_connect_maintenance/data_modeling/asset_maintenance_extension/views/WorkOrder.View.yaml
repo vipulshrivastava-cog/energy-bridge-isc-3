@@ -1,0 +1,494 @@
+space: {{ isc_AssetMaintenanceSchemaSpace }}
+externalId: WorkOrder
+name: Work Order
+description: The central maintenance execution record, ISA-95 Maintenance Work ID, that defines a specific repair or inspection task, its scheduling, and related assets and equipment.
+implements:
+- space: cdf_cdm
+  externalId: CogniteActivity
+  version: 'v1'
+  type: view
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  components:
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_AssetMaintenanceSchemaSpace }}
+        externalId: WorkOrderComponent
+        version: '{{viewVersion}}'
+        type: view
+      identifier: workOrder
+    name: Work Order Components
+    description: All planned material component lines for this work order.
+    connectionType: multi_reverse_direct_relation
+  workOrderStatusDescription:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: workOrderStatusDescription
+    name: Work Order Status Description
+    description: Standard system-level lifecycle phase code for the work order, reflecting the overall progression from creation through release, confirmation, and closure. Complements workOrderStatus which captures plant-specific custom states.
+  priority:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: priority
+    name: Priority
+    description: Numeric maintenance priority from the source system.
+  priorityDescription:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: priorityDescription
+    name: Priority Description
+    description: Human-readable label or text for the work order priority.
+  workOrderId:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: workOrderId
+    name: Work Order ID
+    description: Unique work order identifier from the source system for example Source-system order identifier concatenated key.
+  workOrderNumber:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: workOrderNumber
+    name: Work Order Number
+    description: Human-readable work order number as displayed in the source ERP system.
+  reschedulingCounter:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: reschedulingCounter
+    name: Rescheduling Counter
+    description: Counter tracking how many times the work order has been rescheduled.
+  equipmentNumber:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: equipmentNumber
+    name: Equipment number
+    description: Equipment identifier, if stored as string.
+  equipmentDescription:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: equipmentDescription
+    name: Equipment description
+    description: Equipment description.
+  aboutFunctionalLocation:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: aboutFunctionalLocation
+    name: About functional location (relation)
+    description: Direct relation to the canonical functional asset master for the functional location.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  functionalLocationDescription:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: functionalLocationDescription
+    name: Functional location description
+    description: Functional location description.
+  maintenancePlanningPlant:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: maintenancePlanningPlant
+    name: Maintenance planning plant
+    description: Planning plant responsible for planning.
+  planningPlant:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: planningPlant
+    name: Planning Plant
+    description: Functional asset for the plant responsible for planning this work order.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  executionPlant:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: executionPlant
+    name: Execution Plant
+    description: Functional asset for the plant where this work order is executed.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  maintenancePlant:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: maintenancePlant
+    name: Maintenance plant
+    description: Maintenance plant responsible for execution.
+  plannerGroup:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: plannerGroup
+    name: Planner group
+    description: Planner group responsible.
+  plannerGroupDescription:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: plannerGroupDescription
+    name: Planner group description
+    description: Planner group description.
+  workCenter:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: workCenter
+    name: Work center
+    description: Work center code.
+  workCenterDescription:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: workCenterDescription
+    name: Work center description
+    description: Work center description.
+  revisionDescription:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: revisionDescription
+    name: Revision description
+    description: Revision description.
+  superiorOrderNumber:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: superiorOrderNumber
+    name: Superior Order Number
+    description: Parent work order number in a hierarchical maintenance order structure.
+  statusCode:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: statusCode
+    name: Status code
+    description: Aggregated status profile code providing a language-independent, cross-plant status indicator. Use this field for status-based filtering across multiple plants where custom workOrderStatus codes may differ per site.
+  costCenter:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: costCenter
+    name: Cost center
+    description: Cost center code, cost allocation.
+  costCenterDescription:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: costCenterDescription
+    name: Cost center description
+    description: Cost center description.
+  refCostCenter:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: refCostCenter
+    name: Cost center (relation)
+    description: Direct relation to cost center master.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      version: '{{viewVersion}}'
+      type: view
+  plannedTotalCost:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: plannedTotalCost
+    name: Planned total cost
+    description: Planned total cost, work order.
+  actualTotalCost:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: actualTotalCost
+    name: Actual total cost
+    description: Actual total cost, work order.
+  currency:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: currency
+    name: Currency
+    description: ISO currency code for all cost fields on this work order for example USD, EUR, NOK.
+  workOrderStatus:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: workOrderStatus
+    name: Work Order Status
+    description: Plant-specific custom lifecycle status code assigned by the execution plant team. Examples include WAIT, HOLD, and APPR (JEST — user status).
+  longDescription:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: longDescription
+    name: Long Description
+    description: Detailed description of the work to be performed including technical notes and instructions.
+  personResponsible:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: personResponsible
+    name: Person Responsible
+    description: User ID or name of the person responsible for executing and closing this work order.
+  releaseDate:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: releaseDate
+    name: Release Date
+    description: Date on which this work order was formally released for execution.
+  basicStartDate:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: basicStartDate
+    name: Basic Start Date
+    description: Planning start date for the work order.
+  basicFinishDate:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: basicFinishDate
+    name: Basic Finish Date
+    description: Planning finish date for the work order.
+  previousBasicFinishDate:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: previousBasicFinishDate
+    name: Previous Basic Finish Date
+    description: Prior basicFinishDate before acceleration or rescheduling. Mirrors previousRequestedDeliveryDate pattern.
+  earliestAllowedStartDate:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: earliestAllowedStartDate
+    name: Earliest Allowed Start Date
+    description: The earliest date execution is permitted to start on this work order.
+  latestAllowedFinishDate:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: latestAllowedFinishDate
+    name: Latest Allowed Finish Date
+    description: The deadline by which this work order must be completed.
+  wbsElement:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: wbsElement
+    name: WBS Element
+    description: Work Breakdown Structure element for project cost assignment.
+  objectList:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: objectList
+    name: Object List
+    description: Object list ID grouping multiple equipment or functional locations under one work order.
+  maintenancePlan:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: maintenancePlan
+    name: Maintenance Plan
+    description: Reference to the maintenance plan that generated this work order.
+  maintenanceItem:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: maintenanceItem
+    name: Maintenance Item
+    description: Maintenance plan item that triggered this work order.
+  sapDocuments:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: sapDocuments
+    name: SAP Documents
+    description: Direct relations to document file nodes attached to this work order such as technical drawings, permits, and inspection reports.
+    source:
+      space: cdf_cdm
+      externalId: CogniteFile
+      version: 'v1'
+      type: view
+  workOrderMaterialStatus:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: workOrderMaterialStatus
+    name: Work Order Material Status
+    description: Material readiness status rolled up from this work order's components for example NotReady, PartiallyReady, Ready.
+  overallMaterialStatus:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: overallMaterialStatus
+    name: Overall Material Status
+    description: Overall material status for the work order header, distinct from the plant-specific workOrderStatus lifecycle code.
+  isSafetyCritical:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: isSafetyCritical
+    name: Is Safety Critical
+    description: True when this work order addresses a safety-critical device or system, for example a shutdown valve safety check.
+  previousScheduledStartTime:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      type: container
+    containerPropertyIdentifier: previousScheduledStartTime
+    name: Previous Scheduled Start Time
+    description: Scheduled start time before the most recent reschedule. Compare against the CogniteSchedulable scheduledStartTime to detect and quantify reschedules.
+  linkedFromNotifications:
+    connectionType: multi_edge_connection
+    direction: inwards
+    name: linkedFromNotifications
+    description: Master notifications linked to this entity for example work order as trigger, impacted, or related events.
+    type:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification.linksEntity
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      version: '{{viewVersion}}'
+      type: view

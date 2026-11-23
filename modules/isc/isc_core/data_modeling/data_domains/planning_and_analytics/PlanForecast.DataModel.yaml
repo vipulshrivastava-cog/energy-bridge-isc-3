@@ -1,0 +1,14 @@
+space: {{ isc_PlanForecastSchemaSpace }}
+externalId: PlanForecast
+name: PlanForecast
+description: Plan and forecast domain — plans, forecasts, allocations.
+version: '{{dmVersion}}'
+views:
+- space: {{ isc_PlanForecastSchemaSpace }}
+  externalId: Plan
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_PlanForecastSchemaSpace }}
+  externalId: Forecast
+  version: '{{viewVersion}}'
+  type: view

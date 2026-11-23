@@ -1,0 +1,254 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: Supplier
+name: Supplier
+description: Central supplier master record for managing vendor identity, performance KPIs, certifications, risk ratings, and relationship health. Site-level details, addresses, contacts, commercial terms, are modelled separately in SupplierFacility.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  supplierId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier ID
+    description: Unique identifier for the supplier in the source system.
+  certificationStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Certification Status
+    description: Current certification or qualification status for example Approved, Conditional, Blocked.
+  performanceRating:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Performance Rating
+    description: Numerical score reflecting overall supplier performance.
+  supplierCountry:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier Country
+    description: Country of the suppliers headquarters ISO 3166-1 Alpha-2. Retained for country-level spend and risk analysis.
+  supplierRiskRating:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier Risk Rating
+    description: Risk classification based on financial and operational assessments.
+  businessValuePriority:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Business Value Priority
+    description: Strategic importance ranking for example Strategic, Preferred, Standard.
+  escalationProtocol:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Escalation Protocol
+    description: Defined escalation procedure for resolving issues.
+  contractStartDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Contract Start Date
+    description: Effective start date of the current supply contract.
+  contractExpirationDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Contract Expiration Date
+    description: Expiration date of the current supply contract.
+  onTimeDeliveryRate:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: On-Time Delivery Rate
+    description: Percentage of deliveries arriving on time. Computed KPI.
+  qualityRejectionRate:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Quality Rejection Rate
+    description: Percentage of received goods failing quality inspection. Computed KPI.
+  averageLeadTimeDays:
+    type:
+      list: false
+      type: int32
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Average Lead Time Days
+    description: Actual measured average lead time in calendar days.
+  sanctionsStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Sanctions Status
+    description: OFAC and EU and UN sanctions compliance status.
+  parentOrganizationId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Parent Organization ID
+    description: Text identifier of the parent supplier or holding company.
+  parentOrganizationDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Parent Organisation Description
+    description: Human-readable name of the parent organisation.
+indexes:
+  supplierId:
+    properties:
+    - supplierId
+    cursorable: true
+    indexType: btree
+  certificationStatus:
+    properties:
+    - certificationStatus
+    cursorable: true
+    indexType: btree
+  supplierCountry:
+    properties:
+    - supplierCountry
+    cursorable: true
+    indexType: btree
+  supplierRiskRating:
+    properties:
+    - supplierRiskRating
+    cursorable: true
+    indexType: btree
+  sanctionsStatus:
+    properties:
+    - sanctionsStatus
+    cursorable: true
+    indexType: btree
+usedFor: node

@@ -1,0 +1,4 @@
+key,name,description,supplierId,certificationStatus,performanceRating,supplierCountry,supplierRiskRating,businessValuePriority,sourceId,sourceContext,sourceCreatedTime,sourceUpdatedTime,sourceCreatedUser,sourceUpdatedUser
+sup-rotating,Sulzer,"Sulzer — rotating equipment, pumps and field services",SUP-SULZER-01,Approved,A,AU,Low,High,SUP-SULZER-01,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface
+sup-valve,SCOR,"SCOR — valves, actuation and flow control",SUP-SCOR-01,Approved,B,SG,Medium,High,SUP-SCOR-01,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface
+sup-offshore-log,Wilhelmsen,Wilhelmsen — offshore marine logistics and supply base,SUP-WILHELMSEN-01,Approved,A,AU,Low,Medium,SUP-WILHELMSEN-01,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface

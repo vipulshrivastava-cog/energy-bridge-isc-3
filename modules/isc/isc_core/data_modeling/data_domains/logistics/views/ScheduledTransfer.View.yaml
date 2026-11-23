@@ -1,0 +1,293 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: ScheduledTransfer
+name: Scheduled Transfer
+description: Plan-layer commitment representing a planned intersite movement between internal sites.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  scheduledTransferId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: scheduledTransferId
+    name: Scheduled Transfer ID
+    description: Unique identifier for the scheduled transfer commitment generated from the stock transfer order.
+  scheduledTransferLineNumber:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: scheduledTransferLineNumber
+    name: Scheduled Transfer Line Number
+    description: Line identifier within the scheduled transfer commitment.
+  deliveryType:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: deliveryType
+    name: Delivery Type
+    description: Classification of the planned transfer commitment for example standard stock transfer, cross-company transfer, return to supplying plant.
+  stockTransferOrder:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: stockTransferOrder
+    name: Stock Transfer Order
+    description: Direct relation to the StockTransferOrder node that originated this scheduled transfer commitment.
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: StockTransferOrder
+      version: '{{viewVersion}}'
+      type: view
+  material:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: material
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material being transferred.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  batchNumber:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: batchNumber
+    name: Batch Number
+    description: Batch or lot number of the transferred material for batch-level traceability.
+  originSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: originSite
+    name: Origin Site
+    description: Direct relation to the FunctionalAsset for the internal ship-from storage location or issuing site.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  originWarehouse:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: originWarehouse
+    name: Origin Warehouse
+    description: Direct relation to the Warehouse for the ship-from storage location, WMS warehouse hierarchy.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Warehouse
+      version: '{{viewVersion}}'
+      type: view
+  originCountry:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: originCountry
+    name: Origin Country
+    description: Direct relation to the GeoLocations country from which the goods are transferred.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  destinationSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: destinationSite
+    name: Destination Site
+    description: Direct relation to the FunctionalAsset for the internal receiving storage location or destination site.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  destinationWarehouse:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: destinationWarehouse
+    name: Destination Warehouse
+    description: Direct relation to the Warehouse for the ship-to storage location, WMS warehouse hierarchy.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Warehouse
+      version: '{{viewVersion}}'
+      type: view
+  destinationCountry:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: destinationCountry
+    name: Destination Country
+    description: Direct relation to the GeoLocations country to which the goods are being transferred.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  scheduledQuantity:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: scheduledQuantity
+    name: Scheduled Quantity
+    description: Planned quantity committed on this scheduled transfer line.
+  quantityReceived:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: quantityReceived
+    name: Quantity Received
+    description: Quantity received indicator carried from execution posting context for this transfer line.
+  quantityUnit:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: quantityUnit
+    name: Quantity Unit
+    description: Unit of measure for the scheduledQuantity and quantityReceived fields for example EA, KG, M.
+  scheduledPickupDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: scheduledPickupDate
+    name: Scheduled Pickup Date
+    description: Planned pickup date for this scheduled transfer line.
+  scheduledArrivalDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: scheduledArrivalDate
+    name: Scheduled Arrival Date
+    description: Planned arrival date for this scheduled transfer line.
+  scheduleStatus:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: scheduleStatus
+    name: Schedule Status
+    description: "Schedule lifecycle status for this planned transfer. Allowed values: Open, PartiallyShipped, Closed, Cancelled."
+  plannedTransitDays:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: plannedTransitDays
+    name: Planned Transit Days
+    description: Snapshot of the transportation lane lead time at planning time.
+  transportationLane:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledTransfer
+      type: container
+    containerPropertyIdentifier: transportationLane
+    name: Transportation Lane
+    description: Direct relation to the TransportationLane defining the standard route and lead time for this planned transfer.
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      version: '{{viewVersion}}'
+      type: view
+  executedByShipments:
+    connectionType: multi_edge_connection
+    direction: inwards
+    name: executedByShipments
+    description: Shipments executing this scheduled stock transfer. Query ShipmentExecutesTransfer edges with this transfer as end node.
+    type:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment.executesTransfer
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      version: '{{viewVersion}}'
+      type: view

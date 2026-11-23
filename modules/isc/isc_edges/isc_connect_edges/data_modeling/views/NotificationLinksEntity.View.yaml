@@ -1,0 +1,134 @@
+space: {{ isc_OrganizationalFoundationSchemaSpace }}
+externalId: NotificationLinksEntity
+name: Notification Links Entity
+description: Queryable edge view linking a master notification to an affected entity for example work order.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  relationType:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: relationType
+    name: Relation Type
+    description: Semantic role of the link, reservation, assignment, pegging, execution, impact.
+  relationStatus:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: relationStatus
+    name: Relation Status
+    description: Lifecycle status of the link, planned, active, fulfilled, cancelled.
+  validFrom:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: validFrom
+    name: Valid From
+    description: Business start date when this link becomes effective.
+  validTo:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: validTo
+    name: Valid To
+    description: Business end date when this link ceases to be effective. Null means open-ended.
+  linkRole:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: linkRole
+    name: Link Role
+    description: Event link role, trigger, impacted, related, symptom.
+  severityAtLinkTime:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: severityAtLinkTime
+    name: Severity At Link Time
+    description: Severity recorded when the notification link was created.
+  correlationId:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: correlationId
+    name: Correlation ID
+    description: Correlation identifier across related event links.
+  impactCategory:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      type: container
+    containerPropertyIdentifier: impactCategory
+    name: Impact Category
+    description: Impact category for notification or schedule links.

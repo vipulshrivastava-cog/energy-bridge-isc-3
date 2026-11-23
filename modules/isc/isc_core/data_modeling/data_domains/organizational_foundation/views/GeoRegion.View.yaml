@@ -1,0 +1,82 @@
+space: {{ isc_TypedModelSchemaSpace }}
+externalId: GeoRegion
+name: Geo Region
+description: Top-level or intermediate geographic region in the supply chain network.
+implements:
+- space: {{ isc_OrganizationalFoundationSchemaSpace }}
+  externalId: GeoLocations
+  version: '{{viewVersion}}'
+  type: view
+version: '{{viewVersion}}'
+filter:
+  and:
+  - hasData:
+    - type: container
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+  - equals:
+      property:
+      - {{ isc_OrganizationalFoundationSchemaSpace }}
+      - GeoLocations
+      - declaredType
+      value:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: GeoRegion
+properties:
+  declaredType:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: declaredType
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      version: '{{viewVersion}}'
+      type: view
+    name: Declared Type
+    description: Concrete view type for this instance.
+  parent_geo_region:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: parent
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: GeoRegion
+      version: '{{viewVersion}}'
+      type: view
+    name: GeoRegion
+    description: Parent geographic region in the hierarchy.
+  countries:
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Country
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: GeoLocations
+        type: container
+      identifier: parent
+    name: Countries
+    description: Countries in this geographic region.
+    connectionType: multi_reverse_direct_relation
+  children:
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: GeoLocations
+        version: '{{viewVersion}}'
+        type: view
+      identifier: parent
+    name: Children
+    description: Geographic hierarchy nodes with this node as their parent.
+    connectionType: multi_reverse_direct_relation

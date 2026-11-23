@@ -1,0 +1,4 @@
+[module]
+title = "ISC Connect - Maintenance"
+description = "Asset maintenance domain extension: work order and asset extension wiring."
+tags = ["isc", "connect", "maintenance"]

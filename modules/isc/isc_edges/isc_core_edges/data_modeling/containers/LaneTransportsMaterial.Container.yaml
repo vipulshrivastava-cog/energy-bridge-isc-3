@@ -1,0 +1,212 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: LaneTransportsMaterial
+name: Lane Transports Material
+description: Edge container for which materials a transportation lane can carry, including lot-size bounds, priority, hazardous-goods approval, and lane cost on the relationship.
+usedFor: edge
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  relationType:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Relation Type
+    description: Semantic role of the link, reservation, assignment, pegging, execution, impact.
+  relationStatus:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Relation Status
+    description: Lifecycle status of the link, planned, active, fulfilled, cancelled.
+  validFrom:
+    type:
+      list: False
+      type: timestamp
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Valid From
+    description: Business start date when this link becomes effective.
+  validTo:
+    type:
+      list: False
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Valid To
+    description: Business end date when this link ceases to be effective. Null means open-ended.
+  priorityRank:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Priority Rank
+    description: Priority rank for lane scope or commercial preference.
+  minLotSize:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Min Lot Size
+    description: Minimum lot size for lane-material scope.
+  maxLotSize:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Max Lot Size
+    description: Maximum lot size for lane-material scope.
+  lotSizeUnit:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Lot Size Unit
+    description: Unit for lane lot size bounds.
+  costPerTonne:
+    type:
+      list: False
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Cost Per Tonne
+    description: Lane transport cost per tonne.
+  costCurrency:
+    type:
+      list: False
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Cost Currency
+    description: Currency for lane cost properties.
+  hazardousGoodsApproved:
+    type:
+      list: False
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Hazardous Goods Approved
+    description: Whether hazardous goods are approved on this lane scope.
+  customsClearanceRequired:
+    type:
+      list: False
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Customs Clearance Required
+    description: Whether customs clearance is required for this lane usage.
+indexes:
+  validFrom:
+    properties:
+    - validFrom
+    cursorable: true
+    indexType: btree
+  validTo:
+    properties:
+    - validTo
+    cursorable: true
+    indexType: btree
+  relationStatus:
+    properties:
+    - relationStatus
+    cursorable: true
+    indexType: btree

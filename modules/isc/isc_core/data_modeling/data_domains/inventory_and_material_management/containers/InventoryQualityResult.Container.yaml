@@ -1,0 +1,352 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+externalId: InventoryQualityResult
+name: InventoryQualityResult
+description: Inventory quality inspection result and stock disposition record for a material inventory lot. Captures inspection trigger, status, quantities, usage decision, and release outcome for stock under quality control.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  inventoryQualityResultId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Inventory Quality Result ID
+    description: Unique identifier for the inventory quality result or inspection record. Used as the primary business key for tracing the quality process and disposition.
+  materialInventoryLot:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material Inventory Lot
+    description: Direct relation to the MaterialInventoryLot node representing the stock bucket or lot being inspected.
+  material:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material under quality inspection.
+  plant:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Plant
+    description: Direct relation to the FunctionalAsset node for the plant where the inspected stock is held or received.
+  storageLocation:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Storage Location
+    description: Direct relation to the FunctionalAsset node for the storage location or bin associated with the inspected stock.
+  scheduledReceipt:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Scheduled Receipt
+    description: Optional direct relation to the ScheduledReceipt that triggered the inspection at goods receipt.
+  scheduledTransfer:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Scheduled Transfer
+    description: Optional direct relation to the ScheduledTransfer that triggered the inspection during an internal transfer.
+  supplier:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier
+    description: Optional direct relation to the Supplier associated with the inspected stock for vendor-quality traceability.
+  inspectionOrigin:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Inspection Origin
+    description: Business trigger for the inspection record, for example goods receipt, stock transfer, return, periodic inspection, or complaint follow-up.
+  inspectionType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Inspection Type
+    description: Classification of the inspection according to ERP or quality-management rules, such as incoming inspection, transfer inspection, or re-inspection.
+  inspectionStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Inspection Status
+    description: Current lifecycle status of the inventory quality record, for example planned, in progress, completed, reviewed, or closed.
+  usageDecision:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Usage Decision
+    description: Final disposition decision for the inspected stock, such as accepted, accepted with deviation, rejected, rework, or blocked.
+  inspectionDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Inspection Date
+    description: Date on which the inspection was executed or recorded.
+  decisionDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Decision Date
+    description: Date on which the usage decision or stock release decision was finalized.
+  inspectedQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Inspected Quantity
+    description: Quantity of stock that was subject to inspection.
+  acceptedQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Accepted Quantity
+    description: Quantity released for accepted use after inspection.
+  rejectedQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Rejected Quantity
+    description: Quantity rejected, blocked, or otherwise withheld from normal use after inspection.
+  sampleSize:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Sample Size
+    description: Quantity or sample amount inspected to determine the quality outcome.
+  quantityUnit:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Quantity Unit
+    description: Unit of measure for inspectedQuantity, acceptedQuantity, rejectedQuantity, and sampleSize.
+  qualityHoldReason:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Quality Hold Reason
+    description: Reason the stock is being held, blocked, or routed to quality inspection.
+  releaseToStockStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Release To Stock Status
+    description: Resulting stock status after inspection, such as unrestricted, restricted, blocked, or returned to vendor.
+  inspectorName:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Inspector Name
+    description: Name or identifier of the inspector or quality engineer who performed or reviewed the inspection.
+  resultSummary:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Result Summary
+    description: Short narrative summary of the inspection outcome, findings, or notable deviations.
+indexes:
+  inventoryQualityResultId:
+    properties:
+    - inventoryQualityResultId
+    cursorable: true
+    indexType: btree
+  materialInventoryLot:
+    properties:
+    - materialInventoryLot
+    cursorable: false
+    indexType: btree
+  material:
+    properties:
+    - material
+    cursorable: false
+    indexType: btree
+  plant:
+    properties:
+    - plant
+    cursorable: false
+    indexType: btree
+  storageLocation:
+    properties:
+    - storageLocation
+    cursorable: false
+    indexType: btree
+  scheduledReceipt:
+    properties:
+    - scheduledReceipt
+    cursorable: false
+    indexType: btree
+  scheduledTransfer:
+    properties:
+    - scheduledTransfer
+    cursorable: false
+    indexType: btree
+  supplier:
+    properties:
+    - supplier
+    cursorable: false
+    indexType: btree
+  inspectionDate:
+    properties:
+    - inspectionDate
+    cursorable: true
+    indexType: btree
+  decisionDate:
+    properties:
+    - decisionDate
+    cursorable: true
+    indexType: btree
+usedFor: node

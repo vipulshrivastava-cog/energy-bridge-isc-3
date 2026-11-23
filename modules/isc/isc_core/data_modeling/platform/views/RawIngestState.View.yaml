@@ -1,0 +1,106 @@
+space: {{ isc_IscPlatformSchemaSpace }}
+externalId: RawIngestState
+name: Raw Ingest State
+description: Tracks the last processed change timestamp per source table used for organisational hierarchy ingestion.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  db_name:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: db_name
+    name: RAW database
+  table_name:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: table_name
+    name: RAW table
+  last_processed_timestamp:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: last_processed_timestamp
+    name: Last processed timestamp
+    description: Epoch milliseconds for the maximum lastUpdatedTime of ingested RAW rows.
+  last_run_time:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: last_run_time
+    name: Last run time
+  rows_processed:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: RawIngestState
+      type: container
+    containerPropertyIdentifier: rows_processed
+    name: Rows processed last run

@@ -1,0 +1,110 @@
+space: {{ isc_AssetMaintenanceSchemaSpace }}
+externalId: FunctionalAsset
+name: Functional Asset
+description: Physical or logical asset in the supply chain and manufacturing network.
+implements:
+- space: cdf_cdm
+  externalId: CogniteAsset
+  version: 'v1'
+  type: view
+
+version: '{{viewVersion}}'
+properties:
+  functionalAssetLevel:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetExtension
+      type: container
+    containerPropertyIdentifier: functionalAssetLevel
+    name: Functional Asset Level
+    description: Classification of this operational node within the functional asset hierarchy, for example Enterprise, Site, Area, Unit, Warehouse, or StorageBin.
+  belongtoCity:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetExtension
+      type: container
+    containerPropertyIdentifier: belongtoCity
+    name: Belong To City
+    description: Direct relation to the City representing the city or geographic area this functional asset belongs to.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: City
+      version: '{{viewVersion}}'
+      type: view
+  belongtoCostCenter:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetExtension
+      type: container
+    containerPropertyIdentifier: belongtoCostCenter
+    name: Belong To Cost Center
+    description: Direct relation to the CostCenter accountable for this functional asset.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: CostCenter
+      version: '{{viewVersion}}'
+      type: view
+  erp_id:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetExtension
+      type: container
+    containerPropertyIdentifier: erpId
+    name: ERP ID
+    description: ERP-facing identifier for the asset, for example an SAP functional location or equipment number.
+  assetCriticality:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetExtension
+      type: container
+    containerPropertyIdentifier: assetCriticality
+    name: Asset Criticality
+    description: The criticality rating of the asset, indicating its importance to operations and the potential impact of its failure.
+  assetCriticalityDescription:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetExtension
+      type: container
+    containerPropertyIdentifier: assetCriticalityDescription
+    name: Asset Criticality Description
+    description: A textual explanation of the assets criticality rating, providing additional context for the assigned criticality level.
+  assetHealthScore:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetExtension
+      type: container
+    containerPropertyIdentifier: assetHealthScore
+    name: Asset Health Score
+    description: A numerical score representing the overall health and condition of the asset, used to assess maintenance needs and predict potential failures.
+  assetHealthScoreDescription:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetExtension
+      type: container
+    containerPropertyIdentifier: assetHealthScoreDescription
+    name: Asset Health Score Description
+    description: A textual explanation of the asset health score, providing context or qualitative interpretation of the calculated health value.
+  asset_specific:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetExtension
+      type: container
+    containerPropertyIdentifier: assetSpecific
+    name: asset_specific
+    description: Flexible reference field that can point to ISA-95 node types such as Area, ProcessCell, Unit, Site, Enterprise, or EquipmentModule.
+  productionRate:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetExtension
+      type: container
+    containerPropertyIdentifier: productionRate
+    name: Production Rate
+    description: Nameplate or planned production throughput rate for this functional asset. Used to translate maintenance downtime into lost production volume.
+  productionRateUom:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetExtension
+      type: container
+    containerPropertyIdentifier: productionRateUom
+    name: Production Rate UOM
+    description: Unit of measure for productionRate for example t/h, bbl/d.

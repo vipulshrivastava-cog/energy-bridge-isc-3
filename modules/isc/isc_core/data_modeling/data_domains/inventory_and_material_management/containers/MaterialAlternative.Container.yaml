@@ -1,0 +1,227 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+externalId: MaterialAlternative
+name: MaterialAlternative
+description: Approved material substitution with priority, plant scope, and conversion factors. One row per original-alternative pair. Supports ranked alternatives for stockout resolution.
+usedFor: node
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  originalMaterial:
+    type:
+      list: false
+      type: direct
+    nullable: true
+    immutable: false
+    autoIncrement: false
+    name: Original material
+    description: Direct relation to the MaterialMaster node being replaced or supplemented. Required for every active alternative record at ingest time.
+  alternativeMaterial:
+    type:
+      list: false
+      type: direct
+    nullable: true
+    immutable: false
+    autoIncrement: false
+    name: Alternative material
+    description: Direct relation to the MaterialMaster node that can serve as a replacement or fallback. Required for every active alternative record at ingest time.
+  alternativeType:
+    type:
+      list: false
+      type: text
+      collation: ucs_basic
+    nullable: true
+    immutable: false
+    autoIncrement: false
+    name: Alternative type
+    description: "Classification of the substitution relationship. Accepted values are case-sensitive and must be stored exactly as listed: Equivalent, Downgrade, Upgrade, Temporary, Discontinuation. Equivalent is a form-fit-function replacement. Downgrade may need engineering approval. Upgrade has cost impact. Temporary is time-limited. Discontinuation is a permanent phase-out replacement."
+  priority:
+    type:
+      list: false
+      type: int32
+    nullable: true
+    immutable: false
+    autoIncrement: false
+    name: Priority
+    description: Ranking order when multiple alternatives exist for the same original material, 1 for first choice.
+  preApprovedPlants:
+    type:
+      list: true
+      type: direct
+      maxListSize: 100
+    nullable: true
+    immutable: false
+    autoIncrement: false
+    name: Pre-approved Plants
+    description: List of functional assets for plants where this alternative has been pre-approved for use. A plant is listed when the substitution is known to be viable at that site, even if it has not yet been used there. Empty or null means globally valid.
+  engineeringApprovalRequired:
+    type:
+      list: false
+      type: boolean
+    nullable: true
+    immutable: false
+    autoIncrement: false
+    name: Engineering approval required
+    description: Whether using this alternative requires engineering sign-off before use.
+  compatibilityNotes:
+    type:
+      list: false
+      type: text
+      collation: ucs_basic
+    nullable: true
+    immutable: false
+    autoIncrement: false
+    name: Compatibility notes
+    description: Technical notes on differences or installation considerations when using the alternative.
+  quantityConversionFactor:
+    type:
+      list: false
+      type: float64
+    nullable: true
+    immutable: false
+    autoIncrement: false
+    name: Quantity conversion factor
+    description: "Ratio of alternative quantity needed per unit of original material for example 1.2 means 1.2 units of alternative for every 1 unit of original. Default 1.0 for 1:1 replacements."
+  validFromDate:
+    type:
+      list: false
+      type: timestamp
+    nullable: true
+    immutable: false
+    autoIncrement: false
+    name: Valid from date
+    description: Date from which this alternative relationship is effective.
+  validToDate:
+    type:
+      list: false
+      type: timestamp
+    nullable: true
+    immutable: false
+    autoIncrement: false
+    name: Valid to date
+    description: Date after which this alternative expires. Null for permanent alternatives.
+  isActive:
+    type:
+      list: false
+      type: boolean
+    nullable: true
+    immutable: false
+    autoIncrement: false
+    name: Is active
+    description: Whether this alternative substitution is currently active.
+indexes:
+  originalMaterial:
+    indexType: btree
+    properties:
+    - originalMaterial
+    cursorable: false
+  alternativeMaterial:
+    indexType: btree
+    properties:
+    - alternativeMaterial
+    cursorable: false
+  alternativeType:
+    indexType: btree
+    properties:
+    - alternativeType
+    cursorable: true
+  priority:
+    indexType: btree
+    properties:
+    - priority
+    cursorable: true
+  preApprovedPlants:
+    indexType: btree
+    properties:
+    - preApprovedPlants
+    cursorable: false
+  validFromDate:
+    indexType: btree
+    properties:
+    - validFromDate
+    cursorable: true
+  validToDate:
+    indexType: btree
+    properties:
+    - validToDate
+    cursorable: true
+  isActive:
+    indexType: btree
+    properties:
+    - isActive
+    cursorable: true

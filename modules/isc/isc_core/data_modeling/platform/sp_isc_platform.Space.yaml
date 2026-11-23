@@ -1,0 +1,2 @@
+space: {{ isc_IscPlatformSchemaSpace }}
+name: ISC Platform State

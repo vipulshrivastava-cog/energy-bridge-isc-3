@@ -1,0 +1,91 @@
+space: {{ isc_TypedModelSchemaSpace }}
+externalId: Country
+name: Country
+description: Country-level geographic node in the supply chain network.
+implements:
+- space: {{ isc_OrganizationalFoundationSchemaSpace }}
+  externalId: GeoLocations
+  version: '{{viewVersion}}'
+  type: view
+version: '{{viewVersion}}'
+filter:
+  and:
+  - hasData:
+    - type: container
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+  - equals:
+      property:
+      - {{ isc_OrganizationalFoundationSchemaSpace }}
+      - GeoLocations
+      - declaredType
+      value:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: Country
+properties:
+  declaredType:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: declaredType
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      version: '{{viewVersion}}'
+      type: view
+    name: Declared Type
+    description: Concrete view type for this instance.
+  geo_region:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: parent
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: GeoRegion
+      version: '{{viewVersion}}'
+      type: view
+    name: GeoRegion
+    description: Parent geographic region for this country.
+  isoCode:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: isoCode
+    name: ISO Code
+    description: ISO 3166-1 Alpha-3 country code or equivalent standard geographic
+      code.
+  children:
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: GeoLocations
+        version: '{{viewVersion}}'
+        type: view
+      identifier: parent
+    name: Children
+    description: Geographic hierarchy nodes with this node as their parent.
+    connectionType: multi_reverse_direct_relation
+  cities:
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: City
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: GeoLocations
+        type: container
+      identifier: parent
+    name: Cities
+    description: Cities in this country when no county level is used.
+    connectionType: multi_reverse_direct_relation

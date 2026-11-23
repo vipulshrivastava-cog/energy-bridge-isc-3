@@ -1,0 +1,4 @@
+[module]
+title = "ISC Edges - Connect Edges"
+description = "Edge containers and views wiring isc_core domains to the isc_connect_* extensions: MaterialReservation, NotificationLinksEntity, UsesTransportationLane. At least one endpoint of every edge here lives in an isc_connect_* module (e.g. isc_connect_maintenance, isc_connect_manufacturing)."
+tags = ["isc", "edges", "connect"]

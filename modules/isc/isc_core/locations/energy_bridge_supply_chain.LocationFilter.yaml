@@ -1,0 +1,35 @@
+externalId: loc_energy_bridge_supply_chain
+name: Energy Bridge Maintenance Supply Chain
+description: >-
+  Energy Bridge maintenance supply chain demo scope across the isc_core domain data
+  models. Covers asset maintenance, procurement, inbound logistics, inventory,
+  and planning.
+dataModelingType: DATA_MODELING_ONLY
+dataModels:
+  - space: {{ isc_OrganizationalFoundationSchemaSpace }}
+    externalId: OrganizationalFoundation
+    version: '{{dmVersion}}'
+  - space: {{ isc_AssetMaintenanceSchemaSpace }}
+    externalId: AssetMaintenance
+    version: '{{dmVersion}}'
+  - space: {{ isc_SourcingProcurementSchemaSpace }}
+    externalId: SourcingProcurement
+    version: '{{dmVersion}}'
+  - space: {{ isc_ShipmentDeliverySchemaSpace }}
+    externalId: ShipmentDelivery
+    version: '{{dmVersion}}'
+  - space: {{ isc_MaterialManagementSchemaSpace }}
+    externalId: MaterialManagement
+    version: '{{dmVersion}}'
+  - space: {{ isc_PlanForecastSchemaSpace }}
+    externalId: PlanForecast
+    version: '{{dmVersion}}'
+  - space: {{ isc_TypedModelSchemaSpace }}
+    externalId: isc_typed_model
+    version: '{{dmVersion}}'
+  - space: {{ isc_IscPlatformSchemaSpace }}
+    externalId: IscPlatform
+    version: '{{dmVersion}}'
+instanceSpaces:
+  - {{ isc_InstanceSpace }}
+  - cdf_cdm

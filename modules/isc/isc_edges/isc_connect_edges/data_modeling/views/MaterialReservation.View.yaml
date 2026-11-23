@@ -1,0 +1,158 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+externalId: MaterialReservation
+name: Material Reservation
+description: Queryable edge view for material reservations from aggregate inventory to demand sources, work order component, production request, customer order.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  relationType:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: relationType
+    name: Relation Type
+    description: Semantic role of the link, reservation, assignment, pegging, execution, impact.
+  relationStatus:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: relationStatus
+    name: Relation Status
+    description: Lifecycle status of the link, planned, active, fulfilled, cancelled.
+  validFrom:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: validFrom
+    name: Valid From
+    description: Business start date when this link becomes effective.
+  validTo:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: validTo
+    name: Valid To
+    description: Business end date when this link ceases to be effective. Null means open-ended.
+  sourceSystem:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: sourceSystem
+    name: Source System
+    description: Origin system for the link fact.
+  linkLastUpdatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: linkLastUpdatedTime
+    name: Link Last Updated Time
+    description: Ingest or system time of the last transform or function write for this link.
+  reservationNumber:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: reservationNumber
+    name: Reservation Number
+    description: Reservation document number for the committed quantity carried on this edge.
+  quantityReserved:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: quantityReserved
+    name: Quantity Reserved
+    description: Quantity of the aggregate inventory committed to the demand source on this edge.
+  reservationDate:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: reservationDate
+    name: Reservation Date
+    description: Date the reservation was created.
+  requirementDate:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: requirementDate
+    name: Requirement Date
+    description: Date by which the reserved material must be available for the demand source.
+  quantityUnit:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      type: container
+    containerPropertyIdentifier: quantityUnit
+    name: Quantity Unit
+    description: Unit of measure for quantity.

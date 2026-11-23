@@ -1,0 +1,170 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+externalId: MaterialInventory
+name: Material Inventory
+description: Aggregate material stock position for one material at one warehouse.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  materialId:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: materialId
+    name: Material
+    description: Direct relation to the material master for this aggregate stock position.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  warehouse:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: warehouse
+    name: Warehouse
+    description: Direct relation to the warehouse where this aggregate stock is held.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Warehouse
+      version: '{{viewVersion}}'
+      type: view
+  unitOfMeasure:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: unitOfMeasure
+    name: Unit of Measure
+    description: Base unit of measure for quantity fields for example EA, KG, M.
+  qtyOnHand:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: qtyOnHand
+    name: Quantity On Hand
+    description: Rolled-up unrestricted stock quantity at this warehouse.
+  safetyStock:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: safetyStock
+    name: Safety Stock
+    description: Minimum buffer stock level for this material at this warehouse.
+  reorderPoint:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: reorderPoint
+    name: Reorder Point
+    description: Stock level at which replenishment is triggered.
+  lastMovementDate:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: lastMovementDate
+    name: Last Movement Date
+    description: Last physical goods movement affecting qtyOnHand at this warehouse. Distinct from sourceUpdatedTime audit timestamp.
+  availabilityOnshore:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: availabilityOnshore
+    name: Availability Onshore
+    description: Onshore availability status for this stock position, a traffic-light indicator for example Green, Orange, Red.
+  availabilityOffshore:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      type: container
+    containerPropertyIdentifier: availabilityOffshore
+    name: Availability Offshore
+    description: Offshore availability status for this stock position, a traffic-light indicator for example Green, Orange, Red.
+  reservedForWorkOrderComponent:
+    connectionType: multi_edge_connection
+    direction: outwards
+    name: reservedFor
+    description: Reservations committing this aggregate inventory to work order components. Quantity and dates are on the edge.
+    type:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory.reservedForWorkOrderComponent
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      version: '{{viewVersion}}'
+      type: view

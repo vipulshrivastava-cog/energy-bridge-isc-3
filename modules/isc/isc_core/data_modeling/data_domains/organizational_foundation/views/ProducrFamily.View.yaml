@@ -1,0 +1,65 @@
+space: {{ isc_TypedModelSchemaSpace }}
+externalId: ProductFamily
+name: Product family
+description: Product family in the product classification hierarchy.
+version: '{{viewVersion}}'
+filter:
+  and:
+  - hasData:
+    - type: container
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: Products
+  - equals:
+      property:
+      - {{ isc_OrganizationalFoundationSchemaSpace }}
+      - Products
+      - declaredType
+      value:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: ProductFamily
+properties:
+  declaredType:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: Products
+      type: container
+    containerPropertyIdentifier: declaredType
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      version: '{{viewVersion}}'
+      type: view
+    name: Declared Type
+    description: Concrete view type for this instance.
+  children:
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: Products
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: Products
+        version: '{{viewVersion}}'
+        type: view
+      identifier: parent
+    name: Children
+    description: Product hierarchy nodes with this node as their parent.
+    connectionType: multi_reverse_direct_relation
+  productGroups:
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: Products
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: Products
+        type: container
+      identifier: parent
+    name: Product Groups
+    description: ProductGroup nodes under this ProductFamily.
+    connectionType: multi_reverse_direct_relation
+

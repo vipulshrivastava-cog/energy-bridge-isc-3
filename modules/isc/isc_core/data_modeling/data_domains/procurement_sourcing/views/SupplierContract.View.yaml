@@ -1,0 +1,168 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: SupplierContract
+name: Supplier Contract
+description: Stores long-term framework agreements.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  contractID:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: contractID
+    name: Contract ID
+    description: Unique identifier for the supplier contract in the source system. Primary identifier - not nullable.
+  contractType:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: contractType
+    name: Contract Type
+    description: Classification of the agreement for example LP for Quantity Contract, MK for Scheduling Agreement.
+  validFrom:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: validFrom
+    name: Valid From
+    description: Effective start date of this contract. Purchase orders can only be created against this contract from this date.
+  validTo:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: validTo
+    name: Valid To
+    description: Expiry date of this contract. Drives contract renewal alerts and supply continuity risk assessment.
+  targetValue:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: targetValue
+    name: Target Value
+    description: Total committed value agreed in the contract. When fully consumed, no further call-offs can be raised.
+  paymentTerms:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: paymentTerms
+    name: Payment Terms
+    description: Payment terms for purchase orders created from this contract for example NET30. Overrides supplier-level defaults.
+  contractStatus:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: contractStatus
+    name: Contract Status
+    description: Current lifecycle state of the contract for example Active, Expired, Suspended, Closed.
+  materialId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: materialId
+    name: Material
+    description: Direct relation to the MaterialMaster node for the primary material covered by this contract, when single-material contracts.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  contractPrice:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: contractPrice
+    name: Contract Price
+    description: Agreed unit price or pricing tier in the contract.
+  targetQuantity:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: targetQuantity
+    name: Target Quantity
+    description: Total committed quantity agreed in the contract for quantity contracts.
+  supplier:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierContract
+      type: container
+    containerPropertyIdentifier: supplier
+    name: Supplier
+    description: Direct relation to the Supplier node that is party to this contract.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      version: '{{viewVersion}}'
+      type: view

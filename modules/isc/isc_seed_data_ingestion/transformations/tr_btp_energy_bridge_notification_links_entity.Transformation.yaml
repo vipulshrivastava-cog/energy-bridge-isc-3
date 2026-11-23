@@ -1,0 +1,11 @@
+externalId: tr_btp_energy_bridge_notification_links_entity
+name: BTP Energy Bridge - Notification Links Entity
+destination:
+  type: edges
+  view:
+    space: {{ isc_OrganizationalFoundationSchemaSpace }}
+    externalId: NotificationLinksEntity
+    version: '{{dmVersion}}'
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

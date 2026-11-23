@@ -1,0 +1,2 @@
+dbName: {{ btpSeedDbName }}
+tableName: master_notification

@@ -1,0 +1,37 @@
+# Canonical ISC Atlas Query scope for Campaign 2 subagents (multi-domain DataModels).
+# Keep in sync with isc_core/locations/energy_bridge_supply_chain.LocationFilter.yaml.
+# Copy the configuration block below into each active agent's ISC Atlas Query tool:
+# integrated-supply-chain-main-agent and integrated-supply-chain-main-agent-query-only.
+# (The sandbox-only variant has no Query tool.)
+# Wave A: monolith integrated_supply_chain replaced by per-domain models + isc_typed_model.
+dataModels:
+  type: manual
+  dataModels:
+    - space: {{ isc_TypedModelSchemaSpace }}
+      externalId: isc_typed_model
+      version: '{{dmVersion}}'
+    - space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: OrganizationalFoundation
+      version: '{{dmVersion}}'
+    - space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialManagement
+      version: '{{dmVersion}}'
+    - space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: AssetMaintenance
+      version: '{{dmVersion}}'
+    - space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SourcingProcurement
+      version: '{{dmVersion}}'
+    - space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentDelivery
+      version: '{{dmVersion}}'
+    - space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: PlanForecast
+      version: '{{dmVersion}}'
+    - space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: IscPlatform
+      version: '{{dmVersion}}'
+instanceSpaces:
+  type: manual
+  spaces:
+    - {{ isc_InstanceSpace }}

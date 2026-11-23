@@ -1,0 +1,2 @@
+externalId: wf_btp_hierarchy_path
+description: "Path materialization for BTP hierarchy views (fn_btp_hierarchy path_sync_cursor). metadata: origin: cognite-toolkit pattern: dqv-adr-0006-shared-workflow"

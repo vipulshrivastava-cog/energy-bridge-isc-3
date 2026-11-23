@@ -1,0 +1,110 @@
+space: {{ isc_TypedModelSchemaSpace }}
+externalId: City
+name: City
+description: City or locality in the geographic hierarchy. Anchor for functional assets
+  and warehouses.
+implements:
+- space: {{ isc_OrganizationalFoundationSchemaSpace }}
+  externalId: GeoLocations
+  version: '{{viewVersion}}'
+  type: view
+version: '{{viewVersion}}'
+filter:
+  and:
+  - hasData:
+    - type: container
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+  - equals:
+      property:
+      - {{ isc_OrganizationalFoundationSchemaSpace }}
+      - GeoLocations
+      - declaredType
+      value:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: City
+properties:
+  declaredType:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: declaredType
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      version: '{{viewVersion}}'
+      type: view
+    name: Declared Type
+    description: Concrete view type for this instance.
+  country:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: parent
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Country
+      version: '{{viewVersion}}'
+      type: view
+    name: Country
+    description: Parent country in the geographic hierarchy. Nordic dogfood profile
+      is Country→City direct; customers using County→City define a City view with
+      county as the sole typed parent instead.
+  latitude:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: latitude
+    name: Latitude
+    description: WGS84 latitude coordinate for this city or representative centroid.
+  longitude:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: longitude
+    name: Longitude
+    description: WGS84 longitude coordinate for this city or representative centroid.
+  physicalAddress:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: physicalAddress
+    name: Physical Address
+    description: Formatted address or locality description for this city.
+  children:
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: GeoLocations
+        version: '{{viewVersion}}'
+        type: view
+      identifier: parent
+    name: Children
+    description: Geographic hierarchy nodes with this node as their parent.
+    connectionType: multi_reverse_direct_relation
+  functionalAssets:
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_AssetMaintenanceSchemaSpace }}
+        externalId: FunctionalAsset
+        version: '{{viewVersion}}'
+        type: view
+      identifier: belongtoCity
+    name: Functional Assets
+    description: Functional assets linked to this city through belongtoCity.
+    connectionType: multi_reverse_direct_relation

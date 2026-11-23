@@ -1,0 +1,359 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: TransportationLane
+name: TransportationLane
+description: Defines a planned, repeatable logistics route between company sites, FunctionalAsset, and optional supplier geographic endpoints, GeoLocations. Captures lane classification, laneType, mode of transport, transit time, and material scope.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  laneId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Lane ID
+    description: Unique identifier for the transportation lane.
+  modeOfTransport:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Mode of Transport
+    description: Primary transport mode for example Road, Sea, Air, Rail, Multimodal.
+  laneType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Lane Type
+    description: Classification of the lane. Expected values include inbound, outbound, interSite, and other, or source-specific extensions. Use consistent casing per integration contract.
+  originSite:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Origin Site
+    description: Direct relation to the FunctionalAsset for the company origin storage or functional location, logical ERP and hierarchy view.
+  destinationSite:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Destination Site
+    description: Direct relation to the FunctionalAsset for the company destination storage or functional location, logical ERP and hierarchy view.
+  originWarehouse:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Origin Warehouse
+    description: Direct relation to the Warehouse for the ship-from storage location, WMS warehouse hierarchy.
+  destinationWarehouse:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Destination Warehouse
+    description: Direct relation to the Warehouse for the ship-to storage location, WMS warehouse hierarchy.
+  originSupplierSite:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Origin Supplier Site
+    description: Direct relation to a GeoLocations for the physical or supplier-side origin when it differs from the company origin site.
+  destinationSupplierSite:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Destination Supplier Site
+    description: Direct relation to a GeoLocations for the physical or supplier-side destination when it differs from the company destination site.
+  leadTime:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Lead Time
+    description: Planned transit duration for goods to travel from origin to destination.
+  leadTimeUnit:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Lead Time Unit
+    description: Unit for transit time for example Days, Hours.
+  laneStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Lane Status
+    description: Operational status of the lane for example Active, Inactive, Suspended.
+  isPrimary:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Is Primary Lane
+    description: Indicates if this is the preferred primary lane. False indicates a backup and alternate route.
+  validFromDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Valid From Date
+    description: Date from which this lane configuration is effective.
+  validToDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Valid To Date
+    description: Date after which this lane configuration expires or is superseded.
+  goodsReceiptProcessingTime:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Goods Receipt Processing Time
+    description: The number of days required to process goods upon receipt at the destination location.
+  procurementPriority:
+    type:
+      list: false
+      type: int32
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Procurement Priority
+    description: The priority ranking for this lane when multiple sourcing options are available during planning.
+  stockTransferType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Stock Transfer Type
+    description: The purchasing or stock transfer type associated with this transportation lane.
+  avgActualTransitDays06m:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Avg Actual Transit Days (6m)
+    description: Rolling 6-month average of actual transit days across all shipments on this lane. Aggregated via lane performance snapshots. Used as an input for the transit lead time variance calculation.
+  transitLeadTimeVariance:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Transit Lead Time Variance
+    description: Difference between the planned lane lead time and the rolling 6-month average of actual transit days. A negative value means the lane is consistently slower than assumed and plans using this lane may be systematically under-estimated. Surfaces stale lead time master data.
+  leadTimeReviewFlag:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Lead Time Review Flag
+    description: Set to true when the absolute transit lead time variance exceeds one day and there are at least five shipments on the lane. Alerts the master data owner that the lane lead time has drifted beyond an acceptable threshold and needs recalibration.
+  originType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Origin Type
+    description: Which origin endpoint field is populated for this lane for example Warehouse, SupplierFacility, Site.
+  destinationType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Destination Type
+    description: Which destination endpoint field is populated for this lane for example Warehouse, Site.
+  originSupplierFacility:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Origin Supplier Facility
+    description: Direct relation to the SupplierFacility for the physical supplier site this inbound lane originates from. Used for inbound lanes instead of originSupplierSite when the supplier's physical facility, not just its geography, is known.
+indexes:
+  laneId:
+    properties:
+    - laneId
+    cursorable: true
+    indexType: btree
+  laneType:
+    properties:
+    - laneType
+    cursorable: true
+    indexType: btree
+  originWarehouse:
+    properties:
+    - originWarehouse
+    cursorable: false
+    indexType: btree
+  destinationWarehouse:
+    properties:
+    - destinationWarehouse
+    cursorable: false
+    indexType: btree
+  originSupplierSite:
+    properties:
+    - originSupplierSite
+    cursorable: false
+    indexType: btree
+  destinationSupplierSite:
+    properties:
+    - destinationSupplierSite
+    cursorable: false
+    indexType: btree
+  laneStatus:
+    properties:
+    - laneStatus
+    cursorable: true
+    indexType: btree
+  isPrimary:
+    properties:
+    - isPrimary
+    cursorable: true
+    indexType: btree
+  procurementPriority:
+    properties:
+    - procurementPriority
+    cursorable: true
+    indexType: btree
+  validFromDate:
+    properties:
+    - validFromDate
+    cursorable: true
+    indexType: btree
+usedFor: node

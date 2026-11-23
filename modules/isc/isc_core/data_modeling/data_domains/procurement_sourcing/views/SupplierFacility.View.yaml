@@ -1,0 +1,216 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: SupplierFacility
+name: Supplier Facility
+description: A physical operating location, manufacturing plant, warehouse, distribution centre, office, of a supplier.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  siteCode:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: siteCode
+    name: Site Code
+    description: Unique short code for this supplier facility in the source system.
+  siteType:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: siteType
+    name: Site Type
+    description: Classification of the facility for example Manufacturing, Warehouse, DistributionCentre, Office.
+  supplier:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: supplier
+    name: Supplier
+    description: Direct relation to the parent Supplier master record.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      version: '{{viewVersion}}'
+      type: view
+  geoLocation:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: geoLocation
+    name: Geo Location
+    description: Direct relation to the GeoLocations node representing this facilitys position in the geographic hierarchy.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  locationCity:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: locationCity
+    name: Location City
+    description: City where this supplier facility is located.
+  physicalAddress:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: physicalAddress
+    name: Physical Address
+    description: Full street address of this supplier facility.
+  latitude:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: latitude
+    name: Latitude
+    description: WGS84 latitude of this supplier facility.
+  longitude:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: longitude
+    name: Longitude
+    description: WGS84 longitude of this supplier facility.
+  contactName:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: contactName
+    name: Contact Name
+    description: Primary contact name at this facility for procurement and expediting.
+  contactEmail:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: contactEmail
+    name: Contact Email
+    description: Primary contact email at this facility. Used for automated supplier confirmation requests.
+  contactPhone:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: contactPhone
+    name: Contact Phone
+    description: Primary contact phone number at this facility.
+  taxId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: taxId
+    name: Tax ID
+    description: VAT registration number or equivalent tax identifier for this facility.
+  paymentTerms:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: paymentTerms
+    name: Payment Terms
+    description: Default payment terms for this facility for example NET30, NET60.
+  incoterms:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: incoterms
+    name: Incoterms
+    description: Default delivery terms for this facility for example EXW, FOB, DAP.
+  orderCurrency:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: orderCurrency
+    name: Order Currency
+    description: Default currency for purchase orders to this facility ISO 4217.
+  isHeadquarters:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: isHeadquarters
+    name: Is Headquarters
+    description: Whether this facility is the suppliers primary or headquarters location.
+  isActive:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      type: container
+    containerPropertyIdentifier: isActive
+    name: Is Active
+    description: Whether this facility is currently active for procurement.

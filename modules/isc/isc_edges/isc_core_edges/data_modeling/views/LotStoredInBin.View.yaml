@@ -1,0 +1,134 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+externalId: LotStoredInBin
+name: Lot Stored In Bin
+description: Edge linking a material lot to a storage bin with on-hand quantity at that location.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+  description:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+  sourceId:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+  sourceContext:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+  sourceCreatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+  sourceCreatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+  relationType:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: relationType
+    name: Relation Type
+    description: Semantic role of the balance link.
+  relationStatus:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: relationStatus
+    name: Relation Status
+    description: Lifecycle status of the balance link.
+  validFrom:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: validFrom
+    name: Valid From
+    description: Business start date when this balance becomes effective.
+  validTo:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: validTo
+    name: Valid To
+    description: Business end date when this balance ceases. Null means open-ended.
+  sourceSystem:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: sourceSystem
+    name: Source System
+    description: Origin system for the balance fact.
+  linkLastUpdatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: linkLastUpdatedTime
+    name: Link Last Updated Time
+    description: Last ingest or transform write for this balance edge.
+  qtyOnHand:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: qtyOnHand
+    name: Quantity On Hand
+    description: Unrestricted quantity of this lot in this bin.
+  qtyBlocked:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: qtyBlocked
+    name: Quantity Blocked
+    description: Blocked quantity of this lot in this bin.
+  lastUpdated:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      type: container
+    containerPropertyIdentifier: lastUpdated
+    name: Last Updated
+    description: Timestamp of the last balance update for this lot by bin placement.

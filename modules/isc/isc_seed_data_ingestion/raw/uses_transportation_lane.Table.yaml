@@ -1,0 +1,2 @@
+dbName: {{ btpSeedDbName }}
+tableName: uses_transportation_lane

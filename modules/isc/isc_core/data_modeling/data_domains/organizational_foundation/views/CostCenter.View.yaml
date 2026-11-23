@@ -1,0 +1,93 @@
+space: {{ isc_TypedModelSchemaSpace }}
+externalId: CostCenter
+name: Cost center
+description: Cost center node in the organisational hierarchy.
+implements:
+- space: {{ isc_OrganizationalFoundationSchemaSpace }}
+  externalId: BusinessUnits
+  version: '{{viewVersion}}'
+  type: view
+version: '{{viewVersion}}'
+filter:
+  and:
+  - hasData:
+    - type: container
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+  - equals:
+      property:
+      - {{ isc_OrganizationalFoundationSchemaSpace }}
+      - BusinessUnits
+      - declaredType
+      value:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: CostCenter
+properties:
+  declaredType:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: declaredType
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      version: '{{viewVersion}}'
+      type: view
+    name: Declared Type
+    description: Concrete view type for this instance.
+  businessUnit:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: parent
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: BusinessUnit
+      version: '{{viewVersion}}'
+      type: view
+    name: Business Unit
+    description: Parent business unit in the organisational hierarchy. Nordic dogfood
+      profile is Company→BusinessUnit→CostCenter; customers with other rollups define
+      a different sole typed parent on CostCenter.
+  costCenterCode:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: costCenter
+    name: Cost Center Code
+    description: Cost center code from the source ERP system.
+  children:
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: BusinessUnits
+        version: '{{viewVersion}}'
+        type: view
+      identifier: parent
+    name: Children
+    description: Business hierarchy nodes with this node as their parent.
+    connectionType: multi_reverse_direct_relation
+  functionalAssets:
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_AssetMaintenanceSchemaSpace }}
+        externalId: FunctionalAsset
+        version: '{{viewVersion}}'
+        type: view
+      identifier: belongtoCostCenter
+    name: Functional Assets
+    description: Functional assets linked to this cost center through belongtoCostCenter.
+    connectionType: multi_reverse_direct_relation

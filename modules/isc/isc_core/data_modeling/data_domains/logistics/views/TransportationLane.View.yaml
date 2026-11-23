@@ -1,0 +1,333 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: TransportationLane
+name: Transportation Lane
+description: Defines a planned, repeatable transportation lane between company sites, FunctionalAsset, and optional supplier geographic endpoints, GeoLocations.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  laneId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: laneId
+    name: Lane ID
+    description: Unique identifier for the transportation lane.
+  modeOfTransport:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: modeOfTransport
+    name: Mode of Transport
+    description: Primary transport mode for example Road, Sea, Air, Rail, Multimodal.
+  laneType:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: laneType
+    name: Lane Type
+    description: Lane classification such as inbound toward company sites, outbound from company sites, interSite between company sites, or other values per integration contract.
+  originSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: originSite
+    name: Origin Site
+    description: Direct relation to the FunctionalAsset for the company origin storage or functional location.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  destinationSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: destinationSite
+    name: Destination Site
+    description: Direct relation to the FunctionalAsset for the company destination storage or functional location.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  originWarehouse:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: originWarehouse
+    name: Origin Warehouse
+    description: Direct relation to the Warehouse for the ship-from storage location, WMS warehouse hierarchy.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Warehouse
+      version: '{{viewVersion}}'
+      type: view
+  destinationWarehouse:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: destinationWarehouse
+    name: Destination Warehouse
+    description: Direct relation to the Warehouse for the ship-to storage location, WMS warehouse hierarchy.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Warehouse
+      version: '{{viewVersion}}'
+      type: view
+  originSupplierSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: originSupplierSite
+    name: Origin Supplier Site
+    description: Direct relation to a GeoLocations for the physical or supplier-side origin when it differs from the company origin site.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  destinationSupplierSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: destinationSupplierSite
+    name: Destination Supplier Site
+    description: Direct relation to a GeoLocations for the physical or supplier-side destination when it differs from the company destination site.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  leadTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: leadTime
+    name: Lead Time
+    description: Planned transit duration for goods to travel from origin to destination.
+  leadTimeUnit:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: leadTimeUnit
+    name: Lead Time Unit
+    description: Unit for transit time for example Days, Hours.
+  laneStatus:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: laneStatus
+    name: Lane Status
+    description: Operational status of the lane for example Active, Inactive, Suspended.
+  isPrimary:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: isPrimary
+    name: Is Primary Lane
+    description: Indicates if this is the preferred primary lane. False indicates a backup and alternate route.
+  validFromDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: validFromDate
+    name: Valid From Date
+    description: Date from which this lane configuration is effective.
+  validToDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: validToDate
+    name: Valid To Date
+    description: Date after which this lane configuration expires or is superseded.
+  goodsReceiptProcessingTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: goodsReceiptProcessingTime
+    name: Goods Receipt Processing Time
+    description: The number of days required to process goods upon receipt at the destination location.
+  procurementPriority:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: procurementPriority
+    name: Procurement Priority
+    description: The priority ranking for this lane when multiple sourcing options are available during planning.
+  stockTransferType:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: stockTransferType
+    name: Stock Transfer Type
+    description: The purchasing or stock transfer type associated with this transportation lane.
+  avgActualTransitDays06m:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: avgActualTransitDays06m
+    name: Avg Actual Transit Days (6m)
+    description: Rolling 6-month average of actual transit days across all shipments on this lane.
+  transitLeadTimeVariance:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: transitLeadTimeVariance
+    name: Transit Lead Time Variance
+    description: Difference between the planned lane lead time and the rolling 6-month average of actual transit days.
+  leadTimeReviewFlag:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: leadTimeReviewFlag
+    name: Lead Time Review Flag
+    description: Set to true when the transit lead time variance exceeds the acceptable threshold with sufficient shipment volume.
+  originType:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: originType
+    name: Origin Type
+    description: Which origin endpoint field is populated for this lane for example Warehouse, SupplierFacility, Site.
+  destinationType:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: destinationType
+    name: Destination Type
+    description: Which destination endpoint field is populated for this lane for example Warehouse, Site.
+  originSupplierFacility:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      type: container
+    containerPropertyIdentifier: originSupplierFacility
+    name: Origin Supplier Facility
+    description: Direct relation to the SupplierFacility for the physical supplier site this inbound lane originates from.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      version: '{{viewVersion}}'
+      type: view
+  transportsMaterial:
+    connectionType: multi_edge_connection
+    direction: outwards
+    name: transportsMaterial
+    description: Materials this transportation lane can carry.
+    type:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane.transportsMaterial
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      version: '{{viewVersion}}'
+      type: view
+  usedByShipments:
+    connectionType: multi_edge_connection
+    direction: inwards
+    name: usedByShipments
+    description: Shipments that use this transportation lane.
+    type:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment.usesTransportationLane
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      version: '{{viewVersion}}'
+      type: view

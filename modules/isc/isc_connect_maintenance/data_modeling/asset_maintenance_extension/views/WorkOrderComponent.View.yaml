@@ -1,0 +1,392 @@
+space: {{ isc_AssetMaintenanceSchemaSpace }}
+externalId: WorkOrderComponent
+name: Work Order Component
+description: Material reservation and goods movement detail for every component line required by a work order.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  workOrder:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: workOrder
+    name: Work Order
+    description: Direct relation to the parent WorkOrder this component belongs to.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      version: '{{viewVersion}}'
+      type: view
+  material:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: material
+    name: Material
+    description: Direct relation to the MaterialMaster node for the component material.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  materialNumber:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: materialNumber
+    name: Material Number
+    description: Unique identifier for the component material in the source ERP system.
+  storageLocation:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: storageLocation
+    name: Storage Location
+    description: Direct relation to the FunctionalAsset node representing the storage location where this component material is stored.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  supplyingPlant:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: supplyingPlant
+    name: Supplying Plant
+    description: Direct relation to the FunctionalAsset node representing the plant supplying this component.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  reservationRequirementNumber:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: reservationRequirementNumber
+    name: Reservation Requirement Number
+    description: Header-level reservation number grouping all materials required for one work order.
+  reservationItemNumber:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: reservationItemNumber
+    name: Reservation Item Number
+    description: Item number within the reservation.
+  inventoryLot:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: inventoryLot
+    name: Inventory Lot
+    description: Direct relation to the MaterialInventory node from which stock is reserved to fulfil this component requirement.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      version: '{{viewVersion}}'
+      type: view
+  refReservedInventoryLots:
+    connectionType: multi_edge_connection
+    direction: inwards
+    name: reservedByInventory
+    description: Reservation edges arriving from aggregate material inventory committed for this work order component.
+    type:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory.reservedForWorkOrderComponent
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      version: '{{viewVersion}}'
+      type: view
+  deliveryItem:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: deliveryItem
+    name: Delivery Item
+    description: PO line item reference for this component.
+  PurchaseOrderItem:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: PurchaseOrderItem
+    name: Purchase Order Line Item
+    description: Direct relation to the PurchaseOrderLineItem node fulfilling this component requirement.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderLineItem
+      version: '{{viewVersion}}'
+      type: view
+  activityNumber:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: activityNumber
+    name: Activity Number
+    description: Number identifying the specific activity or operation within the work order to which this component is assigned.
+  componentRequirementDate:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: componentRequirementDate
+    name: Component Requirement Date
+    description: Date when this component is required for the work order activity.
+  requirementQuantity:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: requirementQuantity
+    name: Requirement Quantity
+    description: Quantity of material required for this reservation line.
+  previousRequirementQuantity:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: previousRequirementQuantity
+    name: Previous Requirement Quantity
+    description: Prior requirementQuantity before the last burst or scope update.
+  quantityWithdrawn:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: quantityWithdrawn
+    name: Quantity Withdrawn
+    description: Quantity of material already physically withdrawn from stock against this reservation.
+  componentQuantity:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: componentQuantity
+    name: Component Quantity
+    description: Planned component quantity as specified in the work order component line.
+  baseUnitOfMeasure:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: baseUnitOfMeasure
+    name: Base Unit of Measure
+    description: Standard base unit of measure for the component material for example EA, KG, M.
+  requirementType:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: requirementType
+    name: Requirement Type
+    description: Type of requirement this component line is associated with, production order or maintenance order.
+  recordType:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: recordType
+    name: Record Type
+    description: Indicates the origin of the component record. Manual indicates unplanned consumption.
+  specialStockIndicator:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: specialStockIndicator
+    name: Special Stock Indicator
+    description: Primary indicator identifying the stock type of the inventory lot.
+  isGoodsMovementAllowed:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: isGoodsMovementAllowed
+    name: Is Goods Movement Allowed
+    description: Flag indicating whether physical goods movement posting is permitted for this reservation line.
+  isFinalIssueForReservation:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: isFinalIssueForReservation
+    name: Is Final Issue for Reservation
+    description: Indicates that no further withdrawals are expected - reservation line is considered closed.
+  isReturnItem:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: isReturnItem
+    name: Is Return Item
+    description: Flag indicating that this component line represents a material return rather than an issue.
+  isItemDeleted:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: isItemDeleted
+    name: Is Item Deleted
+    description: Flag indicating whether this component line has been marked for deletion in the source ERP system.
+  movementType:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: movementType
+    name: Movement Type
+    description: movement type code describing the nature and direction of the inventory change for example 261 for Goods Issue to Order, 262 for Reversal.
+  postingDate:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: postingDate
+    name: Posting Date
+    description: Date the goods movement transaction was entered and recorded in the source ERP system.
+  documentDateInDocument:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: documentDateInDocument
+    name: Document Date
+    description: Date written on the physical source document for the recorded goods movement.
+  materialDocumentNumber:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: materialDocumentNumber
+    name: Material Document Number
+    description: Primary identifier for the goods movement transaction in the source ERP system inventory management.
+  materialDocumentYear:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: materialDocumentYear
+    name: Material Document Year
+    description: Fiscal year of the material document. Combined with materialDocumentNumber forms the unique key.
+  itemInMaterialDocument:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: itemInMaterialDocument
+    name: Item in Material Document
+    description: Item number within the material document.
+  purchasingDocumentNumber:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: purchasingDocumentNumber
+    name: Purchasing Document Number
+    description: Purchase Order number associated with this goods movement when the component is received from an external vendor.
+  itemNumberOfPurchasingDocument:
+    container:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrderComponent
+      type: container
+    containerPropertyIdentifier: itemNumberOfPurchasingDocument
+    name: Item Number of Purchasing Document
+    description: Specific line item within the Purchase Order fulfilled by this goods movement.
+  materialReservationsFromLots:
+    connectionType: multi_edge_connection
+    direction: inwards
+    name: materialReservationsFromLots
+    description: Inventory reserved against this demand line.
+    type:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory.reservedForWorkOrderComponent
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialInventory
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialReservation
+      version: '{{viewVersion}}'
+      type: view

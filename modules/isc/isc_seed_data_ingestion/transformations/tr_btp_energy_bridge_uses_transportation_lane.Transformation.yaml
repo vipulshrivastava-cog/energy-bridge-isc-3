@@ -1,0 +1,11 @@
+externalId: tr_btp_energy_bridge_uses_transportation_lane
+name: BTP Energy Bridge - Uses Transportation Lane
+destination:
+  type: edges
+  view:
+    space: {{ isc_ShipmentDeliverySchemaSpace }}
+    externalId: UsesTransportationLane
+    version: '{{dmVersion}}'
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

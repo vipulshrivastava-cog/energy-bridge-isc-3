@@ -1,0 +1,307 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: ShipmentExecutesTransfer
+name: Shipment Executes Transfer
+description: Queryable edge view linking a shipment to a scheduled stock transfer.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  relationType:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: relationType
+    name: Relation Type
+    description: Semantic role of the link, reservation, assignment, pegging, execution, impact.
+  relationStatus:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: relationStatus
+    name: Relation Status
+    description: Lifecycle status of the link, planned, active, fulfilled, cancelled.
+  validFrom:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: validFrom
+    name: Valid From
+    description: Business start date when this link becomes effective.
+  validTo:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: validTo
+    name: Valid To
+    description: Business end date when this link ceases to be effective. Null means open-ended.
+  quantity:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: quantity
+    name: Quantity
+    description: Quantity carried on this relationship.
+  quantityUnit:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: quantityUnit
+    name: Quantity Unit
+    description: Unit of measure for quantity.
+  quantityType:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: quantityType
+    name: Quantity Type
+    description: Quantity semantics, planned, committed, actual.
+  uomConversionFactor:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: uomConversionFactor
+    name: UOM Conversion Factor
+    description: Optional conversion factor when quantity unit differs from base UOM.
+  asnNumber:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: asnNumber
+    name: ASN Number
+    description: ASN reference issued by the sender for this execution line.
+  asnQty:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: asnQty
+    name: ASN Quantity
+    description: Quantity notified on the ASN for this execution line.
+  asnQtyUnit:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: asnQtyUnit
+    name: ASN Quantity Unit
+    description: Unit of measure for asnQty.
+  asnDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: asnDate
+    name: ASN Date
+    description: Date the ASN was issued or received.
+  bolNumber:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: bolNumber
+    name: BoL Number
+    description: Bill of lading or carrier consignment note number.
+  bolQty:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: bolQty
+    name: BoL Quantity
+    description: Quantity confirmed on the bill of lading at loading.
+  bolQtyUnit:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: bolQtyUnit
+    name: BoL Quantity Unit
+    description: Unit of measure for bolQty.
+  bolDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: bolDate
+    name: BoL Date
+    description: Date the bill of lading was issued.
+  actualQty:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: actualQty
+    name: Actual Quantity
+    description: Quantity confirmed at goods receipt or delivery after counting.
+  actualQtyUnit:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: actualQtyUnit
+    name: Actual Quantity Unit
+    description: Unit of measure for actualQty.
+  receivedDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: receivedDate
+    name: Received Date
+    description: Date goods receipt was posted in the source system.
+  actualDepartureDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: actualDepartureDate
+    name: Actual Departure Date
+    description: Timestamp when goods physically left the origin.
+  actualPickupDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: actualPickupDate
+    name: Actual Pickup Date
+    description: Actual pickup event timestamp at origin.
+  actualArrivalDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: actualArrivalDate
+    name: Actual Arrival Date
+    description: Timestamp when goods physically arrived at the destination dock.
+  goodsReceiptDocument:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: goodsReceiptDocument
+    name: Goods Receipt Document
+    description: Source-system material document number for goods receipt.
+  discrepancyQty:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: discrepancyQty
+    name: Discrepancy Quantity
+    description: Stored delta between scheduled quantity and actual received quantity.
+  discrepancyReason:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: discrepancyReason
+    name: Discrepancy Reason
+    description: "Discrepancy reason code. Allowed values: Short, Over, Damaged, WrongItem, Rejected, None."
+  damageFlag:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: damageFlag
+    name: Damage Flag
+    description: True when any damage is reported at receipt.
+  qualityHoldFlag:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: qualityHoldFlag
+    name: Quality Hold Flag
+    description: True when material is placed on quality hold.
+  executionStatus:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: executionStatus
+    name: Execution Status
+    description: Lifecycle status of this shipment execution line.
+  material:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesTransfer
+      type: container
+    containerPropertyIdentifier: material
+    name: Material
+    description: Direct relation to the MaterialMaster for the material being moved on this execution line.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view

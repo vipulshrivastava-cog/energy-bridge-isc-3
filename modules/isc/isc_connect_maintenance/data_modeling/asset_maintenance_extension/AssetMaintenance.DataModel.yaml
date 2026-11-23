@@ -1,0 +1,35 @@
+space: {{ isc_AssetMaintenanceSchemaSpace }}
+externalId: AssetMaintenance
+name: AssetMaintenance
+description: Asset maintenance domain — functional assets and work orders (includes CDM imports used by CogniteAsset implements).
+version: '{{dmVersion}}'
+views:
+- space: {{ isc_AssetMaintenanceSchemaSpace }}
+  externalId: FunctionalAsset
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_AssetMaintenanceSchemaSpace }}
+  externalId: WorkOrder
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_AssetMaintenanceSchemaSpace }}
+  externalId: WorkOrderComponent
+  version: '{{viewVersion}}'
+  type: view
+# CDM imports (FunctionalAsset implements CogniteAsset; shared Cognite types for agents/consumers)
+- space: cdf_cdm
+  externalId: CogniteAsset
+  version: v1
+  type: view
+- space: cdf_cdm
+  externalId: CogniteFile
+  version: v1
+  type: view
+- space: cdf_cdm
+  externalId: CogniteActivity
+  version: v1
+  type: view
+- space: cdf_cdm
+  externalId: CogniteUnit
+  version: v1
+  type: view

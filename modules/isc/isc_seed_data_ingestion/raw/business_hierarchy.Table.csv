@@ -1,0 +1,6 @@
+key,name,description,hierarchyCode,hierarchyType,parent_externalId,companyCode,currency,sourceId,sourceContext,sourceCreatedTime,sourceUpdatedTime,sourceCreatedUser,sourceUpdatedUser,costCenter
+bh-energy_bridge,Energy Bridge LNG,Energy Bridge LNG company root,ENERGY_BRIDGE,Company,,1000,USD,ENERGY_BRIDGE,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,
+bu-ops,Operations,LNG Operations BU,OPS,BusinessUnit,bh-energy_bridge,1000,,OPS,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,
+cc-alpha,Alpha Platform CC,Cost center Ichthys Alpha,CC-1100,CostCenter,bu-ops,,USD,CC-1100,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,1100
+cc-bravo,Bravo Platform CC,Cost center Ichthys Bravo,CC-1200,CostCenter,bu-ops,,USD,CC-1200,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,1200
+cc-darwin,Darwin Base CC,Cost center Darwin onshore,CC-1300,CostCenter,bu-ops,,USD,CC-1300,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,1300

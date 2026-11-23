@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_functional_asset
+name: BTP Energy Bridge - Functional Asset
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_AssetMaintenanceSchemaSpace }}
+    externalId: AssetMaintenance
+    version: '{{dmVersion}}'
+    destinationType: FunctionalAsset
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

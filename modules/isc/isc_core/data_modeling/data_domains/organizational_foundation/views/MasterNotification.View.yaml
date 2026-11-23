@@ -1,0 +1,176 @@
+space: {{ isc_OrganizationalFoundationSchemaSpace }}
+externalId: MasterNotification
+name: Master Notification
+description: Event log for critical supply chain state changes such as delays, shortages, and schedule exceptions.
+version: '{{viewVersion}}'
+properties:
+  sourceId:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this notification.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the notification was created in the source system.
+  notificationId:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: notificationId
+    name: Notification ID
+    description: Unique identifier for this notification event.
+  eventType:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: eventType
+    name: Event Type
+    description: Classification of the state change event.
+  eventTimestamp:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: eventTimestamp
+    name: Event Timestamp
+    description: Date and time when the state change event occurred.
+  eventPriority:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: eventPriority
+    name: Event Priority
+    description: Urgency level, Low, Medium, High, Critical.
+  notificationCategory:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: notificationCategory
+    name: Notification Category
+    description: Domain category for routing - Procurement, Logistics, Maintenance, Inventory, Production, or Quality.
+  changeDescription:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: changeDescription
+    name: Change Description
+    description: Primary message text in the Command Centre feed.
+  previousState:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: previousState
+    name: Previous State
+    description: State of the source object before the triggering change.
+  currentState:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: currentState
+    name: Current State
+    description: State of the source object after the triggering change.
+  resolutionStatus:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: resolutionStatus
+    name: Resolution Status
+    description: Lifecycle state - Open, Acknowledged, In Progress, Resolved, or Suppressed.
+  resolutionDate:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: resolutionDate
+    name: Resolution Date
+    description: Date on which this notification was marked as resolved.
+  resolutionNote:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: resolutionNote
+    name: Resolution Note
+    description: Action taken to resolve this notification.
+  assignedTo:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: assignedTo
+    name: Assigned To
+    description: User ID assigned to action this notification.
+  acknowledgedBy:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: acknowledgedBy
+    name: Acknowledged By
+    description: User ID who acknowledged this notification.
+  acknowledgedDate:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: acknowledgedDate
+    name: Acknowledged Date
+    description: Date and time this notification was acknowledged.
+  estimatedImpactValue:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: estimatedImpactValue
+    name: Estimated Impact Value
+    description: Optional financial estimate of supply chain impact.
+  impactCurrency:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification
+      type: container
+    containerPropertyIdentifier: impactCurrency
+    name: Impact Currency
+    description: Currency for estimatedImpactValue.
+  linksEntity:
+    connectionType: multi_edge_connection
+    direction: outwards
+    name: linksEntity
+    description: Linked entities for example work orders.
+    type:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: MasterNotification.linksEntity
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: NotificationLinksEntity
+      version: '{{viewVersion}}'
+      type: view

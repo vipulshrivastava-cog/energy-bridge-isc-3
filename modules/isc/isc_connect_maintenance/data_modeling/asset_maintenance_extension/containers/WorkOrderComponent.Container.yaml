@@ -1,0 +1,438 @@
+space: {{ isc_AssetMaintenanceSchemaSpace }}
+externalId: WorkOrderComponent
+name: WorkOrderComponent
+description: Captures the material reservation and goods movement detail for every component line required by a work order. Bridges maintenance and production planning with physical inventory execution - tracking what was reserved, what was issued, and the goods movement transactions behind it.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  workOrder:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Work Order
+    description: Direct relation to the parent WorkOrder this component belongs to.
+  material:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material
+    description: Direct relation to the MaterialMaster node for the component material.
+  materialNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material Number
+    description: Unique identifier for the component material in the source ERP system. Denormalised text key for fast lookup alongside the direct relation.
+  storageLocation:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Storage Location
+    description: Direct relation to the FunctionalAsset node representing the physical storage location within the plant where this component material is stored.
+  supplyingPlant:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplying Plant
+    description: Direct relation to the FunctionalAsset node representing the plant supplying this component. May differ from the planned supply lane source.
+  reservationRequirementNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Reservation Requirement Number
+    description: Header-level reservation number grouping all materials required for one work order. One ID covers all component lines under the same work order.
+  reservationItemNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Reservation Item Number
+    description: Item number within the reservation. The same material on different steps or activities in a work order can carry different reservation item numbers.
+  inventoryLot:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Inventory Lot
+    description: Direct relation to the MaterialInventory node from which stock is reserved to fulfil this component requirement. Supports reservation-to-lot traceability.
+  deliveryItem:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Delivery Item
+    description: PO line item reference for this component. For non-stock items - direct link to the PO line. For stock items - linked via material reservation.
+  PurchaseOrderItem:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Purchase Order Line Item
+    description: Direct relation to the PurchaseOrderLineItem node fulfilling this component requirement. Complements the deliveryItem text reference with a typed graph traversal.
+  activityNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Activity Number
+    description: Number identifying the specific activity or operation within the work order to which this component is assigned.
+  componentRequirementDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Component Requirement Date
+    description: Date when this component is required for the work order activity.
+  requirementQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Requirement Quantity
+    description: Quantity of material required for this reservation line.
+  previousRequirementQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Previous Requirement Quantity
+    description: Prior requirementQuantity before the last burst or scope update.
+  quantityWithdrawn:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Quantity Withdrawn
+    description: Quantity of material already physically withdrawn from stock against this reservation.
+  componentQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Component Quantity
+    description: Planned component quantity as specified in the work order component line.
+  baseUnitOfMeasure:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Base Unit of Measure
+    description: Standard base unit of measure for the component material for example EA, KG, M.
+  requirementType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Requirement Type
+    description: Type of requirement this component line is associated with. Scope limited to production orders or maintenance orders only - planned orders belong in a future OperationsPlan container.
+  recordType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Record Type
+    description: Indicates the origin of the component record. A value of Manual indicates the material was consumed but was not part of the original work order plan - used to detect unplanned consumption.
+  specialStockIndicator:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Special Stock Indicator
+    description: Primary indicator identifying the stock type of the inventory lot for example common stock, project stock, vendor consignment, customer consignment. The work order can only draw from the stock type matching this indicator.
+  isGoodsMovementAllowed:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Is Goods Movement Allowed
+    description: Flag indicating whether physical goods movement posting is permitted for this reservation line. Must be checked as part of work order readiness assessment.
+  isFinalIssueForReservation:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Is Final Issue for Reservation
+    description: Indicates that no further withdrawals are expected for this material on this work order. Once set, the reservation line is considered closed.
+  isReturnItem:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Is Return Item
+    description: Flag indicating that this component line represents a material return rather than an issue.
+  isItemDeleted:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Is Item Deleted
+    description: Flag indicating whether this component line has been marked for deletion in the source ERP system.
+  movementType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Movement Type
+    description: movement type code describing the nature and direction of the inventory change for example 261 for Goods Issue to Order, 262 for Reversal, 101 for Goods Receipt, scrap. Key field for understanding what happened to stock.
+  postingDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Posting Date
+    description: Date the goods movement transaction was entered and recorded in financial and inventory records.
+  documentDateInDocument:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Document Date
+    description: Date written on the physical source document for the recorded goods movement.
+  materialDocumentNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material Document Number
+    description: Primary identifier for the goods movement transaction in inventory management.
+  materialDocumentYear:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material Document Year
+    description: Fiscal year of the material document. Combined with materialDocumentNumber forms the unique key for the goods movement record.
+  itemInMaterialDocument:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Item in Material Document
+    description: Item number within the material document distinguishing multiple materials or movements in the same document.
+  purchasingDocumentNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Purchasing Document Number
+    description: Purchase Order number associated with this goods movement when the component is received from an external vendor.
+  itemNumberOfPurchasingDocument:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Item Number of Purchasing Document
+    description: Specific line item within the Purchase Order fulfilled by this goods movement.
+indexes:
+  workOrder:
+    properties:
+    - workOrder
+    cursorable: false
+    indexType: btree
+  material:
+    properties:
+    - material
+    cursorable: false
+    indexType: btree
+  storageLocation:
+    properties:
+    - storageLocation
+    cursorable: false
+    indexType: btree
+  supplyingPlant:
+    properties:
+    - supplyingPlant
+    cursorable: false
+    indexType: btree
+  inventoryLot:
+    properties:
+    - inventoryLot
+    cursorable: false
+    indexType: btree
+  PurchaseOrderItem:
+    properties:
+    - PurchaseOrderItem
+    cursorable: false
+    indexType: btree
+  activityNumber:
+    properties:
+    - activityNumber
+    cursorable: true
+    indexType: btree
+  componentRequirementDate:
+    properties:
+    - componentRequirementDate
+    cursorable: true
+    indexType: btree
+  postingDate:
+    properties:
+    - postingDate
+    cursorable: true
+    indexType: btree
+  materialDocumentNumber:
+    properties:
+    - materialDocumentNumber
+    cursorable: true
+    indexType: btree
+usedFor: node

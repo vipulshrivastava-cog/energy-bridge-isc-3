@@ -1,0 +1,345 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: SupplierItemRecord
+name: SupplierItemRecord
+description: Source-of-truth for every approved supplier-material-site sourcing relationship. Stores pricing, incoterms, order quantities, delivery tolerances, and supplier-reported availability.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  pricingRecordId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Pricing Record ID
+    description: Unique identifier for this procurement source record in the source system. Primary identifier - not nullable.
+  supplierId:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier
+    description: Direct relation to the Supplier node for the vendor supplying this material.
+  materialId:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material being sourced.
+  siteId:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Site (destination)
+    description: Direct relation to the FunctionalAsset node representing the destination plant or site where this sourcing arrangement is valid.
+  procurementType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Procurement Type
+    description: Classification of the procurement arrangement - Standard for regular purchase order, Subcontracting for vendor provides labour and materials, Consignment for vendor-owned stock held at your site, Pipeline for continuous supply via pipeline.
+  supplierMaterialNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier Material Number
+    description: The suppliers own catalogue or part number for this material. Used to cross-reference internal material codes with the suppliers system for accurate order confirmations and invoice matching.
+  unitCost:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Unit Cost
+    description: Net price of the material per one unit of the pricing unit. This is the agreed cost per unit and becomes the default price on purchase orders created against this sourcing record.
+  priceUnit:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Price Unit Quantity
+    description: The quantity basis for the unit cost. For example, a priceUnit of 100 means the unitCost is the price per 100 units. Applies when materials are priced in bulk.
+  currency:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Currency
+    description: ISO 4217 currency code for the unitCost and pricing conditions for example NOK, USD, EUR. Drives FX conversion in multi-currency procurement.
+  orderUnit:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Order Unit
+    description: Unit of measure used when creating purchase orders for this supplier-material combination. May differ from the base unit of measure in MaterialMaster.
+  incoterms:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Incoterms
+    description: Standard trade delivery term code defining the point at which risk and cost transfer from supplier to buyer for example EXW, FOB, CIF, DAP. Automatically copied to purchase order items created from this record.
+  incotermsLocation:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Incoterms Location
+    description: Named place or port associated with the incoterms. For example, FOB Rotterdam - the Rotterdam part. Specifies the exact point of risk and cost transfer.
+  minimumOrderQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Minimum Order Quantity
+    description: Minimum quantity that must be ordered in a single purchase order for this supplier-material combination. Orders below this quantity are blocked or warned during PO creation.
+  standardOrderQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Standard Order Quantity
+    description: Default recommended order quantity for this supplier-material combination. Proposed automatically when creating a purchase order - buyer can override.
+  overDeliveryTolerance:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Over-delivery Tolerance (%)
+    description: Maximum percentage by which the supplier may deliver more than the ordered quantity without triggering a rejection or excess stock alert for example 5 for 5 percent over-delivery allowed.
+  underDeliveryTolerance:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Under-delivery Tolerance (%)
+    description: Maximum percentage by which the supplier may deliver less than the ordered quantity and still have the delivery considered complete for example 3 for 3 percent under-delivery accepted.
+  validFromDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Valid From Date
+    description: Date from which this sourcing record and its pricing conditions become effective. Together with validToDate defines the validity window for this supplier-material-site agreement.
+  validToDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Valid To Date
+    description: Date after which this sourcing record and its pricing conditions expire. Triggers renewal alerts when approaching expiry. Critical for supply continuity risk management.
+  createdOn:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Created On
+    description: Date on which this procurement source record was initially created in the source system.
+  contractAvailabilityFlag:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Contract Availability Flag
+    description: Indicates whether this sourcing record is backed by a formal supplier contract. When true, purchase orders can be created directly against the linked SupplierContract.
+  supplierAvailableInventory:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier Available Inventory
+    description: Quantity of this material currently available at the suppliers facility as reported by the supplier. Represents supplier-side ATP - distinct from your own on-hand inventory in MaterialInventory.
+  supplierAvailableInventoryUOM:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier Available Inventory UOM
+    description: Unit of measure for the supplierAvailableInventory quantity for example EA, KG, M. Should match the orderUnit for this sourcing record.
+  supplierContract:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier Contract
+    description: Direct relation to the SupplierContract node governing the long-term terms and conditions under which this sourcing record operates.
+indexes:
+  pricingRecordId:
+    properties:
+    - pricingRecordId
+    cursorable: true
+    indexType: btree
+  supplierId:
+    properties:
+    - supplierId
+    cursorable: false
+    indexType: btree
+  materialId:
+    properties:
+    - materialId
+    cursorable: false
+    indexType: btree
+  siteId:
+    properties:
+    - siteId
+    cursorable: false
+    indexType: btree
+  procurementType:
+    properties:
+    - procurementType
+    cursorable: true
+    indexType: btree
+  supplierMaterialNumber:
+    properties:
+    - supplierMaterialNumber
+    cursorable: true
+    indexType: btree
+  validFromDate:
+    properties:
+    - validFromDate
+    cursorable: true
+    indexType: btree
+  validToDate:
+    properties:
+    - validToDate
+    cursorable: true
+    indexType: btree
+  supplierContract:
+    properties:
+    - supplierContract
+    cursorable: false
+    indexType: btree
+usedFor: node

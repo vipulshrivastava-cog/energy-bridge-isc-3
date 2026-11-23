@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_declared_types
+name: BTP Energy Bridge - Declared Types
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_OrganizationalFoundationSchemaSpace }}
+    externalId: OrganizationalFoundation
+    version: '{{dmVersion}}'
+    destinationType: DeclaredTypes
+  instanceSpace: {{ isc_OrganizationalFoundationSchemaSpace }}
+ignoreNullFields: true
+conflictMode: upsert

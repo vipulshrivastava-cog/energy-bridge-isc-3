@@ -1,0 +1,158 @@
+key,name,description,materialId,materialType,baseUnitOfMeasure,sourceId,sourceContext,sourceCreatedTime,sourceUpdatedTime,sourceCreatedUser,sourceUpdatedUser,isCriticalSpare,criticalityRating,abcIndicator,stdCost,priceControlIndicator
+mat-10235,Spare part 10235,MRO spare material 10235,10235,ERSA,EA,MAT-10235,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,2500.00,S
+mat-10280,Spare part 10280,MRO spare material 10280,10280,ERSA,EA,MAT-10280,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-10813,Spare part 10813,MRO spare material 10813,10813,ERSA,EA,MAT-10813,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,2500.00,S
+mat-10877,Spare part 10877,MRO spare material 10877,10877,ERSA,EA,MAT-10877,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,2500.00,S
+mat-10950,Spare part 10950,MRO spare material 10950,10950,ERSA,EA,MAT-10950,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-11027,Spare part 11027,MRO spare material 11027,11027,ERSA,EA,MAT-11027,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,2500.00,S
+mat-11212,Spare part 11212,MRO spare material 11212,11212,ERSA,EA,MAT-11212,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-11569,Spare part 11569,MRO spare material 11569,11569,ERSA,EA,MAT-11569,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,2500.00,S
+mat-11734,Spare part 11734,MRO spare material 11734,11734,ERSA,EA,MAT-11734,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-12295,Spare part 12295,MRO spare material 12295,12295,ERSA,EA,MAT-12295,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-12330,Spare part 12330,MRO spare material 12330,12330,ERSA,EA,MAT-12330,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,2500.00,S
+mat-12358,Spare part 12358,MRO spare material 12358,12358,ERSA,EA,MAT-12358,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-12556,Spare part 12556,MRO spare material 12556,12556,ERSA,EA,MAT-12556,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-12991,Pressure transmitter diaphragm seal,Pressure transmitter diaphragm seal,12991,ERSA,EA,MAT-12991,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,True,A,A,3200.00,S
+mat-13159,Spare part 13159,MRO spare material 13159,13159,ERSA,EA,MAT-13159,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-13658,Spare part 13658,MRO spare material 13658,13658,ERSA,EA,MAT-13658,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-13702,Spare part 13702,MRO spare material 13702,13702,ERSA,EA,MAT-13702,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-13759,Spare part 13759,MRO spare material 13759,13759,ERSA,EA,MAT-13759,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-14014,Spare part 14014,MRO spare material 14014,14014,ERSA,EA,MAT-14014,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,1014.00,S
+mat-14060,Spare part 14060,MRO spare material 14060,14060,ERSA,EA,MAT-14060,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-14117,Spare part 14117,MRO spare material 14117,14117,ERSA,EA,MAT-14117,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-14183,Spare part 14183,MRO spare material 14183,14183,ERSA,EA,MAT-14183,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-14220,Spare part 14220,MRO spare material 14220,14220,ERSA,EA,MAT-14220,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-14327,Spare part 14327,MRO spare material 14327,14327,ERSA,EA,MAT-14327,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-14361,Spare part 14361,MRO spare material 14361,14361,ERSA,EA,MAT-14361,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-14659,Spare part 14659,MRO spare material 14659,14659,ERSA,EA,MAT-14659,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-14807,Spare part 14807,MRO spare material 14807,14807,ERSA,EA,MAT-14807,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-14937,Spare part 14937,MRO spare material 14937,14937,ERSA,EA,MAT-14937,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-15159,Spare part 15159,MRO spare material 15159,15159,ERSA,EA,MAT-15159,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-15259,Spare part 15259,MRO spare material 15259,15259,ERSA,EA,MAT-15259,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-15598,Spare part 15598,MRO spare material 15598,15598,ERSA,EA,MAT-15598,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-15677,Spare part 15677,MRO spare material 15677,15677,ERSA,EA,MAT-15677,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-15786,Gas chromatograph sampling probe assembly,Gas chromatograph sampling probe assembly,15786,ERSA,EA,MAT-15786,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,5800.00,S
+mat-15838,Spare part 15838,MRO spare material 15838,15838,ERSA,EA,MAT-15838,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-16251,Spare part 16251,MRO spare material 16251,16251,ERSA,EA,MAT-16251,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-16261,Spare part 16261,MRO spare material 16261,16261,ERSA,EA,MAT-16261,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-16289,Spare part 16289,MRO spare material 16289,16289,ERSA,EA,MAT-16289,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-16535,Spare part 16535,MRO spare material 16535,16535,ERSA,EA,MAT-16535,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-16539,Spare part 16539,MRO spare material 16539,16539,ERSA,EA,MAT-16539,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-16591,Spare part 16591,MRO spare material 16591,16591,ERSA,EA,MAT-16591,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-16641,Instrument cable M20 x 10m,Instrument cable M20 x 10m,16641,ERSA,EA,MAT-16641,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,420.00,S
+mat-16692,Spare part 16692,MRO spare material 16692,16692,ERSA,EA,MAT-16692,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-16959,Spare part 16959,MRO spare material 16959,16959,ERSA,EA,MAT-16959,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-17278,Spare part 17278,MRO spare material 17278,17278,ERSA,EA,MAT-17278,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-17391,Spare part 17391,MRO spare material 17391,17391,ERSA,EA,MAT-17391,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-17635,Spare part 17635,MRO spare material 17635,17635,ERSA,EA,MAT-17635,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-17683,Spare part 17683,MRO spare material 17683,17683,ERSA,EA,MAT-17683,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,1183.00,S
+mat-17873,Spare part 17873,MRO spare material 17873,17873,ERSA,EA,MAT-17873,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-18623,Spare part 18623,MRO spare material 18623,18623,ERSA,EA,MAT-18623,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-18635,Spare part 18635,MRO spare material 18635,18635,ERSA,EA,MAT-18635,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,1135.00,S
+mat-18792,Spare part 18792,MRO spare material 18792,18792,ERSA,EA,MAT-18792,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-19040,Spare part 19040,MRO spare material 19040,19040,ERSA,EA,MAT-19040,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-19140,Spare part 19140,MRO spare material 19140,19140,ERSA,EA,MAT-19140,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-19560,Spare part 19560,MRO spare material 19560,19560,ERSA,EA,MAT-19560,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-19639,Spare part 19639,MRO spare material 19639,19639,ERSA,EA,MAT-19639,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-19807,Spare part 19807,MRO spare material 19807,19807,ERSA,EA,MAT-19807,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-19870,Spare part 19870,MRO spare material 19870,19870,ERSA,EA,MAT-19870,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-19903,Spare part 19903,MRO spare material 19903,19903,ERSA,EA,MAT-19903,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-19905,BDSV check valve seat insert,BDSV check valve seat insert,19905,ERSA,EA,MAT-19905,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,7200.00,S
+mat-20345,Spare part 20345,MRO spare material 20345,20345,ERSA,EA,MAT-20345,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-20721,Spare part 20721,MRO spare material 20721,20721,ERSA,EA,MAT-20721,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-20827,Spare part 20827,MRO spare material 20827,20827,ERSA,EA,MAT-20827,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-21201,Spare part 21201,MRO spare material 21201,21201,ERSA,EA,MAT-21201,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-21235,Spare part 21235,MRO spare material 21235,21235,ERSA,EA,MAT-21235,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-21704,Spare part 21704,MRO spare material 21704,21704,ERSA,EA,MAT-21704,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-21896,Spare part 21896,MRO spare material 21896,21896,ERSA,EA,MAT-21896,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-21908,Spare part 21908,MRO spare material 21908,21908,ERSA,EA,MAT-21908,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-22437,Spare part 22437,MRO spare material 22437,22437,ERSA,EA,MAT-22437,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-22792,Spare part 22792,MRO spare material 22792,22792,ERSA,EA,MAT-22792,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-23162,Spare part 23162,MRO spare material 23162,23162,ERSA,EA,MAT-23162,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-23227,Spare part 23227,MRO spare material 23227,23227,ERSA,EA,MAT-23227,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-23897,Spare part 23897,MRO spare material 23897,23897,ERSA,EA,MAT-23897,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-24195,Spare part 24195,MRO spare material 24195,24195,ERSA,EA,MAT-24195,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-24293,Spare part 24293,MRO spare material 24293,24293,ERSA,EA,MAT-24293,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-24410,Spare part 24410,MRO spare material 24410,24410,ERSA,EA,MAT-24410,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-24504,Spare part 24504,MRO spare material 24504,24504,ERSA,EA,MAT-24504,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-24724,Spare part 24724,MRO spare material 24724,24724,ERSA,EA,MAT-24724,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-24848,Spare part 24848,MRO spare material 24848,24848,ERSA,EA,MAT-24848,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-25909,Spare part 25909,MRO spare material 25909,25909,ERSA,EA,MAT-25909,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-26225,Spare part 26225,MRO spare material 26225,26225,ERSA,EA,MAT-26225,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-26252,Spare part 26252,MRO spare material 26252,26252,ERSA,EA,MAT-26252,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-26648,Spare part 26648,MRO spare material 26648,26648,ERSA,EA,MAT-26648,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-26653,Spare part 26653,MRO spare material 26653,26653,ERSA,EA,MAT-26653,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-26745,Spare part 26745,MRO spare material 26745,26745,ERSA,EA,MAT-26745,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-26751,Spare part 26751,MRO spare material 26751,26751,ERSA,EA,MAT-26751,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-26808,Spare part 26808,MRO spare material 26808,26808,ERSA,EA,MAT-26808,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-26845,Spare part 26845,MRO spare material 26845,26845,ERSA,EA,MAT-26845,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-26895,Spare part 26895,MRO spare material 26895,26895,ERSA,EA,MAT-26895,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-27214,Spare part 27214,MRO spare material 27214,27214,ERSA,EA,MAT-27214,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-27420,Spare part 27420,MRO spare material 27420,27420,ERSA,EA,MAT-27420,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-27549,Spare part 27549,MRO spare material 27549,27549,ERSA,EA,MAT-27549,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-27684,Spare part 27684,MRO spare material 27684,27684,ERSA,EA,MAT-27684,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,1184.00,S
+mat-27770,Spare part 27770,MRO spare material 27770,27770,ERSA,EA,MAT-27770,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-28227,Spare part 28227,MRO spare material 28227,28227,ERSA,EA,MAT-28227,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-28925,Spare part 28925,MRO spare material 28925,28925,ERSA,EA,MAT-28925,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-29076,Spare part 29076,MRO spare material 29076,29076,ERSA,EA,MAT-29076,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-29188,Spare part 29188,MRO spare material 29188,29188,ERSA,EA,MAT-29188,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-29203,Spare part 29203,MRO spare material 29203,29203,ERSA,EA,MAT-29203,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-29253,Spare part 29253,MRO spare material 29253,29253,ERSA,EA,MAT-29253,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-29716,Spare part 29716,MRO spare material 29716,29716,ERSA,EA,MAT-29716,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-29821,Spare part 29821,MRO spare material 29821,29821,ERSA,EA,MAT-29821,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-29830,Spare part 29830,MRO spare material 29830,29830,ERSA,EA,MAT-29830,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-29847,Spare part 29847,MRO spare material 29847,29847,ERSA,EA,MAT-29847,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-29934,Spare part 29934,MRO spare material 29934,29934,ERSA,EA,MAT-29934,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-29959,Spare part 29959,MRO spare material 29959,29959,ERSA,EA,MAT-29959,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-30132,Spare part 30132,MRO spare material 30132,30132,ERSA,EA,MAT-30132,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-30185,Spare part 30185,MRO spare material 30185,30185,ERSA,EA,MAT-30185,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-30422,Spare part 30422,MRO spare material 30422,30422,ERSA,EA,MAT-30422,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-30522,Spare part 30522,MRO spare material 30522,30522,ERSA,EA,MAT-30522,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-30817,Spare part 30817,MRO spare material 30817,30817,ERSA,EA,MAT-30817,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,1317.00,S
+mat-30975,Spare part 30975,MRO spare material 30975,30975,ERSA,EA,MAT-30975,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-31026,Spare part 31026,MRO spare material 31026,31026,ERSA,EA,MAT-31026,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-31095,Spare part 31095,MRO spare material 31095,31095,ERSA,EA,MAT-31095,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-31484,Spare part 31484,MRO spare material 31484,31484,ERSA,EA,MAT-31484,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-31700,Spare part 31700,MRO spare material 31700,31700,ERSA,EA,MAT-31700,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-31873,Spare part 31873,MRO spare material 31873,31873,ERSA,EA,MAT-31873,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-32018,Spare part 32018,MRO spare material 32018,32018,ERSA,EA,MAT-32018,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-32070,Spare part 32070,MRO spare material 32070,32070,ERSA,EA,MAT-32070,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-32354,Spare part 32354,MRO spare material 32354,32354,ERSA,EA,MAT-32354,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,1354.00,S
+mat-32377,Spare part 32377,MRO spare material 32377,32377,ERSA,EA,MAT-32377,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-32505,Spare part 32505,MRO spare material 32505,32505,ERSA,EA,MAT-32505,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-32856,Spare part 32856,MRO spare material 32856,32856,ERSA,EA,MAT-32856,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-32857,Spare part 32857,MRO spare material 32857,32857,ERSA,EA,MAT-32857,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-33511,PSV trim kit 6in,PSV trim kit 6in,33511,ERSA,EA,MAT-33511,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,True,A,A,4800.00,S
+mat-33872,Spare part 33872,MRO spare material 33872,33872,ERSA,EA,MAT-33872,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-34314,Spare part 34314,MRO spare material 34314,34314,ERSA,EA,MAT-34314,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-34908,Spare part 34908,MRO spare material 34908,34908,ERSA,EA,MAT-34908,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-35039,Spare part 35039,MRO spare material 35039,35039,ERSA,EA,MAT-35039,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-35708,Spare part 35708,MRO spare material 35708,35708,ERSA,EA,MAT-35708,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-35724,Spare part 35724,MRO spare material 35724,35724,ERSA,EA,MAT-35724,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-37055,Spare part 37055,MRO spare material 37055,37055,ERSA,EA,MAT-37055,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-37158,Spare part 37158,MRO spare material 37158,37158,ERSA,EA,MAT-37158,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-37208,Spare part 37208,MRO spare material 37208,37208,ERSA,EA,MAT-37208,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-37273,Spare part 37273,MRO spare material 37273,37273,ERSA,EA,MAT-37273,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-37502,Spare part 37502,MRO spare material 37502,37502,ERSA,EA,MAT-37502,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-37737,ESDV actuator seal kit,ESDV actuator seal kit,37737,ERSA,EA,MAT-37737,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,6500.00,S
+mat-37893,Spare part 37893,MRO spare material 37893,37893,ERSA,EA,MAT-37893,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-38393,Spare part 38393,MRO spare material 38393,38393,ERSA,EA,MAT-38393,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-38466,Spare part 38466,MRO spare material 38466,38466,ERSA,EA,MAT-38466,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-38663,Spare part 38663,MRO spare material 38663,38663,ERSA,EA,MAT-38663,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-38698,Spare part 38698,MRO spare material 38698,38698,ERSA,EA,MAT-38698,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-39153,Spare part 39153,MRO spare material 39153,39153,ERSA,EA,MAT-39153,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,850.00,S
+mat-39398,Pressure gauge isolation valve kit,Pressure gauge isolation valve kit,39398,ERSA,EA,MAT-39398,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,4200.00,S
+mat-88001,Mechanical seal kit 3in,Mechanical seal kit 3in,88001,ERSA,EA,MAT-88001,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,3200.00,S
+mat-88002,Centrifugal pump impeller wear ring,Centrifugal pump impeller wear ring,88002,ERSA,EA,MAT-88002,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,1850.00,S
+mat-88003,Hydraulic actuator rebuild kit,Hydraulic actuator rebuild kit,88003,ERSA,EA,MAT-88003,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,5400.00,S
+mat-88004,Ball valve trim set 6in 600#,Ball valve trim set 6in 600#,88004,ERSA,EA,MAT-88004,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,2750.00,S
+mat-88005,Compressor lube oil filter element,Compressor lube oil filter element,88005,ERSA,EA,MAT-88005,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,680.00,S
+mat-88006,PSV soft seat insert kit,PSV soft seat insert kit,88006,ERSA,EA,MAT-88006,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,4100.00,S
+mat-88007,Instrument tubing fitting set SS316,Instrument tubing fitting set SS316,88007,ERSA,EA,MAT-88007,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,920.00,S
+mat-88008,Gas turbine fuel nozzle assembly,Gas turbine fuel nozzle assembly,88008,ERSA,EA,MAT-88008,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,7800.00,S
+mat-88009,Gate valve stem packing set,Gate valve stem packing set,88009,ERSA,EA,MAT-88009,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,1450.00,S
+mat-88010,Firewater deluge nozzle spare,Firewater deluge nozzle spare,88010,ERSA,EA,MAT-88010,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,B,2300.00,S
+ser-9910201,Initial PSV shutdown,WELD operation (Exe) — seed 30285776-0000,9910201,DIEN,AU,MAT-9910201,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,300.00,S
+ser-9910202,Instrumentation BDSV check,WELD operation (Pre) — seed 30285776-0001,9910202,DIEN,AU,MAT-9910202,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,300.00,S
+ser-9910203,Initial ESDV maintenance,MECH operation (Exe) — seed 30285776-0002,9910203,DIEN,AU,MAT-9910203,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,300.00,S
+mat-lng-spot-jkm,JKM LNG Spot Index,LNG spot price index for opportunity cost,LNG-JKM-SPOT,NLAG,USD/MMBtu,LNG-JKM-SPOT,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,False,B,C,0.00,S

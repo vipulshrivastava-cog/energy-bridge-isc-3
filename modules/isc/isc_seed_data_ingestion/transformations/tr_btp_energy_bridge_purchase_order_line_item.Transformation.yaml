@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_purchase_order_line_item
+name: BTP Energy Bridge - Purchase Order Line Item
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_SourcingProcurementSchemaSpace }}
+    externalId: SourcingProcurement
+    version: '{{dmVersion}}'
+    destinationType: PurchaseOrderLineItem
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

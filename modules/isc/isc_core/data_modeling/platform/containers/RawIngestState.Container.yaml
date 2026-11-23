@@ -1,0 +1,117 @@
+space: {{ isc_IscPlatformSchemaSpace }}
+externalId: RawIngestState
+name: Raw Ingest State
+description: Tracks the last processed change timestamp per source table used for organisational hierarchy ingestion.
+usedFor: node
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  db_name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: false
+    name: RAW database
+  table_name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: false
+    name: RAW table
+  last_processed_timestamp:
+    type:
+      list: false
+      type: int64
+    nullable: true
+    name: Last processed timestamp
+    description: Epoch milliseconds for the maximum lastUpdatedTime of ingested RAW rows.
+  last_run_time:
+    type:
+      list: false
+      type: timestamp
+    nullable: true
+    name: Last run time
+  rows_processed:
+    type:
+      list: false
+      type: int64
+    nullable: true
+    name: Rows processed last run

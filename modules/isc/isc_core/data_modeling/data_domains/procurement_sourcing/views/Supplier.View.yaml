@@ -1,0 +1,240 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: Supplier
+name: Supplier
+description: Central supplier master record for managing vendor identity, performance KPIs, certifications, risk ratings, and relationship health.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  supplierItemRecords:
+    name: Supplier Item Records
+    description: All approved sourcing records, Purchasing Info Records, for this supplier.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierItemRecord
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_SourcingProcurementSchemaSpace }}
+        externalId: SupplierItemRecord
+        version: '{{viewVersion}}'
+        type: view
+      identifier: supplierId
+    connectionType: multi_reverse_direct_relation
+  supplierFacilities:
+    name: Supplier Facilities
+    description: All physical facilities, manufacturing plants, warehouses, distribution centres, operated by this supplier.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_SourcingProcurementSchemaSpace }}
+        externalId: SupplierFacility
+        version: '{{viewVersion}}'
+        type: view
+      identifier: supplier
+    connectionType: multi_reverse_direct_relation
+  supplierId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: supplierId
+    name: Supplier ID
+    description: Unique identifier for the supplier in the source system.
+  certificationStatus:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: certificationStatus
+    name: Certification Status
+    description: Current certification or qualification status for example Approved, Conditional, Blocked.
+  performanceRating:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: performanceRating
+    name: Performance Rating
+    description: Numerical score reflecting overall supplier performance.
+  supplierCountry:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: supplierCountry
+    name: Supplier Country
+    description: Country of the suppliers headquarters ISO 3166-1 Alpha-2. Retained for country-level spend and risk analysis.
+  supplierRiskRating:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: supplierRiskRating
+    name: Supplier Risk Rating
+    description: Risk classification based on financial and operational assessments.
+  businessValuePriority:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: businessValuePriority
+    name: Business Value Priority
+    description: Strategic importance ranking for example Strategic, Preferred, Standard.
+  escalationProtocol:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: escalationProtocol
+    name: Escalation Protocol
+    description: Defined escalation procedure for resolving issues.
+  contractStartDate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: contractStartDate
+    name: Contract Start Date
+    description: Effective start date of the current supply contract.
+  contractExpirationDate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: contractExpirationDate
+    name: Contract Expiration Date
+    description: Expiration date of the current supply contract.
+  onTimeDeliveryRate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: onTimeDeliveryRate
+    name: On-Time Delivery Rate
+    description: Percentage of deliveries arriving on time. Computed KPI.
+  qualityRejectionRate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: qualityRejectionRate
+    name: Quality Rejection Rate
+    description: Percentage of received goods failing quality inspection. Computed KPI.
+  averageLeadTimeDays:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: averageLeadTimeDays
+    name: Average Lead Time Days
+    description: Actual measured average lead time in calendar days.
+  sanctionsStatus:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: sanctionsStatus
+    name: Sanctions Status
+    description: OFAC and EU and UN sanctions compliance status.
+  parentOrganizationId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: parentOrganizationId
+    name: Parent Organization ID
+    description: Text identifier of the parent supplier or holding company.
+  parentOrganizationDescription:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      type: container
+    containerPropertyIdentifier: parentOrganizationDescription
+    name: Parent Organisation Description
+    description: Human-readable name of the parent organisation.
+  suppliesMaterial:
+    connectionType: multi_edge_connection
+    direction: outwards
+    name: suppliesMaterial
+    description: Material masters supplied by this supplier.
+    type:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier.suppliesMaterial
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      version: '{{viewVersion}}'
+      type: view

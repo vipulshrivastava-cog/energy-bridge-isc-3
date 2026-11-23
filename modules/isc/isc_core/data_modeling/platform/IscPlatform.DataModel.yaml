@@ -1,0 +1,14 @@
+space: {{ isc_IscPlatformSchemaSpace }}
+externalId: IscPlatform
+name: IscPlatform
+description: ISC platform domain — ingest and function sync state.
+version: '{{dmVersion}}'
+views:
+- space: {{ isc_IscPlatformSchemaSpace }}
+  externalId: FunctionSyncState
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_IscPlatformSchemaSpace }}
+  externalId: RawIngestState
+  version: '{{viewVersion}}'
+  type: view

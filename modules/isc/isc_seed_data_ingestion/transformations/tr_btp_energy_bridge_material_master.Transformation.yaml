@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_material_master
+name: BTP Energy Bridge - Material Master
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_MaterialManagementSchemaSpace }}
+    externalId: MaterialManagement
+    version: '{{dmVersion}}'
+    destinationType: MaterialMaster
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

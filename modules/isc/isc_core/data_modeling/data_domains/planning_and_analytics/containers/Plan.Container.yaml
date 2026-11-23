@@ -1,0 +1,274 @@
+space: {{ isc_PlanForecastSchemaSpace }}
+externalId: Plan
+name: Plan
+description: Time-phased supply proposal created by MRP planning to satisfy demand. Represents an intent to produce or procure a quantity of a material at a plant within a planned time window. Tracks both planned and actual execution dates and quantities for plan adherence analysis.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  planId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: true
+    nullable: false
+    autoIncrement: false
+    name: Plan ID
+    description: Unique identifier for the planning proposal. Primary key - immutable once created by MRP run.
+  planType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Plan Type
+    description: Discriminator indicating which planning domain generated this planned order - Production for MRP-driven supply for finished or semi-finished goods, Maintenance for MRP-driven supply for spare parts against work order reservations, Project for WBS-pegged supply for project stock. Enables the Command Centre agent to route alerts to the correct persona.
+  material:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material to be produced or procured.
+  plant:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Plant
+    description: Direct relation to the FunctionalAsset node for the plant responsible for executing this planned order.
+  plannedQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Planned Quantity
+    description: Proposed quantity to be produced or procured by this planning proposal to cover the identified shortage.
+  plannedStartDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Planned Start Date
+    description: Basic start date for executing the supply - the date production or procurement should begin based on basic date scheduling from the material master in-house production time.
+  plannedFinishDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Planned Finish Date
+    description: Basic finish date - the date by which supply is expected to be available. Used as the primary planning date in MRP stock requirements lists.
+  ownerId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: MRP Controller
+    description: Code identifying the planner or planning group responsible for this material and planning proposal. Used for workload distribution and exception management routing.
+  workCenterId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Work Center
+    description: Primary work centre code responsible for executing the production operations for this planned order. Used for capacity planning and load visualisation in the Command Centre.
+  maintenanceOrder:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Maintenance Order
+    description: Direct relation to the WorkOrder node that generated the spare part demand driving this planned order. Applicable when planType for Maintenance - links the supply proposal back to the maintenance work order requiring the part.
+  productionRequestRef:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Production Request Reference
+    description: Direct relation to the ProductionRequest node this planned order was converted into. Enables planning-to-request traceability - in the planned order is deleted on conversion so this link preserves traceability.
+  actualQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Actual Quantity
+    description: Actual quantity produced or procured against this plan. Compared with plannedQuantity to calculate plan adherence and variance.
+  actualStartDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Actual Start Date
+    description: Date production or procurement execution actually began. Compared with plannedStartDate to measure planning accuracy and schedule adherence.
+  actualFinishDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Actual Finish Date
+    description: Date production or procurement execution was completed. Compared with plannedFinishDate to calculate plan-to-actual lead time variance.
+  quantityUOM:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Quantity UOM
+    description: Direct relation to the CogniteUnit node for the base unit of measure of the planned quantity. Enables typed unit resolution for quantity fields.
+indexes:
+  planId:
+    properties:
+    - planId
+    cursorable: true
+    indexType: btree
+  planType:
+    properties:
+    - planType
+    cursorable: true
+    indexType: btree
+  material:
+    properties:
+    - material
+    cursorable: false
+    indexType: btree
+  plant:
+    properties:
+    - plant
+    cursorable: false
+    indexType: btree
+  plannedStartDate:
+    properties:
+    - plannedStartDate
+    cursorable: true
+    indexType: btree
+  plannedFinishDate:
+    properties:
+    - plannedFinishDate
+    cursorable: true
+    indexType: btree
+  ownerId:
+    properties:
+    - ownerId
+    cursorable: true
+    indexType: btree
+  maintenanceOrder:
+    properties:
+    - maintenanceOrder
+    cursorable: false
+    indexType: btree
+  productionRequestRef:
+    properties:
+    - productionRequestRef
+    cursorable: false
+    indexType: btree
+  quantityUOM:
+    properties:
+    - quantityUOM
+    cursorable: false
+    indexType: btree
+usedFor: node

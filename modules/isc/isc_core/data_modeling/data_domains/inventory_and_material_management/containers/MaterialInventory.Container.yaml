@@ -1,0 +1,179 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+externalId: MaterialInventory
+name: MaterialInventory
+description: Aggregate material stock position for one material at one warehouse. Holds rolled-up on-hand quantity and planning parameters such as safety stock and reorder point. Inventory commitments to demand use MaterialReservation edges from this node.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  materialId:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material
+    description: Direct relation to the MaterialMaster for this aggregate stock position.
+  warehouse:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Warehouse
+    description: Direct relation to the Warehouse view, StorageLocations, for this aggregate stock position.
+  unitOfMeasure:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Unit of Measure
+    description: Base unit of measure for quantity fields for example EA, KG, M.
+  qtyOnHand:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Quantity On Hand
+    description: Rolled-up unrestricted stock quantity at this warehouse. Approximates SUM, qtyOnHand on LotStoredInBin, for lots of this material in bins under this warehouse.
+  safetyStock:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Safety Stock
+    description: Minimum buffer stock level for this material at this warehouse.
+  reorderPoint:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Reorder Point
+    description: Stock level at which replenishment is triggered for this material at this warehouse.
+  lastMovementDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Last Movement Date
+    description: Last physical goods movement affecting qtyOnHand at this warehouse. Distinct from sourceUpdatedTime audit timestamp.
+  availabilityOnshore:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Availability Onshore
+    description: Onshore availability status for this stock position, a traffic-light indicator for example Green, Orange, Red.
+  availabilityOffshore:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Availability Offshore
+    description: Offshore availability status for this stock position, a traffic-light indicator for example Green, Orange, Red.
+indexes:
+  materialId:
+    properties:
+    - materialId
+    cursorable: false
+    indexType: btree
+  warehouse:
+    properties:
+    - warehouse
+    cursorable: false
+    indexType: btree
+usedFor: node

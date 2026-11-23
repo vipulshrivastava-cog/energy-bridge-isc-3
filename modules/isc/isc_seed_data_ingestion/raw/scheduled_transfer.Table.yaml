@@ -1,0 +1,2 @@
+dbName: {{ btpSeedDbName }}
+tableName: scheduled_transfer

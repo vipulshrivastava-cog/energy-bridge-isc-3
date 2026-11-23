@@ -1,0 +1,27 @@
+workflowExternalId: wf_btp_hierarchy_path
+version: '1'
+workflowDefinition:
+  description: "Recompute root, path, pathLastUpdatedTime when hierarchy nodes change (instances.sync + cursor + per-view lock)."
+  tasks:
+    - externalId: task_hierarchy_path_function
+      type: function
+      parameters:
+        function:
+          externalId: fn_btp_hierarchy
+          data:
+            hierarchy_type: path_sync_cursor
+            sync_kind: '${workflow.input.sync_kind}'
+            view_space: '${workflow.input.view_space}'
+            view_external_id: '${workflow.input.view_external_id}'
+            view_version: '${workflow.input.view_version}'
+            instance_spaces: '${workflow.input.instance_spaces}'
+            platform_space: '${workflow.input.platform_space}'
+            chunk_size: '${workflow.input.chunk_size}'
+            max_runtime_seconds: '${workflow.input.max_runtime_seconds}'
+            sync_lock: '${workflow.input.sync_lock}'
+        isAsyncComplete: false
+      name: Recompute hierarchy path
+      description: "Upsert root, path, pathLastUpdatedTime via instances.sync cursor in sp_isc_platform."
+      retries: 3
+      timeout: 3600
+      onFailure: abortWorkflow

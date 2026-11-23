@@ -1,0 +1,173 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+externalId: MaterialAlternative
+name: Material Alternative
+description: Approved material substitution with priority, plant scope, and conversion factors.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  originalMaterial:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: originalMaterial
+    name: Original Material
+    description: Direct relation to the material being replaced or supplemented. Required for every active alternative record.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  alternativeMaterial:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: alternativeMaterial
+    name: Alternative Material
+    description: Direct relation to the approved substitute material. Required for every active alternative record.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  alternativeType:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: alternativeType
+    name: Alternative Type
+    description: Classification of the substitution relationship.
+  preApprovedPlants:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: preApprovedPlants
+    name: Pre-approved Plants
+    description: Plants where this alternative has been pre-approved for use.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  priority:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: priority
+    name: Priority
+    description: Ranking order when multiple alternatives exist for the same original material, 1 for first choice.
+  engineeringApprovalRequired:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: engineeringApprovalRequired
+    name: Engineering Approval Required
+    description: Whether using this alternative requires engineering sign-off before use.
+  compatibilityNotes:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: compatibilityNotes
+    name: Compatibility Notes
+    description: Technical notes on differences or installation considerations when using the alternative.
+  quantityConversionFactor:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: quantityConversionFactor
+    name: Quantity Conversion Factor
+    description: Ratio of alternative quantity needed per unit of original material for example 1.2 means 1.2 units of alternative for every 1 unit of original.
+  validFromDate:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: validFromDate
+    name: Valid From Date
+    description: Date from which this alternative relationship is effective.
+  validToDate:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: validToDate
+    name: Valid To Date
+    description: Date after which this alternative expires. Null for permanent alternatives.
+  isActive:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialAlternative
+      type: container
+    containerPropertyIdentifier: isActive
+    name: Is Active
+    description: Whether this alternative substitution is currently active.

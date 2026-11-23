@@ -1,0 +1,42 @@
+space: {{ isc_TypedModelSchemaSpace }}
+externalId: isc_typed_model
+name: IscTypedModel
+description: Strongly typed solution data model — concrete hierarchy views.
+version: '{{dmVersion}}'
+views:
+- space: {{ isc_TypedModelSchemaSpace }}
+  externalId: Company
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_TypedModelSchemaSpace }}
+  externalId: BusinessUnit
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_TypedModelSchemaSpace }}
+  externalId: CostCenter
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_TypedModelSchemaSpace }}
+  externalId: GeoRegion
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_TypedModelSchemaSpace }}
+  externalId: Country
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_TypedModelSchemaSpace }}
+  externalId: City
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_TypedModelSchemaSpace }}
+  externalId: Warehouse
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_TypedModelSchemaSpace }}
+  externalId: Zone
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_TypedModelSchemaSpace }}
+  externalId: StorageBin
+  version: '{{viewVersion}}'
+  type: view

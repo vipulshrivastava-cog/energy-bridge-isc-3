@@ -1,0 +1,2 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+name: Material Management

@@ -1,0 +1,141 @@
+space: {{ isc_MaterialManagementSchemaSpace }}
+externalId: MaterialLot
+name: Material Lot
+description: A uniquely identifiable quantity of a specific material, tracked for end-to-end traceability, quality management, and inventory control.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+  description:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+  sourceId:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+  sourceContext:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+  sourceCreatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+  sourceCreatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+  materialLotId:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: material_lot_id
+    name: Material Lot ID
+    description: Primary identifier for this material lot.
+  lotNumber:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: lot_number
+    name: Lot Number
+    description: Human-readable lot or batch number.
+  material:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: material
+    name: Material
+    description: Direct relation to the MaterialMaster for this lot.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  manufactureDate:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: manufacture_date
+    name: Manufacture Date
+    description: Date when the lot was manufactured or received.
+  expiryDate:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: expiry_date
+    name: Expiry Date
+    description: Expiration date for shelf-life managed materials.
+  qualityStatus:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: qualityStatus
+    name: Quality Status
+    description: Overall quality disposition, released, blocked, quarantine.
+  qualityInspectionStatus:
+    container:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot
+      type: container
+    containerPropertyIdentifier: qualityInspectionStatus
+    name: Quality Inspection Status
+    description: Inspection workflow status, pending, in progress, passed, failed.
+  storedInBins:
+    connectionType: multi_edge_connection
+    direction: outwards
+    name: storedInBins
+    description: Bin placements for this lot. Query LotStoredInBin edges. qtyOnHand is on the edge.
+    type:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialLot.storedInBin
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: StorageBin
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: LotStoredInBin
+      version: '{{viewVersion}}'
+      type: view

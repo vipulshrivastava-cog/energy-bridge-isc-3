@@ -1,0 +1,343 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: PurchaseRequisition
+name: Purchase Requisition
+description: The formal demand signal, ISA-95 Material Request, that bridges maintenance planning and procurement by identifying missing resources that must be acquired externally.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  materialRequestId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: materialRequestId
+    name: Material Request ID
+    description: Unique identifier for the purchase requisition item.
+  itemNumber:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: itemNumber
+    name: Item Number
+    description: Line item number within the purchase requisition document.
+  materialId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: materialId
+    name: Material ID
+    description: Material number identifying the requested part or service.
+  workOrderId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: workOrderId
+    name: Work Order
+    description: Direct relation to the WorkOrder that triggered this purchase requisition.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      version: '{{viewVersion}}'
+      type: view
+  quantityRequested:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: quantityRequested
+    name: Quantity Requested
+    description: Quantity of material requested for procurement.
+  neededByDateTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: neededByDateTime
+    name: Needed By Date
+    description: Date by which the material must be available at the destination.
+  requestDateTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: requestDateTime
+    name: Request Date
+    description: Date the purchase requisition was created or submitted.
+  fulfillmentOrderId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: fulfillmentOrderId
+    name: Fulfillment Order ID
+    description: Purchase order number created to fulfill this requisition.
+  fulfillmentOrderItem:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: fulfillmentOrderItem
+    name: Fulfillment Order Item
+    description: Line item number within the fulfillment purchase order.
+  destinationLocationId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: destinationLocationId
+    name: Destination Location
+    description: Direct relation to the FunctionalAsset node where goods are to be delivered.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  sourcePlantId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: sourcePlantId
+    name: Source Plant
+    description: Direct relation to the FunctionalAsset node for the plant from which goods are sourced.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  unitEstimatedPrice:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: unitEstimatedPrice
+    name: Unit Estimated Price
+    description: Estimated unit price for the requested material.
+  materialRequestType:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: materialRequestType
+    name: Material Request Type
+    description: Type of material request for example stock, non-stock, service.
+  isDeleted:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: isDeleted
+    name: Is Deleted
+    description: Deletion indicator. If true, the PR item has been flagged for deletion.
+  processingStatus:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: processingStatus
+    name: Processing Status
+    description: Processing status of the PR item for example N for not processed, B for PO created. rocessingStatus.
+  prReleaseStatus:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: prReleaseStatus
+    name: PR Release Status
+    description: Release and approval status of the PR for example released, not released, blocked. urReqnReleaseStatus.
+  prItemText:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: prItemText
+    name: PR Item Text
+    description: Short text description of the requisition item. urchaseRequisitionItemText.
+  prOrigin:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: prOrigin
+    name: PR Origin
+    description: Origin of the purchase requisition for example manual entry, MRP-generated, maintenance order. urReqnOrigin.
+  purchasingGroup:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: purchasingGroup
+    name: Purchasing Group
+    description: Purchasing group code. Identifies the buyer or group responsible for converting this PR to a PO.
+  materialGroup:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: materialGroup
+    name: Material Group
+    description: Material group code. Groups materials with similar characteristics for reporting and sourcing.
+  baseUnit:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: baseUnit
+    name: Base Unit
+    description: Base unit of measure for the requested material for example EA, KG, M.
+  releaseDate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: releaseDate
+    name: Release Date
+    description: Date on which the purchase requisition was formally released or approved. urchaseRequisitionReleaseDate.
+  currency:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: currency
+    name: Currency
+    description: Currency code for the PR item price for example NOK, USD.
+  priceQuantity:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: priceQuantity
+    name: Price Quantity
+    description: The quantity basis for the unit price for example price per 1, per 100. urReqnPriceQuantity.
+  supplierNumber:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: supplierNumber
+    name: Supplier Number
+    description: Supplier account number from the source ERP system assigned or preferred for this requisition.
+  purchaseContract:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: purchaseContract
+    name: Purchase Contract
+    description: Reference to a long-term Purchase Contract or outline agreement number.
+  purchaseOrderDate:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: purchaseOrderDate
+    name: Purchase Order Date
+    description: Date of the Purchase Order that was created from this requisition.
+  materialPlannedDeliveryDays:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: materialPlannedDeliveryDays
+    name: Material Planned Delivery Days
+    description: Planned delivery time in calendar days for the material. Used for lead time risk analysis.
+  manufacturerPartNumber:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: manufacturerPartNumber
+    name: Manufacturer Part Number
+    description: Manufacturers Part Number for the material. Useful for cross-referencing with equipment BOMs.
+  material:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: material
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material being requisitioned.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  supplier:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseRequisition
+      type: container
+    containerPropertyIdentifier: supplier
+    name: Supplier
+    description: Direct relation to the Supplier node preferred for this requisition. Null when no preferred supplier is specified.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      version: '{{viewVersion}}'
+      type: view

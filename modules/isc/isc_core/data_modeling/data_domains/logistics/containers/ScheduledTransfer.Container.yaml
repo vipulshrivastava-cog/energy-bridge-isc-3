@@ -1,0 +1,317 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: ScheduledTransfer
+name: ScheduledTransfer
+description: Plan-layer stock transfer. ShipmentExecutesTransfer edges link executing shipments and carry per-line ASN and BoL and actual execution facts.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  scheduledTransferId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Scheduled Transfer ID
+    description: Unique identifier for the scheduled transfer commitment generated from the stock transfer order. Primary identifier - not nullable.
+  scheduledTransferLineNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Scheduled Transfer Line Number
+    description: Line identifier within the scheduled transfer commitment. Together with scheduledTransferId uniquely identifies the scheduled transfer line.
+  deliveryType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Delivery Type
+    description: Classification of the planned transfer commitment for example standard stock transfer, cross-company transfer, return to supplying plant.
+  stockTransferOrder:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Stock Transfer Order
+    description: Direct relation to the StockTransferOrder node that originated this scheduled transfer commitment.
+  material:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material being transferred.
+  batchNumber:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Batch Number
+    description: Batch or lot number of the transferred material for batch-level traceability.
+  originSite:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Origin Site
+    description: Direct relation to the FunctionalAsset for the internal ship-from plant site.
+  originWarehouse:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Origin Warehouse
+    description: Direct relation to the Warehouse for the ship-from storage location, WMS warehouse hierarchy.
+  originCountry:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Origin Country
+    description: Direct relation to the GeoLocations country from which the goods are transferred.
+  destinationSite:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Destination Site
+    description: Direct relation to the FunctionalAsset for the internal receiving plant site.
+  destinationWarehouse:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Destination Warehouse
+    description: Direct relation to the Warehouse for the ship-to storage location, WMS warehouse hierarchy.
+  destinationCountry:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Destination Country
+    description: Direct relation to the GeoLocations country to which the goods are being transferred.
+  scheduledQuantity:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Scheduled Quantity
+    description: Planned quantity committed on this scheduled transfer line.
+  quantityReceived:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Quantity Received
+    description: Quantity received indicator carried from execution posting context for this transfer line.
+  quantityUnit:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Quantity Unit
+    description: Unit of measure for the scheduledQuantity and quantityReceived fields for example EA, KG, M.
+  scheduledPickupDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Scheduled Pickup Date
+    description: Planned pickup date for this scheduled transfer line.
+  scheduledArrivalDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Scheduled Arrival Date
+    description: Planned arrival date for this scheduled transfer line.
+  scheduleStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Schedule Status
+    description: "Schedule lifecycle status for this planned transfer. Allowed values: Open, PartiallyShipped, Closed, Cancelled."
+  plannedTransitDays:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Planned Transit Days
+    description: Snapshot of the transportation lane lead time at the time this transfer was planned. This value is never updated after creation so that variance calculations always reflect the original planning assumption.
+  transportationLane:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Transportation Lane
+    description: Direct relation to the TransportationLane defining the standard route and lead time between origin and destination for this planned transfer.
+indexes:
+  scheduledTransferLineNumber:
+    properties:
+    - scheduledTransferId
+    - scheduledTransferLineNumber
+    cursorable: true
+    indexType: btree
+  stockTransferOrder:
+    properties:
+    - stockTransferOrder
+    cursorable: false
+    indexType: btree
+  material:
+    properties:
+    - material
+    cursorable: false
+    indexType: btree
+  originSite:
+    properties:
+    - originSite
+    cursorable: false
+    indexType: btree
+  originWarehouse:
+    properties:
+    - originWarehouse
+    cursorable: false
+    indexType: btree
+  destinationSite:
+    properties:
+    - destinationSite
+    cursorable: false
+    indexType: btree
+  destinationWarehouse:
+    properties:
+    - destinationWarehouse
+    cursorable: false
+    indexType: btree
+  scheduledArrivalDate:
+    properties:
+    - scheduledArrivalDate
+    cursorable: true
+    indexType: btree
+  transportationLane:
+    properties:
+    - transportationLane
+    cursorable: false
+    indexType: btree
+usedFor: node

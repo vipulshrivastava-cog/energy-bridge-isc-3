@@ -1,0 +1,279 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: SupplierFacility
+name: SupplierFacility
+description: A physical operating location, manufacturing plant, warehouse, distribution centre, office, of a supplier. One Supplier can have many SupplierFacility nodes. Carries site-level address, contact, and commercial term details. Links upward to the Supplier master and laterally to GeoLocations for geographic hierarchy traversal.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  siteCode:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Site Code
+    description: Unique short code for this supplier facility in the source system.
+  siteType:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Site Type
+    description: Classification of the facility for example Manufacturing, Warehouse, DistributionCentre, Office.
+  supplier:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier
+    description: Direct relation to the parent Supplier master record.
+  geoLocation:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Geo Location
+    description: Direct relation to the GeoLocations node representing this facilitys position in the geographic hierarchy.
+  locationCity:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Location City
+    description: City where this supplier facility is located.
+  physicalAddress:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Physical Address
+    description: Full street address of this supplier facility.
+  latitude:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Latitude
+    description: WGS84 latitude of this supplier facility.
+  longitude:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Longitude
+    description: WGS84 longitude of this supplier facility.
+  contactName:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Contact Name
+    description: Primary contact name at this facility for procurement and expediting.
+  contactEmail:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Contact Email
+    description: Primary contact email at this facility. Used for automated supplier confirmation requests.
+  contactPhone:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Contact Phone
+    description: Primary contact phone number at this facility.
+  taxId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Tax ID
+    description: VAT registration number or equivalent tax identifier for this facility.
+  paymentTerms:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Payment Terms
+    description: Default payment terms for this facility for example NET30, NET60.
+  incoterms:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Incoterms
+    description: Default delivery terms for this facility for example EXW, FOB, DAP.
+  orderCurrency:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Order Currency
+    description: Default currency for purchase orders to this facility ISO 4217.
+  isHeadquarters:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Is Headquarters
+    description: Whether this facility is the suppliers primary or headquarters location.
+  isActive:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Is Active
+    description: Whether this facility is currently active for procurement.
+indexes:
+  siteCode:
+    properties:
+    - siteCode
+    cursorable: true
+    indexType: btree
+  siteType:
+    properties:
+    - siteType
+    cursorable: true
+    indexType: btree
+  supplier:
+    properties:
+    - supplier
+    cursorable: false
+    indexType: btree
+  geoLocation:
+    properties:
+    - geoLocation
+    cursorable: false
+    indexType: btree
+  isHeadquarters:
+    properties:
+    - isHeadquarters
+    cursorable: true
+    indexType: btree
+  isActive:
+    properties:
+    - isActive
+    cursorable: true
+    indexType: btree
+usedFor: node

@@ -1,0 +1,42 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: ShipmentDelivery
+name: ShipmentDelivery
+description: Shipment and delivery domain — lanes, schedules, shipments, execution edges.
+version: '{{dmVersion}}'
+views:
+- space: {{ isc_ShipmentDeliverySchemaSpace }}
+  externalId: ScheduledReceipt
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_ShipmentDeliverySchemaSpace }}
+  externalId: ScheduledTransfer
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_ShipmentDeliverySchemaSpace }}
+  externalId: Shipment
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_ShipmentDeliverySchemaSpace }}
+  externalId: StockTransferOrder
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_ShipmentDeliverySchemaSpace }}
+  externalId: TransportationLane
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_ShipmentDeliverySchemaSpace }}
+  externalId: UsesTransportationLane
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_ShipmentDeliverySchemaSpace }}
+  externalId: ShipmentExecutesReceipt
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_ShipmentDeliverySchemaSpace }}
+  externalId: ShipmentExecutesTransfer
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_ShipmentDeliverySchemaSpace }}
+  externalId: LaneTransportsMaterial
+  version: '{{viewVersion}}'
+  type: view

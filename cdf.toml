@@ -1,0 +1,24 @@
+[cdf]
+default_organization_dir = "."
+default_env = "dev"
+
+[modules]
+# This is the version of the modules. It should not be changed manually.
+# It will be updated by the 'cdf modules upgrade' command.
+version = "0.8.191"
+
+[alpha_flags]
+agents = true
+agent-skills = true
+
+
+[plugins]
+dump = true
+dev = false
+data = true
+run = true
+
+
+[library.toolkit-data]
+url = "https://github.com/cognitedata/toolkit-data/releases/download/latest/packages.zip" 
+checksum = "sha256:b70c207a78d6c94e0977a733571420b250ca641ac8802d8310f1ffe05bf7b2eb"

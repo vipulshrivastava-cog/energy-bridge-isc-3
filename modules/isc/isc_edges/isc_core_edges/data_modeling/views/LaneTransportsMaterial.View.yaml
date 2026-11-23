@@ -1,0 +1,166 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: LaneTransportsMaterial
+name: Lane Transports Material
+description: Queryable edge view for which materials a transportation lane can carry, including lot-size bounds, priority, hazardous-goods approval, and lane cost on the relationship.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  relationType:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: relationType
+    name: Relation Type
+    description: Semantic role of the link, reservation, assignment, pegging, execution, impact.
+  relationStatus:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: relationStatus
+    name: Relation Status
+    description: Lifecycle status of the link, planned, active, fulfilled, cancelled.
+  validFrom:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: validFrom
+    name: Valid From
+    description: Business start date when this link becomes effective.
+  validTo:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: validTo
+    name: Valid To
+    description: Business end date when this link ceases to be effective. Null means open-ended.
+  priorityRank:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: priorityRank
+    name: Priority Rank
+    description: Priority rank for lane scope or commercial preference.
+  minLotSize:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: minLotSize
+    name: Min Lot Size
+    description: Minimum lot size for lane-material scope.
+  maxLotSize:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: maxLotSize
+    name: Max Lot Size
+    description: Maximum lot size for lane-material scope.
+  lotSizeUnit:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: lotSizeUnit
+    name: Lot Size Unit
+    description: Unit for lane lot size bounds.
+  costPerTonne:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: costPerTonne
+    name: Cost Per Tonne
+    description: Lane transport cost per tonne.
+  costCurrency:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: costCurrency
+    name: Cost Currency
+    description: Currency for lane cost properties.
+  hazardousGoodsApproved:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: hazardousGoodsApproved
+    name: Hazardous Goods Approved
+    description: Whether hazardous goods are approved on this lane scope.
+  customsClearanceRequired:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: LaneTransportsMaterial
+      type: container
+    containerPropertyIdentifier: customsClearanceRequired
+    name: Customs Clearance Required
+    description: Whether customs clearance is required for this lane usage.

@@ -1,0 +1,293 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: PurchaseOrderHeader
+name: PurchaseOrderHeader
+description: Header-level properties of a Purchase Order. Represents the formal external commitment to a vendor, capturing identity, status, approval workflow, and shipping destination. Shared across all line items belonging to the same PO document.
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  purchaseOrderId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Purchase Order ID
+    description: Purchase order number from the source ERP system. Unique identifier for the purchasing document. Primary key - not nullable.
+  purchasingOrganization:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Purchasing Organisation
+    description: Purchasing organisation code from the source ERP system responsible for negotiating terms and managing vendor relationships for this PO.
+  companyCode:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Company Code
+    description: Company or legal entity code from the source ERP system. Legal entity responsible for this purchase order for financial accounting purposes.
+  supplier:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier
+    description: Direct relation to the Supplier node, vendor, fulfilling this purchase order.
+  orderDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Order Date
+    description: Date the legal commitment was formalised with the supplier - the document date.
+  createdByUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Created By User
+    description: User ID of the person who created the purchase order in the source ERP system.
+  currency:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Currency
+    description: Document currency code for all financial values on this purchase order for example NOK, USD, EUR.
+  totalNetValue:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Total Net Value
+    description: Total net value of all line items in this purchase order expressed in document currency. Used for spend tracking and approval threshold checks.
+  incoterms:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Incoterms
+    description: Header-level delivery terms code defining the risk and cost transfer point between supplier and buyer for example EXW, FOB, CIF, DAP.
+  incotermsLocation:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Incoterms Location
+    description: Named place or port associated with the incoterms, e.g. FOB Rotterdam. Specifies the exact point of risk and cost transfer.
+  purchasingProcessingStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Purchasing Processing Status
+    description: Overall processing status of the purchasing document for example Open, Partially Processed, Closed. Used for procurement KPI dashboards.
+  purchasingCompletenessStatus:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Purchasing Completeness Status
+    description: True if the PO is fully complete - all items delivered and invoiced. Signals the PO can be archived.
+  releaseIsNotCompleted:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Release Is Not Completed
+    description: True if the PO has not yet been fully released through the approval workflow. Blocks goods receipt in some configurations.
+  poStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Purchase Order Status
+    description: Lifecycle status of the purchase order header. Expected values - Accepted, Rejected, Modified, Deleted.
+  previousPoStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Previous Purchase Order Status
+    description: Purchase order status before the last change. Same naming pattern as MasterNotification.previousState.
+  statusChangedAt:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Status Changed At
+    description: Timestamp when poStatus last changed in the source system.
+  shipTo:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Ship To
+    description: Direct relation to the FunctionalAsset node representing the final delivery destination for this purchase order. Used for logistics routing and site-level delivery performance tracking.
+indexes:
+  purchaseOrderId:
+    properties:
+    - purchaseOrderId
+    cursorable: true
+    indexType: btree
+  supplier:
+    properties:
+    - supplier
+    cursorable: false
+    indexType: btree
+  purchasingOrganization:
+    properties:
+    - purchasingOrganization
+    cursorable: true
+    indexType: btree
+  orderDate:
+    properties:
+    - orderDate
+    cursorable: true
+    indexType: btree
+  purchasingProcessingStatus:
+    properties:
+    - purchasingProcessingStatus
+    cursorable: true
+    indexType: btree
+  poStatus:
+    properties:
+    - poStatus
+    cursorable: true
+    indexType: btree
+  previousPoStatus:
+    properties:
+    - previousPoStatus
+    cursorable: true
+    indexType: btree
+  statusChangedAt:
+    properties:
+    - statusChangedAt
+    cursorable: true
+    indexType: btree
+  shipTo:
+    properties:
+    - shipTo
+    cursorable: false
+    indexType: btree
+usedFor: node

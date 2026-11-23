@@ -1,0 +1,197 @@
+space: {{ isc_OrganizationalFoundationSchemaSpace }}
+externalId: BusinessUnits
+name: BusinessUnits
+description: Organisational hierarchy interface for company structure such as business units and cost centers. Platform functions use this view; agents should use concrete types such as Company or CostCenter.
+version: '{{viewVersion}}'
+properties:
+  sourceCreatedUser:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  name:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Display name for search and UI.
+  description:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+  sourceId:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+  sourceContext:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source context
+  sourceCreatedTime:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source created time
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source updated time
+  parent:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: parent
+    name: Parent
+    description: The parent of this business hierarchy node in the standardized hierarchy.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      version: '{{viewVersion}}'
+      type: view
+  root:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: root
+    name: Root
+    description: An automatically updated reference to the top-level node of the business hierarchy.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      version: '{{viewVersion}}'
+      type: view
+  path:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: path
+    name: Path
+    description: An automatically updated ordered list of this nodes ancestors, starting with the root node. Enables subtree filtering.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      version: '{{viewVersion}}'
+      type: view
+  pathLastUpdatedTime:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: pathLastUpdatedTime
+    name: Path last updated time
+    description: The last time the hierarchy path was updated for this business hierarchy node.
+  declaredType:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: declaredType
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      version: '{{viewVersion}}'
+      type: view
+    name: Declared Type
+    description: Concrete view external id for this instance, for example Company or CostCenter.
+  hierarchyCode:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: hierarchyCode
+    name: Hierarchy Code
+    description: Short unique code identifying this node in the source system.
+  companyCode:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: companyCode
+    name: Company Code
+    description: Company or legal entity code from the source ERP system.
+  controllingArea:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: controllingArea
+    name: Controlling Area
+    description: Controlling area code from the source ERP system.
+  costCenter:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: costCenter
+    name: Cost Center
+    description: Cost center code from the source ERP system.
+  profitCenter:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: profitCenter
+    name: Profit Center
+    description: Profit center code from the source ERP system.
+  purchasingOrg:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: purchasingOrg
+    name: Purchasing Organisation
+    description: Purchasing organisation code from the source ERP system.
+  currency:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: currency
+    name: Currency
+    description: ISO 4217 currency code for this business entity for example NOK, USD, EUR. Applicable at Company and ControllingArea level nodes.
+  children:
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: BusinessUnits
+        version: '{{viewVersion}}'
+        type: view
+      identifier: parent
+    name: Children
+    description: Business hierarchy nodes with this node as their parent.
+    connectionType: multi_reverse_direct_relation

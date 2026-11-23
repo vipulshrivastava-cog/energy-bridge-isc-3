@@ -1,0 +1,181 @@
+space: {{ isc_OrganizationalFoundationSchemaSpace }}
+externalId: GeoLocations
+name: Geographic Location
+description: Geographic hierarchy interface with parent-child navigation for regional, country, and city roll-up. Platform functions and cross-level queries use this view; agents should use concrete types such as Country or City.
+version: '{{viewVersion}}'
+properties:
+  sourceCreatedUser:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  name:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Display name for search and UI.
+  description:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+  sourceId:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+  sourceContext:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source context
+  sourceCreatedTime:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source created time
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source updated time
+  parent:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: parent
+    name: Parent
+    description: The parent of this geographic node in the standardized hierarchy.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  root:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: root
+    name: Root
+    description: An automatically updated reference to the top-level node of the geographic hierarchy.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  path:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: path
+    name: Path
+    description: An automatically updated ordered list of this nodes ancestors, starting with the root node. Enables subtree filtering.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  pathLastUpdatedTime:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: pathLastUpdatedTime
+    name: Path last updated time
+    description: The last time the hierarchy path was updated for this geographic node.
+  declaredType:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: declaredType
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      version: '{{viewVersion}}'
+      type: view
+    name: Declared Type
+    description: Concrete view external id for this instance, for example Country or City.
+  locationCode:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: locationCode
+    name: Location Code
+    description: Unique short code for this geographic location.
+  isoCode:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: isoCode
+    name: ISO Code
+    description: ISO 3166-1 Alpha-3 country code or equivalent standard geographic code.
+  latitude:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: latitude
+    name: Latitude
+    description: WGS84 latitude coordinate for this geographic node or representative centroid.
+  longitude:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: longitude
+    name: Longitude
+    description: WGS84 longitude coordinate for this geographic node or representative centroid.
+  physicalAddress:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      type: container
+    containerPropertyIdentifier: physicalAddress
+    name: Physical Address
+    description: Optional formatted address or locality description for this geographic location.
+  children:
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: GeoLocations
+        version: '{{viewVersion}}'
+        type: view
+      identifier: parent
+    name: Children
+    description: Geographic hierarchy nodes with this node as their parent.
+    connectionType: multi_reverse_direct_relation

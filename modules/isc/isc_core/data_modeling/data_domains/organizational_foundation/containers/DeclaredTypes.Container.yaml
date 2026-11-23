@@ -1,0 +1,32 @@
+space: {{ isc_OrganizationalFoundationSchemaSpace }}
+externalId: DeclaredTypes
+name: DeclaredTypes
+description: Catalog of hierarchy level tokens — not business hierarchy nodes.
+usedFor: node
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: false
+    name: Name
+    description: Human-readable level name.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: true
+    name: Description
+    description: What this level represents in the deployment profile.
+  used_by_container:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: false
+    name: Used By Container
+    description: Shared hierarchy container externalId this level belongs to.
+indexes: {}
+constraints: {}

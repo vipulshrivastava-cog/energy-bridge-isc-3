@@ -1,0 +1,296 @@
+space: {{ isc_OrganizationalFoundationSchemaSpace }}
+externalId: Products
+name: Products
+description: Product classification hierarchy for grouping materials and finished
+  goods across sector, business line, product family, product group, and product subgroup
+  levels.
+usedFor: node
+properties:
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Name
+    description: Display name for search and filtering in user interfaces.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+  tags:
+    type:
+      list: true
+      maxListSize: 1000
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Tags
+    description: Text-based labels for generic use, limited to 1000.
+  aliases:
+    type:
+      list: true
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Aliases
+    description: Alternative names for this product hierarchy node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: true
+    name: Source ID
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: true
+    name: Source context
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    nullable: true
+    name: Source created time
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    nullable: true
+    name: Source updated time
+  parent:
+    type:
+      list: false
+      type: direct
+    nullable: true
+    name: Parent
+    description: Parent node in the hierarchy. Null for root nodes.
+  root:
+    type:
+      list: false
+      type: direct
+    nullable: true
+    name: Root
+    description: Top-level root node for this hierarchy branch. Maintained by hierarchy
+      path sync.
+  path:
+    type:
+      list: true
+      maxListSize: 100
+      type: direct
+    nullable: true
+    name: Path
+    description: Ancestor chain root, through , self. Maintained by path pass. maxListSize
+      100 matches CogniteAsset assetHierarchy path.
+  pathLastUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    nullable: true
+    name: Path last updated time
+  declaredType:
+    type:
+      list: false
+      type: direct
+    nullable: true
+    name: Declared Type
+    description: Direct relation to DeclaredTypes catalog instance for this node's level.
+  hierarchyCode:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Hierarchy Code
+    description: Short unique code identifying this node in the source ERP or classification
+      system. Primary business key for this hierarchy node.
+  hierarchyLevel:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Hierarchy Level
+    description: 'Classification level of this node. Expected values: Sector, BusinessLine,
+      Segment, ProductFamily, ProductGroup, ProductSubGroup. Used for roll-up reporting
+      and portfolio segmentation.'
+  hierarchyDepth:
+    type:
+      list: false
+      type: int32
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Hierarchy Depth
+    description: Zero-based numeric depth in the tree, 0 for root, 1, 2. Enables level-based
+      filtering without relying on hierarchy level names.
+  productHierarchyCode:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Product Hierarchy Code
+    description: Full concatenated hierarchy code string for this node, all ancestor
+      codes joined. Enables flat lookups and ERP integration without tree traversal.
+  productFamilyCode:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Product Family Code
+    description: Denormalised product family code inherited from the ancestor node
+      at the ProductFamily level. Enables direct filtering and grouping by product
+      family without tree traversal.
+  productGroupCode:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Product Group Code
+    description: Denormalised product group code inherited from the ancestor node
+      at the ProductGroup level. Enables direct filtering and grouping by product
+      group without tree traversal.
+  productSubGroupCode:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Product Sub-Group Code
+    description: Denormalised product sub-group code inherited from the ancestor node
+      at the ProductSubGroup level. Enables direct filtering and grouping by product
+      sub-group without tree traversal.
+  businessHierarchy:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Business Hierarchy
+    description: Direct relation to the BusinessUnits node representing the organisational
+      unit accountable for this product classification. Connects the product dimension
+      to the financial and organisational structure.
+  materials:
+    type:
+      list: true
+      maxListSize: 300
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Materials
+    description: Direct relations to the MaterialMaster nodes classified under this
+      product hierarchy node. Enables forward traversal from a hierarchy level to
+      all materials in that classification for demand aggregation, spend analysis,
+      and inventory grouping.
+  isActive:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Is Active
+    description: Whether this hierarchy node is currently active. Inactive nodes are
+      retained for historical traversal but excluded from current planning views.
+indexes:
+  parent:
+    properties:
+    - parent
+    cursorable: false
+    indexType: btree
+  root:
+    properties:
+    - root
+    cursorable: false
+    indexType: btree
+  path:
+    properties:
+    - path
+    cursorable: false
+    indexType: btree
+  name:
+    properties:
+    - name
+    cursorable: false
+    indexType: btree
+  hierarchyCode:
+    properties:
+    - hierarchyCode
+    cursorable: true
+    indexType: btree
+  sourceId:
+    properties:
+    - sourceId
+    cursorable: true
+    indexType: btree
+  hierarchyLevel:
+    properties:
+    - hierarchyLevel
+    cursorable: true
+    indexType: btree
+  businessHierarchy:
+    properties:
+    - businessHierarchy
+    cursorable: false
+    indexType: btree
+  isActive:
+    properties:
+    - isActive
+    cursorable: true
+    indexType: btree
+  declaredType:
+    properties:
+    - declaredType
+    cursorable: true
+    indexType: btree

@@ -1,0 +1,4 @@
+[module]
+title = "ISC Core"
+description = "Core Tier-1 module for Integrated Supply Chain: domain and typed data models, platform spaces, location filter, and platform CDF Function (hierarchy path sync)."
+tags = ["isc", "core"]

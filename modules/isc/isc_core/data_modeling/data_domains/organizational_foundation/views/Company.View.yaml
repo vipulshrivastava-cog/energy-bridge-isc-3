@@ -1,0 +1,77 @@
+space: {{ isc_TypedModelSchemaSpace }}
+externalId: Company
+name: Company
+description: Company node in the organisational hierarchy.
+implements:
+- space: {{ isc_OrganizationalFoundationSchemaSpace }}
+  externalId: BusinessUnits
+  version: '{{viewVersion}}'
+  type: view
+version: '{{viewVersion}}'
+filter:
+  and:
+  - hasData:
+    - type: container
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+  - equals:
+      property:
+      - {{ isc_OrganizationalFoundationSchemaSpace }}
+      - BusinessUnits
+      - declaredType
+      value:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: Company
+properties:
+  declaredType:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: declaredType
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: DeclaredTypes
+      version: '{{viewVersion}}'
+      type: view
+    name: Declared Type
+    description: Concrete view type for this instance.
+  business_units:
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: BusinessUnit
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: BusinessUnits
+        type: container
+      identifier: parent
+    name: Business Units
+    description: BusinessUnit nodes under this Company.
+    connectionType: multi_reverse_direct_relation
+  companyCode:
+    container:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      type: container
+    containerPropertyIdentifier: companyCode
+    name: Company Code
+    description: Company or legal entity code from the source ERP system.
+  children:
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: BusinessUnits
+      version: '{{viewVersion}}'
+      type: view
+    through:
+      source:
+        space: {{ isc_OrganizationalFoundationSchemaSpace }}
+        externalId: BusinessUnits
+        version: '{{viewVersion}}'
+        type: view
+      identifier: parent
+    name: Children
+    description: Business hierarchy nodes with this node as their parent.
+    connectionType: multi_reverse_direct_relation

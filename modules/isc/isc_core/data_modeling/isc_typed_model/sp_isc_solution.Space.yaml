@@ -1,0 +1,2 @@
+space: {{ isc_TypedModelSchemaSpace }}
+name: ISC Typed Solution Views

@@ -1,0 +1,109 @@
+space: {{ isc_IscPlatformSchemaSpace }}
+externalId: FunctionSyncState
+name: Function Sync State
+description: Operational state for background sync jobs.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  orchestration_id:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: orchestration_id
+    name: Orchestration ID
+    description: Job or session identifier for cursor nodes. Lock holder identifier for lease nodes.
+  partitionId:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: partitionId
+    name: Partition ID
+    description: Partition key. Use sync for cursor nodes and lock for execution lease nodes.
+  syncCursor:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: syncCursor
+    name: Sync cursor
+    description: Cursor token for the last processed instance in an incremental sync.
+  processedCount:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: processedCount
+    name: Processed count
+  lastUpdated:
+    container:
+      space: {{ isc_IscPlatformSchemaSpace }}
+      externalId: FunctionSyncState
+      type: container
+    containerPropertyIdentifier: lastUpdated
+    name: Last updated
+    description: Timestamp in epoch milliseconds for the last cursor save or lock expiry.

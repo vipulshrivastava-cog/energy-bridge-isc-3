@@ -1,0 +1,346 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: ScheduledReceipt
+name: Scheduled Receipt
+description: Plan-layer commitment representing a planned arrival of goods at internal sites.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  scheduledReceiptId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: scheduledReceiptId
+    name: Scheduled Receipt ID
+    description: Unique identifier for the scheduled receipt line.
+  scheduledReceiptLineNumber:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: scheduledReceiptLineNumber
+    name: Scheduled Receipt Line Number
+    description: Line number within the scheduled receipt to distinguish individual receipt lines when a single purchase order confirmation generates multiple receipt lines.
+  deliveryType:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: deliveryType
+    name: Delivery Type
+    description: Type of inbound delivery for example Standard, Returns, Subcontracting.
+  scheduledQuantity:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: scheduledQuantity
+    name: Scheduled Quantity
+    description: Planned quantity committed on this scheduled receipt line.
+  originCountry:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: originCountry
+    name: Origin Country
+    description: Direct relation to the GeoLocations country from which the goods were shipped.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  originSupplierSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: originSupplierSite
+    name: Origin Supplier Site
+    description: Direct relation to the SupplierFacility node representing the physical supplier site from which goods were dispatched.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierFacility
+      version: '{{viewVersion}}'
+      type: view
+  destinationCountry:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: destinationCountry
+    name: Destination Country
+    description: Direct relation to the GeoLocations country where goods are being delivered.
+    source:
+      space: {{ isc_OrganizationalFoundationSchemaSpace }}
+      externalId: GeoLocations
+      version: '{{viewVersion}}'
+      type: view
+  destinationSite:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: destinationSite
+    name: Destination Site
+    description: Direct relation to the FunctionalAsset for the internal plant receiving the goods, organizational supply chain granularity.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  destinationWarehouse:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: destinationWarehouse
+    name: Destination Warehouse
+    description: Direct relation to the Warehouse receiving the goods, WMS warehouse hierarchy.
+    source:
+      space: {{ isc_TypedModelSchemaSpace }}
+      externalId: Warehouse
+      version: '{{viewVersion}}'
+      type: view
+  scheduledPickupDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: scheduledPickupDate
+    name: Scheduled Pickup Date
+    description: Planned pickup date for this scheduled receipt line.
+  scheduledArrivalDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: scheduledArrivalDate
+    name: Scheduled Arrival Date
+    description: Planned arrival date for this scheduled receipt line.
+  scheduleStatus:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: scheduleStatus
+    name: Schedule Status
+    description: "Schedule lifecycle status for this planned receipt. Allowed values: Open, PartiallyShipped, Closed, Cancelled."
+  material:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: material
+    name: Material
+    description: Direct relation to the MaterialMaster node for the delivered material.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  poLineItem:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: poLineItem
+    name: PO Line Item
+    description: Direct relation to the PurchaseOrderLineItem that drives this planned receipt commitment.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderLineItem
+      version: '{{viewVersion}}'
+      type: view
+  quantityUnit:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: quantityUnit
+    name: Quantity Unit
+    description: Unit of measure for the scheduledQuantity field for example EA, KG, M.
+  supplier:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: supplier
+    name: Supplier
+    description: Direct relation to the Supplier node. Denormalised from the PO for fast supplier-level delivery performance queries.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: Supplier
+      version: '{{viewVersion}}'
+      type: view
+  poConfirmation:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: poConfirmation
+    name: PO Confirmation
+    description: Direct relation to the PurchaseOrderConfirmation node that confirmed this planned receipt.
+    source:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: PurchaseOrderConfirmation
+      version: '{{viewVersion}}'
+      type: view
+  transportationLane:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: transportationLane
+    name: Transportation Lane
+    description: Direct relation to the TransportationLane defining the standard route and lead time for this planned receipt.
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: TransportationLane
+      version: '{{viewVersion}}'
+      type: view
+  plannedTransitDays:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: plannedTransitDays
+    name: Planned Transit Days
+    description: Snapshot of the transportation lane lead time at planning time.
+  scheduleVsConfirmationDateVariance:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: scheduleVsConfirmationDateVariance
+    name: Schedule vs Confirmation Date Variance
+    description: Difference in days between the scheduled arrival date and the confirmed delivery date from the purchase order confirmation.
+  scheduleVsConfirmationQtyVariance:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: scheduleVsConfirmationQtyVariance
+    name: Schedule vs Confirmation Quantity Variance
+    description: Difference between the confirmed quantity on the purchase order confirmation and the scheduled quantity.
+  arrivalDateVariance:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: arrivalDateVariance
+    name: Arrival Date Variance
+    description: Difference in days between the actual arrival date and the scheduled arrival date.
+  receivedQtyVariance:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: receivedQtyVariance
+    name: Received Quantity Variance
+    description: Difference between the scheduled quantity and the total bill of lading quantity.
+  originalArrivalDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: originalArrivalDate
+    name: Original Arrival Date
+    description: Original planned arrival date before any revision. Compare against revisedArrivalDate to quantify inbound delay.
+  revisedArrivalDate:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: revisedArrivalDate
+    name: Revised Arrival Date
+    description: Most recently revised arrival date after a delay or expedite. Null when the receipt has not been rescheduled.
+  delayReason:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ScheduledReceipt
+      type: container
+    containerPropertyIdentifier: delayReason
+    name: Delay Reason
+    description: Free-text or coded reason for the arrival delay when revisedArrivalDate differs from originalArrivalDate.
+  executedByShipments:
+    connectionType: multi_edge_connection
+    direction: inwards
+    name: executedByShipments
+    description: Shipments executing this scheduled inbound receipt. Query ShipmentExecutesReceipt edges with this receipt as end node.
+    type:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment.executesReceipt
+    source:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: Shipment
+      version: '{{viewVersion}}'
+      type: view
+    edgeSource:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: ShipmentExecutesReceipt
+      version: '{{viewVersion}}'
+      type: view

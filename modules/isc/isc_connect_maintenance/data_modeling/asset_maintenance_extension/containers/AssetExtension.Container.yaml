@@ -1,0 +1,153 @@
+space: {{ isc_AssetMaintenanceSchemaSpace }}
+externalId: AssetExtension
+name: AssetExtension
+description: Backing container for the FunctionalAsset view, providing critical metadata for physical equipment and functional locations such as criticality, operational consequence, and technical hierarchy details.
+constraints:
+  assetPresent:
+    constraintType: requires
+    require:
+      space: cdf_cdm
+      externalId: CogniteAsset
+      type: container
+properties:
+  functionalAssetLevel:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Functional Asset Level
+    description: Classification of this operational node within the functional asset hierarchy, for example Enterprise, Site, Area, Unit, Warehouse, or StorageBin.
+  erpId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: ERP ID
+    description: ERP-facing identifier for the asset, for example an SAP functional location or equipment number.
+  assetSpecific:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Asset Specific
+    description: Flexible reference field that can point to ISA-95 node types such as Area, ProcessCell, Unit, Site, Enterprise, or EquipmentModule.
+  belongtoCity:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Belong To City
+    description: Direct relation to the GeoLocations node representing the city or geographic area this functional asset belongs to.
+  belongtoCostCenter:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Belong To Cost Center
+    description: Direct relation to the BusinessUnits node representing the cost center accountable for this functional asset.
+  assetCriticality:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Asset Criticality
+    description: The criticality rating of the asset, indicating its importance to operations and the potential impact of its failure.
+  assetCriticalityDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Asset Criticality Description
+    description: A textual explanation of the assets criticality rating, providing additional context for the assigned criticality level.
+  assetHealthScore:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Asset Health Score
+    description: A numerical score representing the overall health and condition of the asset, used to assess maintenance needs and predict potential failures.
+  assetHealthScoreDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Asset Health Score Description
+    description: A textual explanation of the asset health score, providing context or qualitative interpretation of the calculated health value.
+  productionRate:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Production Rate
+    description: Nameplate or planned production throughput rate for this functional asset, for example a production train or unit. Used to translate maintenance downtime into lost production volume.
+  productionRateUom:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Production Rate UOM
+    description: Unit of measure for productionRate for example t/h, bbl/d.
+indexes:
+  functionalAssetLevel:
+    properties:
+    - functionalAssetLevel
+    cursorable: true
+    indexType: btree
+  erpId:
+    properties:
+    - erpId
+    cursorable: true
+    indexType: btree
+  assetSpecific:
+    properties:
+    - assetSpecific
+    cursorable: true
+    indexType: btree
+  belongtoCity:
+    properties:
+    - belongtoCity
+    cursorable: false
+    indexType: btree
+  belongtoCostCenter:
+    properties:
+    - belongtoCostCenter
+    cursorable: false
+    indexType: btree
+  assetCriticality:
+    properties:
+    - assetCriticality
+    cursorable: true
+    indexType: btree
+  assetHealthScore:
+    properties:
+    - assetHealthScore
+    cursorable: true
+    indexType: btree
+usedFor: node

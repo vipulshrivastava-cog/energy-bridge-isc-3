@@ -1,0 +1,174 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: SupplierSuppliesMaterial
+name: Supplier Supplies Material
+description: Queryable edge view linking suppliers to material masters with unit cost, currency, priority, and contract reference on the commercial supply relationship.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  relationType:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: relationType
+    name: Relation Type
+    description: Semantic role of the link, reservation, assignment, pegging, execution, impact.
+  relationStatus:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: relationStatus
+    name: Relation Status
+    description: Lifecycle status of the link, planned, active, fulfilled, cancelled.
+  validFrom:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: validFrom
+    name: Valid From
+    description: Business start date when this link becomes effective.
+  validTo:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: validTo
+    name: Valid To
+    description: Business end date when this link ceases to be effective. Null means open-ended.
+  unitCost:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: unitCost
+    name: Unit Cost
+    description: Commercial unit cost on the relationship.
+  currency:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: currency
+    name: Currency
+    description: Currency code for commercial properties.
+  priorityRank:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: priorityRank
+    name: Priority Rank
+    description: Priority rank for lane scope or commercial preference.
+  contractRef:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: contractRef
+    name: Contract Reference
+    description: Contract or agreement reference for the link.
+  minQuantity:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: minQuantity
+    name: Min Quantity
+    description: Minimum order quantity for this supplier-material supply relationship.
+  maxQuantity:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: maxQuantity
+    name: Max Quantity
+    description: Maximum order quantity for this supplier-material supply relationship.
+  otifScore:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: otifScore
+    name: OTIF Score
+    description: On-time-in-full performance score for this supplier-material link.
+  otifScorePeriodStart:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: otifScorePeriodStart
+    name: OTIF Score Period Start
+    description: Start of the measurement window for otifScore.
+  otifScorePeriodEnd:
+    container:
+      space: {{ isc_SourcingProcurementSchemaSpace }}
+      externalId: SupplierSuppliesMaterial
+      type: container
+    containerPropertyIdentifier: otifScorePeriodEnd
+    name: OTIF Score Period End
+    description: End of the measurement window for otifScore.

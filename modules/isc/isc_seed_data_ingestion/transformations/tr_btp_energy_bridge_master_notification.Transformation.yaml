@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_master_notification
+name: BTP Energy Bridge - Master Notification
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_OrganizationalFoundationSchemaSpace }}
+    externalId: OrganizationalFoundation
+    version: '{{dmVersion}}'
+    destinationType: MasterNotification
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

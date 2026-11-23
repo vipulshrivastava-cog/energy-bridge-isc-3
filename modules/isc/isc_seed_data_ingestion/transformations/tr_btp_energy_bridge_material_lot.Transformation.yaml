@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_material_lot
+name: BTP Energy Bridge - Material Lot
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_MaterialManagementSchemaSpace }}
+    externalId: MaterialManagement
+    version: '{{dmVersion}}'
+    destinationType: MaterialLot
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

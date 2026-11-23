@@ -1,0 +1,49 @@
+externalId: wf_trigger_btp_hierarchy_path_warehouse
+workflowExternalId: wf_btp_hierarchy_path
+workflowVersion: '1'
+metadata:
+  origin: cognite-toolkit
+  view_external_id: StorageLocations
+input:
+  sync_kind: node
+  view_space: {{ isc_MaterialManagementSchemaSpace }}
+  view_external_id: StorageLocations
+  view_version: '{{viewVersion}}'
+  instance_spaces:
+    - {{ isc_InstanceSpace }}
+  platform_space: {{ isc_IscPlatformSchemaSpace }}
+  chunk_size: 200
+  max_runtime_seconds: 480
+  sync_lock:
+    enabled: true
+    ttl_seconds: 600
+    heartbeat_seconds: 60
+triggerRule:
+  triggerType: dataModeling
+  batchSize: 100
+  batchTimeout: 60
+  dataModelingQuery:
+    with:
+      changed_nodes:
+        limit: 100
+        mode: noBackfill
+        nodes:
+          filter:
+            and:
+              - hasData:
+                  - type: view
+                    space: {{ isc_MaterialManagementSchemaSpace }}
+                    externalId: StorageLocations
+                    version: '{{viewVersion}}'
+              - in:
+                  property:
+                    - node
+                    - space
+                  values:
+                    - {{ isc_InstanceSpace }}
+    select:
+      changed_nodes:
+        sources: []
+authentication:
+  clientId: '{{ hierarchy_path_trigger_clientId }}'
+  clientSecret: ${IDP_WF_HIERARCHY_PATH_TRIGGER_SECRET}

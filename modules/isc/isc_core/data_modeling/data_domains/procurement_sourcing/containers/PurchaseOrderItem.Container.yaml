@@ -1,0 +1,320 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: PurchaseOrderItem
+name: purchaseOrderItemId
+description: Line item-level properties of a Purchase Order. Identifies the specific material, quantity, price, delivery dates, and incoterms for a single procurement line. Multiple items belong to one PO header.
+properties:
+  purchaseOrderId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Purchase Order ID
+    description: Purchase order number from the source ERP system. Foreign key linking this item to its PO header. Part of the composite primary key with purchaseOrderItemId.
+  purchaseOrderItemId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: false
+    autoIncrement: false
+    name: Purchase Order Item ID
+    description: Line item number within the Purchase Order, e.g. 00010, 00020. Composite primary key with purchaseOrderId.
+  material:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material being ordered.
+  shipTo:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Ship To
+    description: Direct relation to the FunctionalAsset node for the delivery destination of this PO item. Determines MRP planning area and goods receipt location.
+  supplierItemRecord:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier Item Record
+    description: Direct relation to the SupplierItemRecord, Purchasing Info Record, used as the source for pricing, lead time, and delivery terms on this PO item. Enables traceability from PO back to the approved sourcing arrangement and supports PO price audit against agreed SupplierItemRecord unit cost.
+  itemDescription:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Item Description
+    description: Short text description of the PO line item as it appears on the legal procurement document.
+  unitOfMeasure:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Unit of Measure
+    description: Unit of measure for quantityOrdered and quantityReceived fields for example EA, KG, M.
+  quantityOrdered:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Quantity Ordered
+    description: Total quantity of material contracted for delivery under this PO line item.
+  quantityReceived:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Quantity Received
+    description: Cumulative quantity processed through Goods Receipt against this PO item. Derived from EKBE goods movement history.
+  netPrice:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Net Price
+    description: Agreed-upon cost per unit of the order unit, excluding taxes and logistics fees. Should match the SupplierItemRecord unitCost for auditing purposes.
+  netOrderValue:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Net Order Value
+    description: Total net value of this line item, calculated as quantityOrdered multiplied by netPrice in document currency.
+  currency:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Currency
+    description: Document currency code for this PO item for example NOK, USD, EUR.
+  requestedDeliveryDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Requested Delivery Date
+    description: Requested arrival date at the destination site gate. Used for on-time delivery tracking and schedule conflict detection against work order requirement dates.
+  previousRequestedDeliveryDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Previous Requested Delivery Date
+    description: Delivery date before the last ERP update. Mirrors PurchaseOrderConfirmation baseline date semantics.
+  requestedDeliveryDateChangeDays:
+    type:
+      list: false
+      type: float64
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Requested Delivery Date Change Days
+    description: Signed day delta between previousRequestedDeliveryDate and requestedDeliveryDate. Positive indicates slip. Negative indicates pull-in.
+  requestedShipDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Requested Ship Date
+    description: Requested ship date from the supplier location. Used for on-time shipment tracking. Combined with delivery lane lead time to validate feasibility.
+  contractualDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Contractual Date
+    description: The contractually binding date - either the delivery date or ship date depending on the applicable incoterm. EXW and FOB for ship date. DAP and DDP for delivery date.
+  lineItemIncoterm:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Line Item Incoterm
+    description: Delivery terms code for this specific line item. Inherited from PO header incoterms unless overridden at item level.
+  lineIncotermLocation:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Line Item Incoterm Location
+    description: Named place associated with the line item incoterm. Inherited from PO header incotermsLocation unless overridden.
+  goodsReceiptLatestDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Goods Receipt Latest Date
+    description: Date of the most recent goods receipt posted for this PO item. Derived from EKBE transaction history.
+  latestConfirmedDeliveryDate:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Latest Confirmed Delivery Date
+    description: Most recent delivery date confirmed by the supplier. Denormalised from PurchaseOrderConfirmation for fast dashboard queries - updated each time a new confirmation is received.
+  itemStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Item Status
+    description: Current lifecycle state of the line item for example Open, Partially Received, Closed. Drives procurement completion KPIs.
+  currentConfirmationStatus:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Current Confirmation Status
+    description: Most recent supplier confirmation status, Confirmed, Pending, Backorder, Rejected. Denormalised from PurchaseOrderConfirmation for fast dashboard queries.
+  purchaseRequisition:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Purchase Requisition
+    description: Direct relation to the PurchaseRequisition node that originated this PO line item. Enables demand signal traceability from work order through to PO.
+  supplierContract:
+    type:
+      list: false
+      type: direct
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Supplier Contract
+    description: Direct relation to the SupplierContract, outline agreement, governing this PO item. Links to pre-negotiated pricing, volumes, and delivery terms.
+  isCompletelyDelivered:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Is Completely Delivered
+    description: True if the PO item has been fully delivered. Key KPI for procurement completion and work order readiness tracking.
+  isFinallyInvoiced:
+    type:
+      list: false
+      type: boolean
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Is Finally Invoiced
+    description: True if the PO item has been finally invoiced. Signals financial closure of this line item.
+  purchaseOrderDeletionCode:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Deletion Code
+    description: Deletion indicator for this PO line item - Blank for Active, L for Deleted.
+indexes:
+  purchaseOrderItem:
+    properties:
+    - purchaseOrderId
+    - purchaseOrderItemId
+    cursorable: true
+    indexType: btree
+  material:
+    properties:
+    - material
+    cursorable: false
+    indexType: btree
+  shipTo:
+    properties:
+    - shipTo
+    cursorable: false
+    indexType: btree
+  supplierItemRecord:
+    properties:
+    - supplierItemRecord
+    cursorable: false
+    indexType: btree
+  requestedDeliveryDate:
+    properties:
+    - requestedDeliveryDate
+    cursorable: true
+    indexType: btree
+  previousRequestedDeliveryDate:
+    properties:
+    - previousRequestedDeliveryDate
+    cursorable: true
+    indexType: btree
+  latestConfirmedDeliveryDate:
+    properties:
+    - latestConfirmedDeliveryDate
+    cursorable: true
+    indexType: btree
+  itemStatus:
+    properties:
+    - itemStatus
+    cursorable: true
+    indexType: btree
+  purchaseRequisition:
+    properties:
+    - purchaseRequisition
+    cursorable: false
+    indexType: btree
+  supplierContract:
+    properties:
+    - supplierContract
+    cursorable: false
+    indexType: btree
+usedFor: node

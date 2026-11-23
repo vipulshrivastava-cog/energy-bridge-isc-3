@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_scheduled_receipt
+name: BTP Energy Bridge - Scheduled Receipt
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_ShipmentDeliverySchemaSpace }}
+    externalId: ShipmentDelivery
+    version: '{{dmVersion}}'
+    destinationType: ScheduledReceipt
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

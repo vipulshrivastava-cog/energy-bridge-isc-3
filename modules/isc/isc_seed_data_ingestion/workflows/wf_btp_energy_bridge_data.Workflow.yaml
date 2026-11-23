@@ -1,0 +1,2 @@
+externalId: wf_btp_energy_bridge_data
+description: BTP - Load the {{ btpSeedDbName }} RAW tables into the isc_core domain data models (OrganizationalFoundation, AssetMaintenance, SourcingProcurement, ShipmentDelivery, MaterialManagement, PlanForecast, isc_typed_model).

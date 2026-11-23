@@ -1,0 +1,11 @@
+externalId: tr_btp_energy_bridge_material_reservation
+name: BTP Energy Bridge - Material Reservation
+destination:
+  type: edges
+  view:
+    space: {{ isc_MaterialManagementSchemaSpace }}
+    externalId: MaterialReservation
+    version: '{{dmVersion}}'
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

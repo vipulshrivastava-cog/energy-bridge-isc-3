@@ -1,0 +1,166 @@
+space: {{ isc_ShipmentDeliverySchemaSpace }}
+externalId: UsesTransportationLane
+name: Uses Transportation Lane
+description: Queryable edge view linking shipments or production schedules to transportation lanes, with multi-hop leg sequence and role, planned and actual transit duration, cost, and customs clearance on the edge.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  relationType:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: relationType
+    name: Relation Type
+    description: Semantic role of the link, reservation, assignment, pegging, execution, impact.
+  relationStatus:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: relationStatus
+    name: Relation Status
+    description: Lifecycle status of the link, planned, active, fulfilled, cancelled.
+  validFrom:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: validFrom
+    name: Valid From
+    description: Business start date when this link becomes effective.
+  validTo:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: validTo
+    name: Valid To
+    description: Business end date when this link ceases to be effective. Null means open-ended.
+  plannedTransitDays:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: plannedTransitDays
+    name: Planned Transit Days
+    description: Planned transit duration in days.
+  actualTransitDays:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: actualTransitDays
+    name: Actual Transit Days
+    description: Actual transit duration in days.
+  delayReason:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: delayReason
+    name: Delay Reason
+    description: Reason code when actual transit exceeds plan.
+  actualCost:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: actualCost
+    name: Actual Cost
+    description: Actual transport cost for this lane usage.
+  costCurrency:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: costCurrency
+    name: Cost Currency
+    description: Currency for lane cost properties.
+  customsClearanceRequired:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: customsClearanceRequired
+    name: Customs Clearance Required
+    description: Whether customs clearance is required for this lane usage.
+  legSequence:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: legSequence
+    name: Leg Sequence
+    description: Order of this lane leg within the shipment or schedule route, 1 for first leg.
+  legRole:
+    container:
+      space: {{ isc_ShipmentDeliverySchemaSpace }}
+      externalId: UsesTransportationLane
+      type: container
+    containerPropertyIdentifier: legRole
+    name: Leg Role
+    description: Semantic role of this leg in multi-hop routing, origin haul, main leg, last mile.

@@ -1,0 +1,11 @@
+externalId: tr_btp_energy_bridge_shipment_executes_receipt
+name: BTP Energy Bridge - Shipment Executes Receipt
+destination:
+  type: edges
+  view:
+    space: {{ isc_ShipmentDeliverySchemaSpace }}
+    externalId: ShipmentExecutesReceipt
+    version: '{{dmVersion}}'
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

@@ -1,0 +1,2 @@
+dbName: {{ btpSeedDbName }}
+tableName: stock_transfer_order

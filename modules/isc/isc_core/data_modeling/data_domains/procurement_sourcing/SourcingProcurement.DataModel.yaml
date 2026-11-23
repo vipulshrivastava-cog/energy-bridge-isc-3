@@ -1,0 +1,39 @@
+space: {{ isc_SourcingProcurementSchemaSpace }}
+externalId: SourcingProcurement
+name: SourcingProcurement
+description: Sourcing and procurement domain — suppliers and purchase documents.
+version: '{{dmVersion}}'
+views:
+- space: {{ isc_SourcingProcurementSchemaSpace }}
+  externalId: PurchaseRequisition
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_SourcingProcurementSchemaSpace }}
+  externalId: PurchaseOrderLineItem
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_SourcingProcurementSchemaSpace }}
+  externalId: PurchaseOrderConfirmation
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_SourcingProcurementSchemaSpace }}
+  externalId: Supplier
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_SourcingProcurementSchemaSpace }}
+  externalId: SupplierFacility
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_SourcingProcurementSchemaSpace }}
+  externalId: SupplierItemRecord
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_SourcingProcurementSchemaSpace }}
+  externalId: SupplierContract
+  version: '{{viewVersion}}'
+  type: view
+- space: {{ isc_SourcingProcurementSchemaSpace }}
+  externalId: SupplierSuppliesMaterial
+  version: '{{viewVersion}}'
+  type: view
+  

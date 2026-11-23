@@ -1,0 +1,2 @@
+dbName: {{ btpSeedDbName }}
+tableName: supplier_supplies_material

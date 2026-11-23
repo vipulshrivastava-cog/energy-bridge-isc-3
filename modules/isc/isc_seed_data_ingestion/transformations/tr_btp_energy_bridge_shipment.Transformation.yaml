@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_shipment
+name: BTP Energy Bridge - Shipment
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_ShipmentDeliverySchemaSpace }}
+    externalId: ShipmentDelivery
+    version: '{{dmVersion}}'
+    destinationType: Shipment
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

@@ -1,0 +1,266 @@
+space: {{ isc_PlanForecastSchemaSpace }}
+externalId: Forecast
+name: Forecast
+description: Time-phased planning record capturing expected demand, consumption, production, or supply quantities for a specific material at a specific location. Supports multiple scenario versions for what-if analysis and separates system-generated quantities from planner adjustments.
+version: '{{viewVersion}}'
+properties:
+  name:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: name
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: description
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: sourceId
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: sourceContext
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: sourceCreatedTime
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: sourceUpdatedTime
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: sourceCreatedUser
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: sourceUpdatedUser
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  forecastId:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: forecastId
+    name: Forecast ID
+    description: Unique identifier for this forecast record.
+  forecastType:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: forecastType
+    name: Forecast Type
+    description: "Classification of what is being forecast. Accepted values are case-sensitive: Demand, Consumption, Production, Supply, Inventory."
+  forecastSource:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: forecastSource
+    name: Forecast Source
+    description: Origin of the forecast - Statistical, MachineLearning, Manual, MRP, CustomerDriven, ConsumptionBased.
+  forecastVersion:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: forecastVersion
+    name: Forecast Version
+    description: Scenario or version label for this forecast record for example Baseline, Optimistic, Pessimistic.
+  forecastStatus:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: forecastStatus
+    name: Forecast Status
+    description: Lifecycle state of the forecast record - Draft, Approved, Active, Superseded, Locked.
+  material:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: material
+    name: Material
+    description: Direct relation to the MaterialMaster node for the material being forecast.
+    source:
+      space: {{ isc_MaterialManagementSchemaSpace }}
+      externalId: MaterialMaster
+      version: '{{viewVersion}}'
+      type: view
+  materialGroup:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: materialGroup
+    name: Material Group
+    description: Material group code for group-level forecasts where individual material-level detail is not available or necessary.
+  plant:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: plant
+    name: Plant
+    description: Direct relation to the FunctionalAsset node for the plant or site for which this forecast is generated.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  storageLocation:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: storageLocation
+    name: Storage Location
+    description: Direct relation to the FunctionalAsset node for the specific storage location, when the forecast is disaggregated to warehouse level. Null for plant-level forecasts.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: FunctionalAsset
+      version: '{{viewVersion}}'
+      type: view
+  timeBucket:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: timeBucket
+    name: Time Bucket
+    description: Granularity of the forecast period - Day, Week, Month, Quarter, Year.
+  forecastPeriodStart:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: forecastPeriodStart
+    name: Forecast Period Start
+    description: Start date of the forecast bucket to which this quantity applies.
+  forecastPeriodEnd:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: forecastPeriodEnd
+    name: Forecast Period End
+    description: End date of the forecast bucket to which this quantity applies.
+  forecastHorizonEnd:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: forecastHorizonEnd
+    name: Forecast Horizon End
+    description: The furthest-out date covered by the overall forecast series of which this record is a part.
+  forecastQuantity:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: forecastQuantity
+    name: Forecast Quantity
+    description: System-generated or statistically computed forecast quantity for this material-location-period combination.
+  adjustedQuantity:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: adjustedQuantity
+    name: Adjusted Quantity
+    description: Planner-adjusted forecast quantity. When null, the forecastQuantity is used for planning.
+  unitOfMeasure:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: unitOfMeasure
+    name: Unit of Measure
+    description: Base unit of measure for forecastQuantity and adjustedQuantity for example EA, KG, M, Litres.
+  confidence:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: confidence
+    name: Confidence
+    description: Forecast confidence level expressed as a percentage, 0-100.
+  forecastAccuracy:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: forecastAccuracy
+    name: Forecast Accuracy
+    description: Mean Absolute Percentage Error or equivalent accuracy metric from the most recent forecast evaluation cycle.
+  approvedBy:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: approvedBy
+    name: Approved By
+    description: User ID of the planner or manager who approved this forecast version for use in planning runs.
+  approvedDate:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: approvedDate
+    name: Approved Date
+    description: Date on which this forecast version was formally approved and released for planning consumption.
+  priceIndexName:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: priceIndexName
+    name: Price Index Name
+    description: Name of the external price index this forecast row represents, for example an LNG spot price index (JKM), for non-stock index materials used in deferment cost calculations.
+  workOrder:
+    container:
+      space: {{ isc_PlanForecastSchemaSpace }}
+      externalId: Forecast
+      type: container
+    containerPropertyIdentifier: workOrder
+    name: Work Order
+    description: Direct relation to the WorkOrder node when this consumption forecast is linked to a specific planned maintenance work order.
+    source:
+      space: {{ isc_AssetMaintenanceSchemaSpace }}
+      externalId: WorkOrder
+      version: '{{viewVersion}}'
+      type: view

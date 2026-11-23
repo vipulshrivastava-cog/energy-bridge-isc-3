@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_supplier_facility
+name: BTP Energy Bridge - Supplier Facility
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_SourcingProcurementSchemaSpace }}
+    externalId: SourcingProcurement
+    version: '{{dmVersion}}'
+    destinationType: SupplierFacility
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

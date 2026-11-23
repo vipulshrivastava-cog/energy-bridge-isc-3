@@ -1,0 +1,12 @@
+externalId: tr_btp_energy_bridge_storage_warehouse
+name: BTP Energy Bridge - Storage Warehouse
+destination:
+  type: instances
+  dataModel:
+    space: {{ isc_TypedModelSchemaSpace }}
+    externalId: isc_typed_model
+    version: '{{dmVersion}}'
+    destinationType: Warehouse
+  instanceSpace: {{ isc_InstanceSpace }}
+ignoreNullFields: true
+conflictMode: upsert

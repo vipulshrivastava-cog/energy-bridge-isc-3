@@ -1,0 +1,2 @@
+dbName: {{ btpSeedDbName }}
+tableName: notification_links_entity

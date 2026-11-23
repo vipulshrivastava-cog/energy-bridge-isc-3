@@ -1,0 +1,8 @@
+key,name,description,locationCode,locationType,parent_externalId,isoCode,sourceId,sourceContext,sourceCreatedTime,sourceUpdatedTime,sourceCreatedUser,sourceUpdatedUser,latitude,longitude,physicalAddress
+geo-apac,Asia-Pacific,APAC region,APAC,GeoRegion,,,APAC,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,,,
+geo-au,Australia,Australia,AU,Country,geo-apac,AU,AU,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,,,
+geo-darwin,Darwin NT,Darwin onshore base,AU-DRW,City,geo-au,AU,AU-DRW,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,-12.4634,130.8456,"Darwin, Northern Territory"
+geo-alpha-offshore,Ichthys Alpha Offshore,Alpha platform offshore field,ICH-ALPHA,City,geo-au,AU,ICH-ALPHA,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,-13.85,125.45,Browse Basin offshore
+geo-bravo-offshore,Ichthys Bravo Offshore,Bravo platform offshore field,ICH-BRAVO,City,geo-au,AU,ICH-BRAVO,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,-13.87,125.48,Browse Basin offshore
+geo-singapore,Singapore,Supplier hub — valves and instrumentation,SG-SIN,City,geo-apac,SG,SG-SIN,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,1.3521,103.8198,Singapore
+geo-perth,Perth,Supplier hub — rotating equipment services,AU-PER,City,geo-au,AU,AU-PER,SAP,2026-07-23T08:00:00Z,2026-07-23T08:00:00Z,sap.mm.interface,sap.mm.interface,-31.9505,115.8605,"Perth, Western Australia"

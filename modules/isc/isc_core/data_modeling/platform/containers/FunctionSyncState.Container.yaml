@@ -1,0 +1,121 @@
+space: {{ isc_IscPlatformSchemaSpace }}
+externalId: FunctionSyncState
+name: Function Sync State
+description: Operational state for background sync jobs. Stores incremental sync cursors for hierarchy path maintenance and short-lived execution locks that prevent overlapping runs.
+usedFor: node
+properties:
+  name:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Name
+    description: Human-readable name for this node.
+  description:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Description
+    description: Human-readable description for this node.
+  sourceId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source ID
+    description: Identifier from the upstream source system.
+  sourceContext:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Context
+    description: Source system or context for this node.
+  sourceCreatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created Time
+    description: Timestamp when the node was created in the source system.
+  sourceUpdatedTime:
+    type:
+      list: false
+      type: timestamp
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated Time
+    description: Timestamp when the node was last updated in the source system.
+  sourceCreatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Created User
+    description: User that created this node in the source system.
+  sourceUpdatedUser:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    immutable: false
+    nullable: true
+    autoIncrement: false
+    name: Source Updated User
+    description: User that last updated this node in the source system.
+  orchestration_id:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: true
+    name: Orchestration ID
+    description: Job or session identifier for cursor nodes. Lock holder identifier for lease nodes.
+  partitionId:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: false
+    name: Partition ID
+    description: Partition key. Use sync for cursor nodes and lock for execution lease nodes.
+  syncCursor:
+    type:
+      list: false
+      collation: ucs_basic
+      type: text
+    nullable: true
+    name: Sync cursor
+    description: Cursor token for the last processed instance in an incremental sync.
+  processedCount:
+    type:
+      list: false
+      type: int64
+    nullable: true
+    name: Processed count
+  lastUpdated:
+    type:
+      list: false
+      type: int64
+    nullable: true
+    name: Last updated
+    description: Timestamp in epoch milliseconds for the last cursor save or lock expiry.
